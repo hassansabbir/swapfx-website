@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import logo from "@/assets/logo.png";
@@ -23,7 +24,7 @@ const NavLink = ({
   active = false,
   onClick,
 }: {
-  icon: React.ReactElement<any>;
+  icon: React.ReactElement<{ size?: number | string }>;
   label: string;
   href: string;
   active?: boolean;
@@ -50,6 +51,7 @@ const NavLink = ({
 export const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true); // Mocking logged in state
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -97,20 +99,20 @@ export const Navbar = () => {
 
       {/* Desktop Navigation Icons */}
       <div className="hidden md:flex items-center gap-10 lg:gap-14">
-        <NavLink href="/" icon={<Home />} label="Home" active />
-        <NavLink href="/market" icon={<Store />} label="Market" />
-        <NavLink href="/swap" icon={<ArrowLeftRight />} label="Swap" />
-        <NavLink href="/chat" icon={<MessageSquare />} label="Chat" />
-        <NavLink href="/account" icon={<UserCircle />} label="Account" />
+        <NavLink href="/" icon={<Home />} label="Home" active={pathname === "/"} />
+        <NavLink href="/market" icon={<Store />} label="Market" active={pathname === "/market"} />
+        <NavLink href="/swap" icon={<ArrowLeftRight />} label="Swap" active={pathname === "/swap"} />
+        <NavLink href="/chat" icon={<MessageSquare />} label="Chat" active={pathname === "/chat"} />
+        <NavLink href="/account" icon={<UserCircle />} label="Account" active={pathname === "/account"} />
       </div>
 
       {/* Right Side */}
       <div className="flex items-center gap-4 md:gap-6">
-        <button className="relative text-slate-500 hover:text-slate-700 transition-colors">
+        <Link href="/notifications" className="relative text-slate-500 hover:text-slate-700 transition-colors">
           <Bell size={22} />
           {/* Notification Dot */}
           <div className="absolute top-0 right-0.5 w-1.5 h-1.5 bg-[#09A6A4] border border-white rounded-full" />
-        </button>
+        </Link>
         
         {/* Profile - Hidden on tiny screens, shown on md+ */}
         <div className="hidden sm:block relative cursor-pointer group">
@@ -137,11 +139,11 @@ export const Navbar = () => {
       {isMenuOpen && (
         <div className="fixed inset-0 top-[88px] bg-white/80 backdrop-blur-xl z-40 md:hidden animate-in fade-in slide-in-from-top-4 duration-300">
           <div className="flex flex-col items-center gap-8 py-12">
-            <NavLink href="/" icon={<Home />} label="Home" active onClick={toggleMenu} />
-            <NavLink href="/market" icon={<Store />} label="Market" onClick={toggleMenu} />
-            <NavLink href="/swap" icon={<ArrowLeftRight />} label="Swap" onClick={toggleMenu} />
-            <NavLink href="/chat" icon={<MessageSquare />} label="Chat" onClick={toggleMenu} />
-            <NavLink href="/account" icon={<UserCircle />} label="Account" onClick={toggleMenu} />
+            <NavLink href="/" icon={<Home />} label="Home" active={pathname === "/"} onClick={toggleMenu} />
+            <NavLink href="/market" icon={<Store />} label="Market" active={pathname === "/market"} onClick={toggleMenu} />
+            <NavLink href="/swap" icon={<ArrowLeftRight />} label="Swap" active={pathname === "/swap"} onClick={toggleMenu} />
+            <NavLink href="/chat" icon={<MessageSquare />} label="Chat" active={pathname === "/chat"} onClick={toggleMenu} />
+            <NavLink href="/account" icon={<UserCircle />} label="Account" active={pathname === "/account"} onClick={toggleMenu} />
             
             <div className="pt-4 border-t border-slate-100 w-full flex justify-center">
               <div className="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl w-[80%] max-w-[300px]">

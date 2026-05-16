@@ -13,7 +13,7 @@ export const GlassContainer = ({
   return (
     <div
       className={cn(
-        "bg-white/5 backdrop-blur-sm rounded-4xl md:rounded-[3rem] p-5 md:p-16 w-full max-w-[1150px] mx-auto overflow-hidden border border-white/20 shadow-xl",
+        "bg-white/5 backdrop-blur-sm rounded-3xl md:rounded-[3rem] p-5 md:p-16 w-full max-w-[1150px] mx-auto overflow-hidden border border-white/20 shadow-xl",
         className,
       )}
       {...props}
