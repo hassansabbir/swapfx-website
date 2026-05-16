@@ -28,10 +28,10 @@ export const Button = ({
   return (
     <button
       className={cn(
-        "rounded-lg transition-all shadow-md border border-white/40 active:translate-y-[1px] disabled:opacity-50 disabled:pointer-events-none",
+        "rounded-lg transition-all shadow-md border border-white/40 active:translate-y-px disabled:opacity-50 disabled:pointer-events-none",
         variants[variant],
         sizes[size],
-        className
+        className,
       )}
       {...props}
     >

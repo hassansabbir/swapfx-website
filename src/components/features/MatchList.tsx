@@ -62,7 +62,7 @@ export const MatchList = () => {
           </div>
         </>
       ) : (
-        <div className="bg-white/95 rounded-[1.5rem] p-10 flex flex-col items-center text-center space-y-6 border border-white/20 shadow-sm animate-in fade-in zoom-in duration-500">
+        <div className="bg-white/95 rounded-3xl p-10 flex flex-col items-center text-center space-y-6 border border-white/20 shadow-sm animate-in fade-in zoom-in duration-500">
           <div className="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center border border-slate-50">
             <Bell className="w-8 h-8 text-[#1ACCC9]" />
           </div>
