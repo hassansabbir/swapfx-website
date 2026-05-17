@@ -220,7 +220,10 @@ function SwapCompletedContent() {
 
           {/* Footer Actions */}
           <div className="flex items-center justify-center gap-4 pt-4">
-            <button className="flex-1 max-w-[220px] py-3.5 rounded-xl bg-[#09A6A4] text-white text-[0.92rem] font-semibold shadow-md shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform">
+            <button
+              onClick={() => router.push("/account/support")}
+              className="flex-1 max-w-[220px] py-3.5 rounded-xl bg-[#09A6A4] text-white text-[0.92rem] font-semibold shadow-md shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform"
+            >
               Contact Support
             </button>
             <button
