@@ -13,7 +13,7 @@ function SwapConfirmationContent() {
     if (from === "market") {
       router.push("/market");
     } else if (from === "chat") {
-      router.push("/chat?swapper=Bob Builder&offerCreated=true");
+      router.push("/chat/bob-builder?offerCreated=true");
     } else {
       router.push("/swap");
     }

@@ -10,9 +10,18 @@ function CreateSwapContent() {
   const from = searchParams.get("from") || "";
   const swapper = searchParams.get("swapper") || "";
 
+  const getSwapperId = (name: string) => {
+    const clean = name.toLowerCase().trim();
+    if (clean.includes("bob")) return "bob-builder";
+    if (clean.includes("john")) return "john-doe";
+    if (clean.includes("cameron")) return "cameron-williamson";
+    if (clean.includes("fahim")) return "fahim-ahmed";
+    return "bob-builder";
+  };
+
   const handleBack = () => {
     if (from === "chat") {
-      router.push(`/chat?swapper=${encodeURIComponent(swapper)}`);
+      router.push(`/chat/${getSwapperId(swapper)}`);
     } else {
       router.push("/swap/agreement");
     }
@@ -20,7 +29,7 @@ function CreateSwapContent() {
 
   const handleSubmit = () => {
     if (from === "chat") {
-      router.push(`/chat?swapper=${encodeURIComponent(swapper)}&offerCreated=true`);
+      router.push(`/chat/${getSwapperId(swapper)}?offerCreated=true`);
     } else {
       router.push("/swap/success");
     }

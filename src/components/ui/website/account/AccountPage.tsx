@@ -25,15 +25,15 @@ const AccountPage = () => {
   const menuItems1 = [
     { label: "Personal Information", icon: <User size={20} />, hasAlert: true, href: "/account/personal-info" },
     { label: "My ID", icon: <Contact size={20} />, hasAlert: true, href: "/account/my-id" },
-    { label: "Membership", icon: <Building2 size={20} />, hasChevron: true },
-    { label: "Reviews", icon: <Star size={20} />, hasChevron: true },
-    { label: "Messages (10)", icon: <MessageSquare size={20} />, hasChevron: true },
+    { label: "Membership", icon: <Building2 size={20} />, hasChevron: true, href: "/account/membership" },
+    { label: "Reviews", icon: <Star size={20} />, hasChevron: true, href: "/account/reviews" },
+    { label: "Messages (10)", icon: <MessageSquare size={20} />, hasChevron: true, href: "/account/messages" },
   ];
 
   const menuItems2 = [
-    { label: "Help & Support", icon: <Headphones size={20} />, hasChevron: true },
-    { label: "Terms", icon: <FileText size={20} />, hasChevron: true },
-    { label: "Account", icon: <ShieldCheck size={20} />, hasChevron: true },
+    { label: "Help & Support", icon: <Headphones size={20} />, hasChevron: true, href: "/account/support" },
+    { label: "Terms", icon: <FileText size={20} />, hasChevron: true, href: "/account/terms" },
+    { label: "Account", icon: <ShieldCheck size={20} />, hasChevron: true, href: "/account/settings" },
   ];
 
   return (

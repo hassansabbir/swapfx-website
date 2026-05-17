@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 
 export default function ProofOfPaymentPage() {
   const router = useRouter();
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
   const [uploadedFile, setUploadedFile] = useState<string | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
@@ -15,13 +16,21 @@ export default function ProofOfPaymentPage() {
     router.push("/swap/swap-payment");
   };
 
-  const simulateUpload = () => {
-    setUploadedFile("bank_transfer_receipt_swap_4521.png");
+  const handleUploadClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setUploadedFile(file.name);
+    }
   };
 
   const removeFile = (e: React.MouseEvent) => {
     e.stopPropagation();
     setUploadedFile(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
   const handleSubmitProof = (e: React.FormEvent) => {
@@ -32,7 +41,7 @@ export default function ProofOfPaymentPage() {
   };
 
   const handleModalContinue = () => {
-    router.push("/swap/success");
+    router.push(`/swap/completed?file=${encodeURIComponent(uploadedFile || "")}`);
   };
 
   // Steps component for Step 5
@@ -122,9 +131,18 @@ export default function ProofOfPaymentPage() {
               </p>
             </div>
 
+            {/* Hidden Real File Input Uploader */}
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleFileChange}
+              accept="image/*"
+              className="hidden"
+            />
+
             {/* Dotted Upload Zone */}
             <div
-              onClick={simulateUpload}
+              onClick={handleUploadClick}
               className={`border-2 border-dashed rounded-3xl p-8 text-center cursor-pointer transition-all ${
                 uploadedFile
                   ? "border-emerald-450 bg-white shadow-sm"
@@ -172,7 +190,7 @@ export default function ProofOfPaymentPage() {
             <div className="grid grid-cols-2 gap-4">
               <button
                 type="button"
-                onClick={simulateUpload}
+                onClick={handleUploadClick}
                 className="bg-white border border-slate-200/60 shadow-sm rounded-2xl py-3.5 flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors text-[0.88rem] font-bold text-slate-650"
               >
                 <Camera size={16} className="text-slate-400" />
@@ -180,7 +198,7 @@ export default function ProofOfPaymentPage() {
               </button>
               <button
                 type="button"
-                onClick={simulateUpload}
+                onClick={handleUploadClick}
                 className="bg-white border border-slate-200/60 shadow-sm rounded-2xl py-3.5 flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors text-[0.88rem] font-bold text-slate-650"
               >
                 <ImageIcon size={16} className="text-slate-400" />
@@ -266,12 +284,12 @@ export default function ProofOfPaymentPage() {
               Thank you for uploading your proof of payment and completing the swap within the agreed time. Your proof is now available for the other swapper to review.
             </p>
 
-            {/* Continue Button */}
+            {/* Confirm Button */}
             <Button
               onClick={handleModalContinue}
               className="w-full max-w-[320px] py-3.5 rounded-2xl text-[1rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/25 hover:scale-[1.01] transition-transform"
             >
-              Continue
+              Confirm
             </Button>
 
           </div>

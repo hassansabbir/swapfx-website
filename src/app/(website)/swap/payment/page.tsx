@@ -25,7 +25,7 @@ export default function FeePaymentPage() {
     if (pageState === "payment_method") {
       setPageState("summary");
     } else {
-      router.push("/chat?swapper=Bob Builder&offerCreated=true");
+      router.push("/chat/bob-builder?offerCreated=true");
     }
   };
 
