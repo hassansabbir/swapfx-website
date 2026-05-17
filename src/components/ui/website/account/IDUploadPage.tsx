@@ -71,24 +71,35 @@ const IDUploadPage = () => {
 
           {/* Upload Areas */}
           <div className="space-y-6">
-            <div className="space-y-3">
-              <p className="text-slate-700 font-bold text-[0.95rem] px-1">
-                Upload Your ID Card Front Side
-              </p>
-              <UploadBox />
-            </div>
+            {selectedType === "id" ? (
+              <>
+                <div className="space-y-3">
+                  <p className="text-slate-700 font-bold text-[0.95rem] px-1">
+                    Upload Your ID Card Front Side
+                  </p>
+                  <UploadBox />
+                </div>
 
-            <div className="space-y-3">
-              <p className="text-slate-700 font-bold text-[0.95rem] px-1">
-                Upload Your ID Card Back Side
-              </p>
-              <UploadBox />
-            </div>
+                <div className="space-y-3">
+                  <p className="text-slate-700 font-bold text-[0.95rem] px-1">
+                    Upload Your ID Card Back Side
+                  </p>
+                  <UploadBox />
+                </div>
+              </>
+            ) : (
+              <div className="space-y-3">
+                <p className="text-slate-700 font-bold text-[0.95rem] px-1">
+                  Upload Your Passport
+                </p>
+                <UploadBox />
+              </div>
+            )}
           </div>
 
           {/* Continue Button */}
           <div className="flex justify-center pt-4">
-            <Link href="/account/my-id/success" className="w-full md:w-[400px]">
+            <Link href={`/account/my-id/success?type=${selectedType}`} className="w-full md:w-[400px]">
               <Button className="w-full py-4 rounded-xl text-[1.1rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform">
                 Continue
               </Button>
