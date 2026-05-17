@@ -1,0 +1,59 @@
+"use client";
+
+import React from "react";
+import { X, HelpCircle } from "lucide-react";
+
+interface ExtensionModalProps {
+  onClose: () => void;
+  onConfirmYes: () => void;
+}
+
+export default function ExtensionModal({
+  onClose,
+  onConfirmYes,
+}: ExtensionModalProps) {
+  return (
+    <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-300">
+      <div className="bg-white rounded-3xl p-6 md:p-8 max-w-[460px] w-full shadow-2xl relative flex flex-col items-center text-center space-y-5 animate-in zoom-in duration-300 border border-slate-100">
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 w-9 h-9 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center hover:bg-slate-200 transition-all shadow-inner focus:outline-none"
+        >
+          <X size={18} strokeWidth={2.5} />
+        </button>
+
+        {/* Custom rounded cursor/arrow icon */}
+        <div className="w-16 h-16 rounded-2xl bg-rose-50/70 text-rose-500 flex items-center justify-center shadow-sm">
+          <HelpCircle size={28} className="stroke-2" />
+        </div>
+
+        <div className="space-y-2">
+          <h3 className="text-[1.32rem] font-semibold text-slate-800 tracking-tight leading-tight">
+            Request Extension
+          </h3>
+          <p className="text-[0.88rem] font-medium text-slate-500 leading-relaxed px-2">
+            Need a little more time? You can extend your session by 30 minutes to complete this swap. This helps keep your transaction active and prevents it from expiring.
+          </p>
+        </div>
+
+        {/* Action buttons */}
+        <div className="flex gap-4 w-full pt-2">
+          <button
+            onClick={onConfirmYes}
+            className="flex-1 py-3 rounded-xl bg-[#09A6A4] text-white text-[0.95rem] font-semibold shadow-md shadow-[#09A6A4]/25 hover:scale-[1.01] transition-transform cursor-pointer focus:outline-none"
+          >
+            Yes
+          </button>
+          
+          <button
+            onClick={onClose}
+            className="flex-1 py-3 bg-[#09A6A4] text-white rounded-xl font-semibold shadow-md shadow-[#09A6A4]/25 hover:scale-[1.01] transition-transform cursor-pointer focus:outline-none"
+          >
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
