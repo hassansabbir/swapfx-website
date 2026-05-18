@@ -166,7 +166,7 @@ export default function MatchesPage() {
                             <CheckCircle2 className="w-[15px] h-[15px] text-[#39E75F] fill-[#39E75F] shrink-0" />
                           )}
                         </div>
-                        <p className="text-[0.75rem] text-slate-400 mt-[1px]">
+                        <p className="text-[0.75rem] text-slate-400 mt-px">
                           {match.username}&nbsp;{match.country}
                         </p>
                       </div>
