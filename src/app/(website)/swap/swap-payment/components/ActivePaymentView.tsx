@@ -7,7 +7,9 @@ import StepTracker from "./StepTracker";
 
 interface ActivePaymentViewProps {
   timeLeft: { minutes: number; seconds: number };
-  setTimeLeft: React.Dispatch<React.SetStateAction<{ minutes: number; seconds: number }>>;
+  setTimeLeft: React.Dispatch<
+    React.SetStateAction<{ minutes: number; seconds: number }>
+  >;
   paymentDone: boolean;
   handlePaymentDoneClick: () => void;
   handleUploadProofClick: () => void;
@@ -100,7 +102,8 @@ export default function ActivePaymentView({
           <div className="flex items-center justify-center gap-2 text-[2.2rem] font-black text-[#EF4444] font-mono leading-none tracking-tight">
             <Clock size={28} className="animate-pulse" />
             <span>
-              00 : {formatTime(timeLeft.minutes)} : {formatTime(timeLeft.seconds)}
+              00 : {formatTime(timeLeft.minutes)} :{" "}
+              {formatTime(timeLeft.seconds)}
             </span>
           </div>
           {/* Subtle testing expired toggle link */}
@@ -178,9 +181,9 @@ export default function ActivePaymentView({
           <Button
             onClick={handlePaymentDoneClick}
             disabled={paymentDone}
-            className={`w-full py-4 rounded-2xl text-[1.02rem] font-semibold shadow-lg transition-all ${
+            className={`w-full ${
               paymentDone
-                ? "bg-emerald-500 hover:bg-emerald-500 text-white cursor-default"
+                ? "bg-gray-500 hover:bg-gray-500 text-white cursor-default"
                 : "bg-[#09A6A4] text-white hover:scale-[1.01]"
             }`}
           >
@@ -191,9 +194,9 @@ export default function ActivePaymentView({
           <Button
             onClick={handleUploadProofClick}
             disabled={!paymentDone}
-            className={`w-full py-4 rounded-2xl text-[1.02rem] font-semibold flex items-center justify-center gap-2 border shadow-sm transition-all ${
+            className={`w-full py-3 rounded-xl text-[1.02rem] font-semibold flex items-center justify-center gap-2 border shadow-sm transition-all ${
               paymentDone
-                ? "bg-slate-800 text-white border-slate-800 hover:scale-[1.01]"
+                ? "bg-[#09A6A4]/80 text-white border-[#09A6A4] hover:scale-[1.01]"
                 : "bg-slate-100 text-slate-400 border-slate-200/50 cursor-not-allowed"
             }`}
           >
@@ -205,7 +208,9 @@ export default function ActivePaymentView({
 
       {/* Prefilled Note Label Field */}
       <div className="space-y-1.5 max-w-[720px] mx-auto w-full pt-1">
-        <span className="text-[0.8rem] font-bold text-slate-400 pl-1">Note</span>
+        <span className="text-[0.8rem] font-bold text-slate-400 pl-1">
+          Note
+        </span>
         <div className="w-full bg-white border border-slate-200/60 rounded-2xl px-4 py-4 text-[0.82rem] font-medium text-slate-600 leading-relaxed shadow-sm">
           {customNote}
         </div>
@@ -213,18 +218,12 @@ export default function ActivePaymentView({
 
       {/* Secondary Actions (Request Extension & Cancel Swap) */}
       <div className="flex gap-4 max-w-[720px] mx-auto w-full pt-4">
-        <button
-          onClick={() => setShowExtensionModal(true)}
-          className="flex-1 py-3.5 border-2 border-[#09A6A4] text-[#09A6A4] hover:bg-[#09A6A4]/5 transition-colors font-semibold rounded-2xl text-[0.92rem] focus:outline-none"
-        >
+        <Button onClick={() => setShowExtensionModal(true)} className="flex-1">
           Request Extension
-        </button>
-        <button
-          onClick={() => setShowCancelModal(true)}
-          className="flex-1 py-3.5 border-2 border-[#09A6A4] text-[#09A6A4] hover:bg-[#09A6A4]/5 transition-colors font-semibold rounded-2xl text-[0.92rem] focus:outline-none"
-        >
+        </Button>
+        <Button onClick={() => setShowCancelModal(true)} className="flex-1">
           Cancel Swap
-        </button>
+        </Button>
       </div>
     </>
   );

@@ -16,9 +16,9 @@ export const SupportedCurrencies = () => {
   return (
     <div className="space-y-8 mt-16 pb-16">
       <div className="flex justify-between items-center px-2">
-        <h3 className="text-[1.5rem] font-bold text-slate-800">
+        <h2 className="text-[1.25rem] font-bold text-slate-800 mb-4 px-2">
           Supported Currencies
-        </h3>
+        </h2>
         <span className="px-3 py-1 bg-[#E0F7F7] text-[#1ACCC9] text-[0.75rem] font-bold rounded-full">
           20+ Countries
         </span>

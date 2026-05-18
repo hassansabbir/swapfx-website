@@ -12,7 +12,7 @@ const HomeMainPage = () => {
 
   return (
     <div className="w-full max-w-[750px] mx-auto py-10">
-      <h2 className="text-[1.1rem] font-semibold text-slate-800 mb-4 px-2">
+      <h2 className="text-[1.25rem] font-bold text-slate-800 mb-4 px-2">
         Smart Swap Engine
       </h2>
       <div

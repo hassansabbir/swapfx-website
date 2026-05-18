@@ -32,10 +32,9 @@ export default function SelfieScan({
           Facial Biometric Match
         </h3>
         <p className="text-[0.82rem] text-slate-400 font-medium leading-relaxed max-w-[340px]">
-          {hasCameraAccess === false 
-            ? "Camera access blocked. Please upload a high-quality portrait photo of your face." 
-            : "Center your profile face within the guidelines circle. Make sure you are in a bright, evenly lit space."
-          }
+          {hasCameraAccess === false
+            ? "Camera access blocked. Please upload a high-quality portrait photo of your face."
+            : "Center your profile face within the guidelines circle. Make sure you are in a bright, evenly lit space."}
         </p>
       </div>
 
@@ -48,13 +47,15 @@ export default function SelfieScan({
       />
 
       <div className="relative w-64 h-64 flex items-center justify-center select-none mt-2">
-        <div className={`absolute inset-0 rounded-full border-4 border-dashed transition-all duration-300 z-20 ${
-          hasCameraAccess === false
-            ? "border-amber-400/80 shadow-[0_0_20px_rgba(251,191,36,0.15)]"
-            : selfieLightingMode === "bad" 
-              ? "border-red-500 animate-pulse shadow-[0_0_20px_rgba(239,68,68,0.2)]" 
-              : "border-[#09A6A4] shadow-[0_0_20px_rgba(9,166,164,0.15)] animate-[spin_30s_linear_infinite]"
-        }`} />
+        <div
+          className={`absolute inset-0 rounded-full border-4 border-dashed transition-all duration-300 z-20 ${
+            hasCameraAccess === false
+              ? "border-amber-400/80 shadow-[0_0_20px_rgba(251,191,36,0.15)]"
+              : selfieLightingMode === "bad"
+                ? "border-red-500 animate-pulse shadow-[0_0_20px_rgba(239,68,68,0.2)]"
+                : "border-[#09A6A4] shadow-[0_0_20px_rgba(9,166,164,0.15)] animate-[spin_30s_linear_infinite]"
+          }`}
+        />
         <div className="absolute -inset-1.5 rounded-full border-2 border-slate-100 z-10" />
 
         <div className="w-[96%] h-[96%] rounded-full overflow-hidden bg-neutral-900 border border-neutral-800 flex items-center justify-center relative">
@@ -80,7 +81,7 @@ export default function SelfieScan({
               />
             </>
           ) : hasCameraAccess === false ? (
-            <div 
+            <div
               onClick={onTriggerUpload}
               className="w-full h-full bg-slate-50 flex flex-col items-center justify-center text-slate-400 gap-2 cursor-pointer hover:bg-slate-100 transition-colors p-4"
             >
@@ -128,13 +129,12 @@ export default function SelfieScan({
         ) : hasCameraAccess === false ? (
           <div className="space-y-4">
             <p className="text-[0.82rem] text-slate-400 font-semibold leading-relaxed max-w-[340px] mx-auto">
-              Alternate solution active: Camera is disabled or unsupported. Please choose a front-facing headshot from your computer files to complete biometric comparisons.
+              Alternate solution active: Camera is disabled or unsupported.
+              Please choose a front-facing headshot from your computer files to
+              complete biometric comparisons.
             </p>
             <div className="flex justify-center">
-              <Button
-                onClick={onTriggerUpload}
-                className="w-full py-4 rounded-xl text-[1rem] font-extrabold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] cursor-pointer"
-              >
+              <Button onClick={onTriggerUpload} className="w-full ">
                 Choose Photo from File
               </Button>
             </div>
@@ -143,7 +143,10 @@ export default function SelfieScan({
 
         <div className="flex items-center gap-2 justify-center text-[0.72rem] text-slate-400 font-semibold max-w-[380px] mx-auto text-center pt-2">
           <ShieldCheck size={16} className="text-[#09A6A4] shrink-0" />
-          <span>Biometric face data is encrypted and immediately deleted after verification checks.</span>
+          <span>
+            Biometric face data is encrypted and immediately deleted after
+            verification checks.
+          </span>
         </div>
       </div>
     </div>

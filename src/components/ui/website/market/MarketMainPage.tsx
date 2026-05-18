@@ -464,9 +464,7 @@ const MarketMainPage = () => {
                     href="/swap/confirmation?from=market"
                     className="w-full"
                   >
-                    <Button className="w-full py-4 rounded-2xl text-[1rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform">
-                      View Details
-                    </Button>
+                    <Button className="w-full">View Details</Button>
                   </Link>
                 </div>
               </div>

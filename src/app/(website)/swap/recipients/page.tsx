@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 
 export default function RecipientDetailsPage() {
   const router = useRouter();
-  
+
   // State for recipient details prefilled with '1322' as in mockup
   const [formData, setFormData] = useState({
     accountName: "1322",
@@ -43,7 +43,7 @@ export default function RecipientDetailsPage() {
         {steps.map((step, index) => {
           const isCompleted = step.num < 3;
           const isActive = step.num === 3;
-          
+
           return (
             <React.Fragment key={step.num}>
               {/* Connector line */}
@@ -68,7 +68,9 @@ export default function RecipientDetailsPage() {
                 </div>
                 <span
                   className={`text-[0.78rem] font-bold tracking-tight transition-colors duration-300 ${
-                    isActive || isCompleted ? "text-[#09A6A4]" : "text-slate-400"
+                    isActive || isCompleted
+                      ? "text-[#09A6A4]"
+                      : "text-slate-400"
                   }`}
                 >
                   {step.label}
@@ -94,7 +96,6 @@ export default function RecipientDetailsPage() {
 
         {/* Recipients Details Container */}
         <GlassContainer className="w-full overflow-hidden p-6 md:p-10 border border-white/50 bg-white/20 shadow-xl rounded-4xl flex flex-col relative space-y-4">
-          
           <h2 className="text-[1.5rem] font-extrabold text-slate-800 text-center tracking-tight">
             Recipient's Detail
           </h2>
@@ -103,15 +104,16 @@ export default function RecipientDetailsPage() {
           {renderSteps()}
 
           {/* Details input form */}
-          <form onSubmit={handleConfirm} className="space-y-6 max-w-[720px] mx-auto w-full animate-in fade-in duration-400">
+          <form
+            onSubmit={handleConfirm}
+            className="space-y-6 max-w-[720px] mx-auto w-full animate-in fade-in duration-400"
+          >
             <div className="bg-white rounded-3xl p-6 border border-slate-200/50 shadow-sm space-y-5">
-              
               <h3 className="text-[1.15rem] font-extrabold text-slate-800 tracking-tight pb-2 border-b border-slate-100">
                 Your Recipient's Details
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                
                 {/* Account Name */}
                 <div className="space-y-1.5">
                   <label className="text-[0.8rem] font-bold text-slate-500 pl-1">
@@ -120,7 +122,9 @@ export default function RecipientDetailsPage() {
                   <input
                     type="text"
                     value={formData.accountName}
-                    onChange={(e) => setFormData({ ...formData, accountName: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, accountName: e.target.value })
+                    }
                     className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3 text-[0.85rem] font-semibold text-slate-700 text-center focus:outline-none focus:border-[#09A6A4] focus:bg-white transition-all"
                     required
                   />
@@ -134,7 +138,9 @@ export default function RecipientDetailsPage() {
                   <input
                     type="text"
                     value={formData.sortCode}
-                    onChange={(e) => setFormData({ ...formData, sortCode: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, sortCode: e.target.value })
+                    }
                     className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3 text-[0.85rem] font-semibold text-slate-700 text-center focus:outline-none focus:border-[#09A6A4] focus:bg-white transition-all"
                     required
                   />
@@ -148,7 +154,12 @@ export default function RecipientDetailsPage() {
                   <input
                     type="text"
                     value={formData.accountNumber}
-                    onChange={(e) => setFormData({ ...formData, accountNumber: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        accountNumber: e.target.value,
+                      })
+                    }
                     className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3 text-[0.85rem] font-semibold text-slate-700 text-center focus:outline-none focus:border-[#09A6A4] focus:bg-white transition-all"
                     required
                   />
@@ -162,7 +173,9 @@ export default function RecipientDetailsPage() {
                   <input
                     type="text"
                     value={formData.bankName}
-                    onChange={(e) => setFormData({ ...formData, bankName: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, bankName: e.target.value })
+                    }
                     className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3 text-[0.85rem] font-semibold text-slate-700 text-center focus:outline-none focus:border-[#09A6A4] focus:bg-white transition-all"
                     required
                   />
@@ -176,28 +189,23 @@ export default function RecipientDetailsPage() {
                   <input
                     type="text"
                     value={formData.iban}
-                    onChange={(e) => setFormData({ ...formData, iban: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, iban: e.target.value })
+                    }
                     className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3 text-[0.85rem] font-semibold text-slate-700 text-center focus:outline-none focus:border-[#09A6A4] focus:bg-white transition-all"
                     required
                   />
                 </div>
-
               </div>
-
             </div>
 
             {/* Confirm button */}
             <div className="flex justify-center pt-2">
-              <Button
-                type="submit"
-                className="w-full max-w-[450px] py-4 rounded-2xl text-[1.05rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform border-b-4 border-[#078d8b]"
-              >
+              <Button type="submit" className="w-full">
                 Confirm
               </Button>
             </div>
-
           </form>
-
         </GlassContainer>
       </div>
     </div>

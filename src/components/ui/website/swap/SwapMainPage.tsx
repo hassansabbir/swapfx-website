@@ -18,7 +18,7 @@ const SwapMainPage = () => {
         <div className="space-y-8 max-w-[750px] mx-auto">
           <div className="text-center">
             <h1 className="text-[1.5rem] font-bold text-slate-800 tracking-tight">
-              Swap
+              Create Swap
             </h1>
           </div>
 
@@ -43,7 +43,7 @@ const SwapMainPage = () => {
             <Button
               variant="primary"
               onClick={() => router.push("/swap/agreement")}
-              className="px-10 py-4 text-[0.9rem] font-bold rounded-lg shadow-md shadow-[#09A6A4]/15 transition-transform hover:scale-[1.02]"
+              className="w-full"
             >
               Create Market Swap
             </Button>

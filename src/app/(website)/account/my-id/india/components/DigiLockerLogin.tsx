@@ -59,7 +59,7 @@ export default function DigiLockerLogin({
       <Button
         onClick={onNext}
         disabled={aadhaarOrMobile.length < 10}
-        className={`w-full py-4 rounded-xl text-[1rem] font-bold shadow-xl transition-all ${
+        className={`w-full ${
           aadhaarOrMobile.length >= 10
             ? "bg-[#09A6A4] text-white shadow-[#09A6A4]/20 hover:scale-[1.01] cursor-pointer"
             : "bg-slate-200 text-slate-400 shadow-none cursor-not-allowed"

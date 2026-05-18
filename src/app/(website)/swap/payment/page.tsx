@@ -239,10 +239,7 @@ export default function FeePaymentPage() {
 
               {/* Pay Fee Action Button */}
               <div className="flex justify-center pt-2">
-                <Button
-                  onClick={handlePayFee}
-                  className="w-full max-w-[450px] py-4 rounded-2xl text-[1.05rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform"
-                >
+                <Button onClick={handlePayFee} className="w-full">
                   Pay Fee
                 </Button>
               </div>
@@ -335,10 +332,7 @@ export default function FeePaymentPage() {
 
               {/* Pay Button */}
               <div className="flex justify-center pt-2">
-                <Button
-                  onClick={handleFinalPay}
-                  className="w-full max-w-[450px] py-4 rounded-2xl text-[1.05rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform border-b-4 border-[#078d8b]"
-                >
+                <Button onClick={handleFinalPay} className="w-full">
                   Pay
                 </Button>
               </div>

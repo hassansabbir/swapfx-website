@@ -36,14 +36,28 @@ export const HowItWorks = () => {
   return (
     <div className="space-y-8 mt-16 relative">
       <div className="px-2">
-        <h3 className="text-[1.5rem] font-bold text-slate-800 mb-4">
+        <h2 className="text-[1.25rem] font-bold text-slate-800 mb-4 px-2">
           How it works
-        </h3>
+        </h2>
         <p className="text-[0.95rem] text-slate-500 max-w-[700px] leading-relaxed">
           A peer-to-peer currency swap lets people exchange money directly with
           each other at a mutually agreed rate, skipping the middleman and their
           fees.
         </p>
+      </div>
+
+      {/* Auto-playing Video Section */}
+      <div className="mt-10 rounded-3xl overflow-hidden shadow-2xl border border-slate-100 bg-slate-900 relative aspect-video w-full">
+        <video
+          src="/howItWorks.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-500"
+        >
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       <div className="relative mt-12">

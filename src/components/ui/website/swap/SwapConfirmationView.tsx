@@ -246,10 +246,7 @@ export const SwapConfirmationView = ({
 
             {/* Submit Counter Offer Button */}
             <div className="flex justify-center pt-2 w-full">
-              <Button
-                onClick={handleOfferSubmit}
-                className="w-full py-4 rounded-2xl text-[1rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform border-none focus:outline-none"
-              >
+              <Button onClick={handleOfferSubmit} className="w-full">
                 Submit
               </Button>
             </div>
@@ -437,21 +434,17 @@ export const SwapConfirmationView = ({
             {from === "chat" ? (
               <div className="flex justify-center pt-4 max-w-[500px] mx-auto w-full animate-in fade-in slide-in-from-top-6 duration-600">
                 <Link href="/swap/payment" className="w-full">
-                  <Button className="w-full py-4 rounded-xl text-[1rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform border-b-4 border-[#078d8b]">
-                    Confirm
-                  </Button>
+                  <Button className="w-full ">Confirm</Button>
                 </Link>
               </div>
             ) : (
               <div className="flex gap-4 w-full pt-4 max-w-[500px] mx-auto animate-in fade-in slide-in-from-top-6 duration-600">
                 <Link href="/chat/bob-builder" className="flex-1">
-                  <Button className="w-full py-4 rounded-xl text-[1rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform">
-                    Contact Swapper
-                  </Button>
+                  <Button className="w-full">Contact Swapper</Button>
                 </Link>
                 <Button
                   onClick={() => setShowCounterOffer(true)}
-                  className="flex-1 py-4 rounded-xl text-[1rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform"
+                  className="flex-1"
                 >
                   Counter Offer
                 </Button>

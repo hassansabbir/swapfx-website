@@ -77,7 +77,7 @@ export const SwapAgreementView = ({
             <Button
               disabled={!agreed}
               onClick={onContinue}
-              className={`px-24 py-4 rounded-xl font-bold transition-all shadow-lg border-b-4
+              className={`w-full
                 ${agreed ? "bg-[#09A6A4] text-white hover:scale-[1.02] shadow-[#09A6A4]/20 border-[#078d8b]" : "bg-slate-200 text-slate-400 cursor-not-allowed border-slate-300 shadow-none"}
               `}
             >

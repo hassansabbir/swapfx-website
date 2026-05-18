@@ -227,9 +227,7 @@ const PersonalInfoPage = () => {
 
           {/* Update Button */}
           <div className="flex justify-center pt-6">
-            <Button className="w-full md:w-[400px] py-4 rounded-xl text-[1.1rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform">
-              Update
-            </Button>
+            <Button className="w-full">Update</Button>
           </div>
         </div>
       </GlassContainer>

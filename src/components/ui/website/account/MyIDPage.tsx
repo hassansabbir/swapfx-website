@@ -10,7 +10,9 @@ import Link from "next/link";
 const MyIDPage = () => {
   const router = useRouter();
   const [step, setStep] = useState<"info" | "location">("info");
-  const [selectedLocation, setSelectedLocation] = useState<"india" | "other" | "">("");
+  const [selectedLocation, setSelectedLocation] = useState<
+    "india" | "other" | ""
+  >("");
 
   const handleContinue = () => {
     if (selectedLocation === "india") {
@@ -23,9 +25,8 @@ const MyIDPage = () => {
   return (
     <div className="py-6 md:py-10 px-3 md:px-8 max-w-[1000px] mx-auto w-full animate-in fade-in duration-700">
       <GlassContainer className="p-6 md:p-12 relative overflow-visible">
-        
         {/* Back Button */}
-        <button 
+        <button
           onClick={() => {
             if (step === "location") {
               setStep("info");
@@ -53,9 +54,11 @@ const MyIDPage = () => {
                 <h3 className="text-center text-[1.1rem] font-bold text-slate-800">
                   Identity Verification
                 </h3>
-                
+
                 <div className="flex items-center gap-3">
-                  <span className="text-[0.95rem] font-bold text-slate-700">Status:</span>
+                  <span className="text-[0.95rem] font-bold text-slate-700">
+                    Status:
+                  </span>
                   <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#DC2626] rounded-full text-white text-[0.85rem] font-bold">
                     <AlertCircle size={14} />
                     Not Verified
@@ -63,7 +66,8 @@ const MyIDPage = () => {
                 </div>
 
                 <p className="text-slate-500 text-[0.9rem] leading-relaxed">
-                  Verification helps keep your account secure and unlocks full access to all features.
+                  Verification helps keep your account secure and unlocks full
+                  access to all features.
                 </p>
               </div>
 
@@ -91,7 +95,8 @@ const MyIDPage = () => {
                       2
                     </div>
                     <p className="text-slate-600 text-[0.95rem] leading-relaxed font-medium">
-                      After submitting photo of the ID, you will need to complete facial verification to finish the identity check.
+                      After submitting photo of the ID, you will need to
+                      complete facial verification to finish the identity check.
                     </p>
                   </div>
                 </div>
@@ -99,10 +104,7 @@ const MyIDPage = () => {
 
               {/* Start Button */}
               <div className="flex justify-center pt-4">
-                <Button 
-                  onClick={() => setStep("location")}
-                  className="w-full py-4 rounded-xl text-[1rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform cursor-pointer"
-                >
+                <Button onClick={() => setStep("location")} className="w-full">
                   Start ID Verification
                 </Button>
               </div>
@@ -112,7 +114,6 @@ const MyIDPage = () => {
             /* STEP 2: COUNTRY LOCATION SELECTOR */
             /* ========================================================= */
             <div className="space-y-8 animate-in fade-in duration-300">
-              
               <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm space-y-6">
                 <div className="text-center space-y-1.5">
                   <h3 className="text-[1.15rem] font-bold text-slate-800">
@@ -133,15 +134,19 @@ const MyIDPage = () => {
                         : "border-slate-200/80 bg-white"
                     }`}
                   >
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl font-bold shrink-0 shadow-sm border ${
-                      selectedLocation === "india" 
-                        ? "bg-[#E0F7F6]/60 border-[#09A6A4]/20" 
-                        : "bg-slate-50 border-slate-100"
-                    }`}>
+                    <div
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl font-bold shrink-0 shadow-sm border ${
+                        selectedLocation === "india"
+                          ? "bg-[#E0F7F6]/60 border-[#09A6A4]/20"
+                          : "bg-slate-50 border-slate-100"
+                      }`}
+                    >
                       🇮🇳
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-[0.98rem] font-bold text-slate-800 leading-tight">India</p>
+                      <p className="text-[0.98rem] font-bold text-slate-800 leading-tight">
+                        India
+                      </p>
                       <p className="text-[0.78rem] text-slate-400 font-semibold leading-normal pt-0.5">
                         Verify using Aadhaar, PAN Card, or Passport
                       </p>
@@ -157,15 +162,19 @@ const MyIDPage = () => {
                         : "border-slate-200/80 bg-white"
                     }`}
                   >
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0 shadow-sm border ${
-                      selectedLocation === "other" 
-                        ? "bg-[#E0F7F6]/60 border-[#09A6A4]/20 text-[#09A6A4]" 
-                        : "bg-slate-50 border-slate-100 text-slate-400"
-                    }`}>
+                    <div
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0 shadow-sm border ${
+                        selectedLocation === "other"
+                          ? "bg-[#E0F7F6]/60 border-[#09A6A4]/20 text-[#09A6A4]"
+                          : "bg-slate-50 border-slate-100 text-slate-400"
+                      }`}
+                    >
                       <Globe size={24} />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-[0.98rem] font-bold text-slate-800 leading-tight">Other Countries</p>
+                      <p className="text-[0.98rem] font-bold text-slate-800 leading-tight">
+                        Other Countries
+                      </p>
                       <p className="text-[0.78rem] text-slate-400 font-semibold leading-normal pt-0.5">
                         Verify using Passport, Driver's License, or National ID
                       </p>
@@ -176,10 +185,10 @@ const MyIDPage = () => {
 
               {/* Continue Button */}
               <div className="flex justify-center pt-4">
-                <Button 
+                <Button
                   onClick={handleContinue}
                   disabled={selectedLocation === ""}
-                  className={`w-full py-4 rounded-xl text-[1rem] font-bold shadow-xl transition-all ${
+                  className={`w-full${
                     selectedLocation !== ""
                       ? "bg-[#09A6A4] text-white shadow-[#09A6A4]/20 hover:scale-[1.01] cursor-pointer"
                       : "bg-slate-200 text-slate-400 shadow-none cursor-not-allowed"
@@ -188,10 +197,8 @@ const MyIDPage = () => {
                   Continue
                 </Button>
               </div>
-
             </div>
           )}
-
         </div>
       </GlassContainer>
     </div>

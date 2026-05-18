@@ -113,7 +113,7 @@ export default function DobVerification({
           <Button
             onClick={onNext}
             disabled={!dobDay || !dobMonth || !dobYear}
-            className="w-full py-3.5 rounded-xl text-[0.95rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/15 hover:scale-[1.01] transition-transform cursor-pointer"
+            className="w-full"
           >
             Confirm
           </Button>

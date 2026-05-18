@@ -40,7 +40,9 @@ export const CreateMarketplaceSwapView = ({
               {swapperName ? "Create Peer Swap" : "Create Marketplace Swap"}
             </h2>
             <p className="text-[0.9rem] text-slate-400">
-              {swapperName ? "Prepare your swap offer" : "Post your swap offer to the marketplace."}
+              {swapperName
+                ? "Prepare your swap offer"
+                : "Post your swap offer to the marketplace."}
             </p>
           </div>
 
@@ -67,8 +69,12 @@ export const CreateMarketplaceSwapView = ({
               )}
 
               {/* I Offer */}
-              <div className={`space-y-3 ${swapperName ? "flex flex-col sm:flex-row sm:items-center sm:gap-4 sm:space-y-0" : ""}`}>
-                <label className={`block font-medium text-slate-500 text-[0.9rem] ${swapperName ? "w-28 text-left shrink-0" : "text-center"}`}>
+              <div
+                className={`space-y-3 ${swapperName ? "flex flex-col sm:flex-row sm:items-center sm:gap-4 sm:space-y-0" : ""}`}
+              >
+                <label
+                  className={`block font-medium text-slate-500 text-[0.9rem] ${swapperName ? "w-28 text-left shrink-0" : "text-center"}`}
+                >
                   I offer :
                 </label>
                 <div className="flex gap-3 flex-1 relative w-full">
@@ -116,8 +122,12 @@ export const CreateMarketplaceSwapView = ({
               </div>
 
               {/* I Want */}
-              <div className={`space-y-3 ${swapperName ? "flex flex-col sm:flex-row sm:items-center sm:gap-4 sm:space-y-0" : ""}`}>
-                <label className={`block font-medium text-slate-500 text-[0.9rem] ${swapperName ? "w-28 text-left shrink-0" : "text-center"}`}>
+              <div
+                className={`space-y-3 ${swapperName ? "flex flex-col sm:flex-row sm:items-center sm:gap-4 sm:space-y-0" : ""}`}
+              >
+                <label
+                  className={`block font-medium text-slate-500 text-[0.9rem] ${swapperName ? "w-28 text-left shrink-0" : "text-center"}`}
+                >
                   I want :
                 </label>
                 <div className="flex gap-3 flex-1 relative w-full">
@@ -165,8 +175,12 @@ export const CreateMarketplaceSwapView = ({
               </div>
 
               {/* Proposed Rate */}
-              <div className={`space-y-3 ${swapperName ? "flex flex-col sm:flex-row sm:items-center sm:gap-4 sm:space-y-0" : ""}`}>
-                <label className={`block font-medium text-slate-500 text-[0.9rem] ${swapperName ? "w-28 text-left shrink-0" : "text-center"}`}>
+              <div
+                className={`space-y-3 ${swapperName ? "flex flex-col sm:flex-row sm:items-center sm:gap-4 sm:space-y-0" : ""}`}
+              >
+                <label
+                  className={`block font-medium text-slate-500 text-[0.9rem] ${swapperName ? "w-28 text-left shrink-0" : "text-center"}`}
+                >
                   Proposed swap rate :
                 </label>
                 <div className="flex gap-3 flex-1 w-full">
@@ -182,7 +196,9 @@ export const CreateMarketplaceSwapView = ({
                 </div>
               </div>
 
-              <div className={`space-y-2 ${swapperName ? "sm:pl-32" : "text-center sm:text-left sm:pl-4"}`}>
+              <div
+                className={`space-y-2 ${swapperName ? "sm:pl-32" : "text-center sm:text-left sm:pl-4"}`}
+              >
                 <p className="text-[0.8rem] text-slate-400 font-medium">
                   (Market rate : 375 {offerCurrency})
                 </p>
@@ -197,8 +213,12 @@ export const CreateMarketplaceSwapView = ({
 
           {/* Additional Settings */}
           <div className="space-y-8 px-2">
-            <div className={`flex flex-col gap-3 relative ${swapperName ? "sm:flex-row sm:items-center sm:gap-4" : ""}`}>
-              <label className={`text-[1rem] font-bold text-slate-700 ${swapperName ? "w-28 text-left shrink-0" : ""}`}>
+            <div
+              className={`flex flex-col gap-3 relative ${swapperName ? "sm:flex-row sm:items-center sm:gap-4" : ""}`}
+            >
+              <label
+                className={`text-[1rem] font-bold text-slate-700 ${swapperName ? "w-28 text-left shrink-0" : ""}`}
+              >
                 Timing:
               </label>
               <div
@@ -250,10 +270,7 @@ export const CreateMarketplaceSwapView = ({
             </div>
 
             <div className="flex justify-center pt-4">
-              <Button
-                onClick={onSubmit}
-                className="px-20 py-3 rounded-2xl text-[1.1rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.02] transition-transform border-b-4 border-[#078d8b]"
-              >
+              <Button onClick={onSubmit} className="w-full">
                 Submit
               </Button>
             </div>

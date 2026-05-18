@@ -3,7 +3,16 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { GlassContainer } from "@/components/ui/GlassContainer";
-import { ArrowLeft, Check, UploadCloud, Camera, Image as ImageIcon, Info, ShieldAlert, X } from "lucide-react";
+import {
+  ArrowLeft,
+  Check,
+  UploadCloud,
+  Camera,
+  Image as ImageIcon,
+  Info,
+  ShieldAlert,
+  X,
+} from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export default function ProofOfPaymentPage() {
@@ -41,7 +50,9 @@ export default function ProofOfPaymentPage() {
   };
 
   const handleModalContinue = () => {
-    router.push(`/swap/completed?file=${encodeURIComponent(uploadedFile || "")}`);
+    router.push(
+      `/swap/completed?file=${encodeURIComponent(uploadedFile || "")}`,
+    );
   };
 
   // Steps component for Step 5
@@ -60,7 +71,7 @@ export default function ProofOfPaymentPage() {
         {steps.map((step, index) => {
           const isCompleted = step.num < 5;
           const isActive = step.num === 5;
-          
+
           return (
             <React.Fragment key={step.num}>
               {/* Connector line */}
@@ -85,7 +96,9 @@ export default function ProofOfPaymentPage() {
                 </div>
                 <span
                   className={`text-[0.78rem] font-bold tracking-tight transition-colors duration-300 ${
-                    isActive || isCompleted ? "text-[#09A6A4]" : "text-slate-400"
+                    isActive || isCompleted
+                      ? "text-[#09A6A4]"
+                      : "text-slate-400"
                   }`}
                 >
                   {step.label}
@@ -111,7 +124,6 @@ export default function ProofOfPaymentPage() {
 
         {/* Proof details Card container */}
         <GlassContainer className="w-full overflow-hidden p-6 md:p-10 border border-white/50 bg-white/20 shadow-xl rounded-4xl flex flex-col relative space-y-4">
-          
           <h2 className="text-[1.5rem] font-extrabold text-slate-800 text-center tracking-tight">
             Proof of Payment
           </h2>
@@ -120,14 +132,17 @@ export default function ProofOfPaymentPage() {
           {renderSteps()}
 
           {/* Main upload view content */}
-          <form onSubmit={handleSubmitProof} className="space-y-5 max-w-[720px] mx-auto w-full animate-in fade-in duration-400">
-            
+          <form
+            onSubmit={handleSubmitProof}
+            className="space-y-5 max-w-[720px] mx-auto w-full animate-in fade-in duration-400"
+          >
             <div className="space-y-1">
               <h3 className="text-[1.12rem] font-extrabold text-slate-850 tracking-tight">
                 Upload Proof of Payment
               </h3>
               <p className="text-[0.82rem] font-medium text-slate-500 leading-relaxed">
-                To complete your currency swap, please upload a clear screenshot or photo of the bank transaction.
+                To complete your currency swap, please upload a clear screenshot
+                or photo of the bank transaction.
               </p>
             </div>
 
@@ -210,7 +225,9 @@ export default function ProofOfPaymentPage() {
             <div className="bg-[#E0F2FE]/45 border border-[#90CDF4]/60 rounded-2xl p-4 md:p-5 text-[0.8rem] text-slate-600 font-semibold leading-relaxed flex gap-3">
               <Info size={18} className="text-[#0EA5E9] shrink-0 mt-0.5" />
               <span>
-                Please upload a clear photo or screenshot of the bank transaction to complete the swap. The platform operates as a passive host and does not verify bank documents.
+                Please upload a clear photo or screenshot of the bank
+                transaction to complete the swap. The platform operates as a
+                passive host and does not verify bank documents.
               </span>
             </div>
 
@@ -225,7 +242,7 @@ export default function ProofOfPaymentPage() {
               <Button
                 type="submit"
                 disabled={!uploadedFile}
-                className={`w-full max-w-[450px] py-4 rounded-2xl text-[1.05rem] font-bold shadow-xl transition-all border-b-4 ${
+                className={`w-full${
                   uploadedFile
                     ? "bg-[#09A6A4] text-white shadow-[#09A6A4]/20 hover:scale-[1.01] border-[#078d8b]"
                     : "bg-slate-200 text-slate-400 border-slate-300 cursor-not-allowed"
@@ -234,18 +251,14 @@ export default function ProofOfPaymentPage() {
                 Submit Proof
               </Button>
             </div>
-
           </form>
-
         </GlassContainer>
       </div>
 
       {/* CONFETTI SUCCESS MODAL DIALOG */}
       {showSuccessModal && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-300">
-          
           <div className="bg-white rounded-3xl p-6 md:p-10 max-w-[500px] w-full shadow-2xl relative flex flex-col items-center text-center space-y-6 animate-in zoom-in duration-300">
-            
             {/* Circular Close Button */}
             <button
               onClick={() => setShowSuccessModal(false)}
@@ -256,7 +269,6 @@ export default function ProofOfPaymentPage() {
 
             {/* Large check icon and confetti bursts */}
             <div className="relative w-28 h-28 flex items-center justify-center">
-              
               {/* Confetti pieces decoration */}
               <div className="absolute inset-0 select-none pointer-events-none scale-110">
                 {/* 1 */}
@@ -281,7 +293,9 @@ export default function ProofOfPaymentPage() {
 
             {/* Congratulatory Text */}
             <p className="text-[0.95rem] font-medium text-slate-600 leading-relaxed px-2">
-              Thank you for uploading your proof of payment and completing the swap within the agreed time. Your proof is now available for the other swapper to review.
+              Thank you for uploading your proof of payment and completing the
+              swap within the agreed time. Your proof is now available for the
+              other swapper to review.
             </p>
 
             {/* Confirm Button */}
@@ -291,9 +305,7 @@ export default function ProofOfPaymentPage() {
             >
               Confirm
             </Button>
-
           </div>
-
         </div>
       )}
     </div>

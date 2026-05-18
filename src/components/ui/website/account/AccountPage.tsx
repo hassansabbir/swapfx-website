@@ -4,20 +4,20 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { Button } from "@/components/ui/Button";
-import { 
-  ChevronLeft, 
-  LogOut, 
-  User, 
-  Contact, 
-  Building2, 
-  Star, 
-  MessageSquare, 
-  Headphones, 
-  FileText, 
+import {
+  ChevronLeft,
+  LogOut,
+  User,
+  Contact,
+  Building2,
+  Star,
+  MessageSquare,
+  Headphones,
+  FileText,
   ShieldCheck,
   ChevronRight,
   AlertCircle,
-  CheckCircle2
+  CheckCircle2,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,24 +31,64 @@ const AccountPage = () => {
     router.push("/");
   };
   const menuItems1 = [
-    { label: "Personal Information", icon: <User size={20} />, hasAlert: true, href: "/account/personal-info" },
-    { label: "My ID", icon: <Contact size={20} />, hasAlert: true, href: "/account/my-id" },
-    { label: "Membership", icon: <Building2 size={20} />, hasChevron: true, href: "/account/membership" },
-    { label: "Reviews", icon: <Star size={20} />, hasChevron: true, href: "/account/reviews" },
-    { label: "Messages (10)", icon: <MessageSquare size={20} />, hasChevron: true, href: "/account/messages" },
+    {
+      label: "Personal Information",
+      icon: <User size={20} />,
+      hasAlert: true,
+      href: "/account/personal-info",
+    },
+    {
+      label: "My ID",
+      icon: <Contact size={20} />,
+      hasAlert: true,
+      href: "/account/my-id",
+    },
+    {
+      label: "Membership",
+      icon: <Building2 size={20} />,
+      hasChevron: true,
+      href: "/account/membership",
+    },
+    {
+      label: "Reviews",
+      icon: <Star size={20} />,
+      hasChevron: true,
+      href: "/account/reviews",
+    },
+    {
+      label: "Messages (10)",
+      icon: <MessageSquare size={20} />,
+      hasChevron: true,
+      href: "/account/messages",
+    },
   ];
 
   const menuItems2 = [
-    { label: "Help & Support", icon: <Headphones size={20} />, hasChevron: true, href: "/account/support" },
-    { label: "Terms", icon: <FileText size={20} />, hasChevron: true, href: "/account/terms" },
-    { label: "Account", icon: <ShieldCheck size={20} />, hasChevron: true, href: "/account/settings" },
+    {
+      label: "Help & Support",
+      icon: <Headphones size={20} />,
+      hasChevron: true,
+      href: "/account/support",
+    },
+    {
+      label: "Terms",
+      icon: <FileText size={20} />,
+      hasChevron: true,
+      href: "/account/terms",
+    },
+    {
+      label: "Account",
+      icon: <ShieldCheck size={20} />,
+      hasChevron: true,
+      href: "/account/settings",
+    },
   ];
 
   return (
     <div className="py-6 md:py-10 px-3 md:px-8 max-w-[1200px] mx-auto w-full animate-in fade-in duration-700">
       <GlassContainer className="p-6 md:p-12 relative overflow-visible">
         {/* Back Button */}
-        <Link 
+        <Link
           href="/"
           className="absolute top-6 left-6 w-10 h-10 rounded-full bg-slate-400 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-lg z-10"
         >
@@ -60,7 +100,7 @@ const AccountPage = () => {
           <div className="bg-[#09A6A4] rounded-3xl p-6 md:p-8 flex items-center gap-5 shadow-xl shadow-[#09A6A4]/20 relative overflow-hidden">
             {/* Background pattern/glow */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16" />
-            
+
             <div className="relative shrink-0">
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-white/30 overflow-hidden shadow-lg">
                 <div className="w-full h-full bg-slate-200 flex items-center justify-center text-slate-500 font-bold text-xl">
@@ -74,7 +114,10 @@ const AccountPage = () => {
                 <h2 className="text-[1.4rem] md:text-[1.8rem] font-bold tracking-tight">
                   Fahim Ahmed
                 </h2>
-                <CheckCircle2 size={20} className="fill-white text-[#09A6A4] shrink-0" />
+                <CheckCircle2
+                  size={20}
+                  className="fill-white text-[#09A6A4] shrink-0"
+                />
               </div>
               <p className="text-[0.85rem] md:text-[0.95rem] font-medium opacity-90 flex items-center gap-2">
                 @fahimahmed7890 🇺🇸
@@ -84,7 +127,7 @@ const AccountPage = () => {
 
           {/* Logout Button */}
           <div className="flex justify-end pr-2">
-            <button 
+            <button
               onClick={handleLogout}
               className="flex items-center gap-2 text-slate-600 hover:text-red-500 transition-colors font-bold text-[0.9rem]"
             >
@@ -98,10 +141,10 @@ const AccountPage = () => {
             {/* Section 1 */}
             <div className="bg-white/50 backdrop-blur-md rounded-3xl border border-white/60 shadow-sm overflow-hidden">
               {menuItems1.map((item, index) => (
-                <MenuItem 
-                  key={index} 
-                  {...item} 
-                  isLast={index === menuItems1.length - 1} 
+                <MenuItem
+                  key={index}
+                  {...item}
+                  isLast={index === menuItems1.length - 1}
                 />
               ))}
             </div>
@@ -109,10 +152,10 @@ const AccountPage = () => {
             {/* Section 2 */}
             <div className="bg-white/50 backdrop-blur-md rounded-3xl border border-white/60 shadow-sm overflow-hidden">
               {menuItems2.map((item, index) => (
-                <MenuItem 
-                  key={index} 
-                  {...item} 
-                  isLast={index === menuItems2.length - 1} 
+                <MenuItem
+                  key={index}
+                  {...item}
+                  isLast={index === menuItems2.length - 1}
                 />
               ))}
             </div>
@@ -120,9 +163,7 @@ const AccountPage = () => {
 
           {/* Bottom Submit Button */}
           <div className="flex justify-center pt-4">
-            <Button className="px-32 py-4 rounded-xl text-[1rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.02] transition-transform border-b-4 border-[#078d8b]">
-              Submit
-            </Button>
+            <Button className="w-full">Submit</Button>
           </div>
         </div>
       </GlassContainer>
@@ -130,23 +171,25 @@ const AccountPage = () => {
   );
 };
 
-const MenuItem = ({ 
-  label, 
-  icon, 
-  hasAlert, 
-  hasChevron, 
+const MenuItem = ({
+  label,
+  icon,
+  hasAlert,
+  hasChevron,
   isLast,
-  href
-}: { 
-  label: string; 
-  icon: React.ReactNode; 
-  hasAlert?: boolean; 
+  href,
+}: {
+  label: string;
+  icon: React.ReactNode;
+  hasAlert?: boolean;
   hasChevron?: boolean;
   isLast: boolean;
   href?: string;
 }) => {
   const content = (
-    <div className={`p-5 flex items-center justify-between group cursor-pointer hover:bg-white/40 transition-all ${!isLast ? 'border-b border-white/40' : ''}`}>
+    <div
+      className={`p-5 flex items-center justify-between group cursor-pointer hover:bg-white/40 transition-all ${!isLast ? "border-b border-white/40" : ""}`}
+    >
       <div className="flex items-center gap-4">
         <div className="text-slate-600 group-hover:text-[#09A6A4] transition-colors">
           {icon}

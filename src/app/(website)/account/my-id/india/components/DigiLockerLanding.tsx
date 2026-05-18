@@ -64,7 +64,7 @@ export default function DigiLockerLanding({ onNext }: DigiLockerLandingProps) {
       <div className="pt-4">
         <Button
           onClick={onNext}
-          className="w-full py-4 rounded-xl text-[1rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] transition-all cursor-pointer flex items-center justify-center gap-2"
+          className="w-full py-3 rounded-xl text-[1rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] transition-all cursor-pointer flex items-center justify-center gap-2"
         >
           <Lock size={16} />
           <span>Proceed to DigiLocker</span>

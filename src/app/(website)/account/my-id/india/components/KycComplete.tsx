@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Check } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 interface KycCompleteProps {
   onContinue: () => void;
@@ -38,22 +39,34 @@ export default function KycComplete({ onContinue }: KycCompleteProps) {
 
         <div className="grid grid-cols-3 gap-2">
           <span className="text-slate-400 font-bold col-span-1">Name:</span>
-          <span className="text-slate-800 font-bold col-span-2">FAHIM AHMED</span>
+          <span className="text-slate-800 font-bold col-span-2">
+            FAHIM AHMED
+          </span>
         </div>
 
         <div className="grid grid-cols-3 gap-2">
           <span className="text-slate-400 font-bold col-span-1">Aadhaar:</span>
-          <span className="text-slate-800 font-bold col-span-2 tracking-widest">XXXX-XXXX-8901</span>
+          <span className="text-slate-800 font-bold col-span-2 tracking-widest">
+            XXXX-XXXX-8901
+          </span>
         </div>
 
         <div className="grid grid-cols-3 gap-2">
-          <span className="text-slate-400 font-bold col-span-1">Date of Birth:</span>
-          <span className="text-slate-800 font-semibold col-span-2">12/08/1996</span>
+          <span className="text-slate-400 font-bold col-span-1">
+            Date of Birth:
+          </span>
+          <span className="text-slate-800 font-semibold col-span-2">
+            12/08/1996
+          </span>
         </div>
 
         <div className="grid grid-cols-3 gap-2">
-          <span className="text-[#09A6A4] font-bold col-span-1">Face Match:</span>
-          <span className="text-[#09A6A4] font-bold col-span-2">98.4% (Biometrics Match)</span>
+          <span className="text-[#09A6A4] font-bold col-span-1">
+            Face Match:
+          </span>
+          <span className="text-[#09A6A4] font-bold col-span-2">
+            98.4% (Biometrics Match)
+          </span>
         </div>
 
         <div className="grid grid-cols-3 gap-2 col-span-3 border-t border-slate-50 pt-3">
@@ -64,12 +77,9 @@ export default function KycComplete({ onContinue }: KycCompleteProps) {
         </div>
       </div>
 
-      <button
-        onClick={onContinue}
-        className="w-full max-w-[280px] py-4 mt-4 rounded-xl text-[1rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform cursor-pointer"
-      >
+      <Button onClick={onContinue} className="w-full">
         Continue to Dashboard
-      </button>
+      </Button>
     </div>
   );
 }
