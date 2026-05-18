@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
@@ -49,9 +49,34 @@ const NavLink = ({
 );
 
 export const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Mocking logged in state
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    // Read initial state
+    const stored = localStorage.getItem("isLoggedIn");
+    if (stored !== null) {
+      setIsLoggedIn(stored === "true");
+    } else {
+      // If not set yet, set the default to false (logged out)
+      localStorage.setItem("isLoggedIn", "false");
+      setIsLoggedIn(false);
+    }
+
+    // Storage event listener to sync across state updates
+    const handleStorageChange = () => {
+      const storedVal = localStorage.getItem("isLoggedIn");
+      if (storedVal !== null) {
+        setIsLoggedIn(storedVal === "true");
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 

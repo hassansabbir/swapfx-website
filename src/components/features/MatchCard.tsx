@@ -1,6 +1,7 @@
 import React from "react";
 import { ChevronRight, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 interface MatchCardProps {
   name: string;
@@ -21,6 +22,7 @@ export const MatchCard = ({
   avatar,
   country,
 }: MatchCardProps) => {
+  const router = useRouter();
   const badgeStyles = {
     perfect: "bg-[#09A6A4] text-white",
     close: "bg-[#27AE60] text-white",
@@ -34,7 +36,10 @@ export const MatchCard = ({
   };
 
   return (
-    <div className="bg-white rounded-lg p-4 shadow-sm relative transition-all hover:shadow-md cursor-pointer group mb-4">
+    <div 
+      onClick={() => router.push("/swap/confirmation?from=swap")}
+      className="bg-white rounded-lg p-4 shadow-sm relative transition-all hover:shadow-md cursor-pointer group mb-4"
+    >
       <div className="absolute top-0 left-0">
         <span
           className={cn(

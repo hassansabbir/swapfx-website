@@ -5,6 +5,7 @@ import { MatchCard } from "./MatchCard";
 import { swapService } from "@/lib/services";
 import { UserMatch } from "@/types";
 import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 
 import { Bell } from "lucide-react";
 
@@ -56,9 +57,11 @@ export const MatchList = () => {
           </div>
 
           <div className="flex items-center justify-center ">
-            <Button variant="primary" className="w-3/4 mt-8">
-              View All Matches
-            </Button>
+            <Link href="/swap/matches" className="w-3/4 mt-8 flex justify-center">
+              <Button variant="primary" className="w-full">
+                View All Matches
+              </Button>
+            </Link>
           </div>
         </>
       ) : (

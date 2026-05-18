@@ -204,7 +204,7 @@ export const SwapEngine = ({ onFindMatch }: SwapEngineProps) => {
           Calculate Swap
         </Button>
         <Button
-          variant={isCalculated ? "primary" : "secondary"}
+          variant={isCalculated ? "primary" : "white"}
           className="w-3/4"
           onClick={() => {
             if (isCalculated && onFindMatch) {

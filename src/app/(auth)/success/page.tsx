@@ -1,11 +1,27 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { Check, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 
 export default function SuccessPage() {
+  const router = useRouter();
+
+  const handleCompleteProfile = (e: React.MouseEvent) => {
+    e.preventDefault();
+    localStorage.setItem("isLoggedIn", "true");
+    window.dispatchEvent(new Event("storage"));
+    router.push("/account/personal-info");
+  };
+
+  const handleSkipForNow = (e: React.MouseEvent) => {
+    e.preventDefault();
+    localStorage.setItem("isLoggedIn", "true");
+    window.dispatchEvent(new Event("storage"));
+    router.push("/");
+  };
   return (
     <div className="relative w-full max-w-[750px] bg-white/10 backdrop-blur-2xl rounded-[3rem] p-12 md:p-16 shadow-2xl border border-white/20 flex flex-col items-center animate-in fade-in zoom-in duration-500 text-center">
       {/* Close Button */}
@@ -39,19 +55,25 @@ export default function SuccessPage() {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4 w-full max-w-[450px]">
-        <Link href="/" className="flex-1">
+        <div 
+          onClick={handleCompleteProfile}
+          className="flex-1 cursor-pointer"
+        >
           <Button variant="primary" className="w-full py-4 text-[0.95rem]">
             Complete Profile
           </Button>
-        </Link>
-        <Link href="/" className="flex-1">
+        </div>
+        <div 
+          onClick={handleSkipForNow}
+          className="flex-1 cursor-pointer"
+        >
           <Button
             variant="white"
             className="w-full py-4 text-[0.95rem] border-[#09A6A4] text-[#09A6A4]"
           >
             Skip For Now
           </Button>
-        </Link>
+        </div>
       </div>
     </div>
   );

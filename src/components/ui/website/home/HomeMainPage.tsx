@@ -16,7 +16,7 @@ const HomeMainPage = () => {
         Smart Swap Engine
       </h2>
       <div
-        className="w-full rounded-xl p-6 shadow-xl overflow-hidden"
+        className="w-full rounded-xl p-6 shadow-xl overflow-hidden border border-cyan-300"
         style={{
           background:
             "linear-gradient(135deg, #09A6A4 0%, #BEF5F5 50%, #09A6A4 100%)",
@@ -25,7 +25,7 @@ const HomeMainPage = () => {
         <SwapEngine onFindMatch={() => setShowMatches(true)} />
         {showMatches && <MatchList />}
       </div>
-      
+
       <TrendingAndLiveActivity />
       <HowItWorks />
       <SupportedCurrencies />

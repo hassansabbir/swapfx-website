@@ -1,11 +1,20 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 
 export default function SignInPage() {
+  const router = useRouter();
+
+  const handleSignIn = (e: React.MouseEvent) => {
+    e.preventDefault();
+    localStorage.setItem("isLoggedIn", "true");
+    window.dispatchEvent(new Event("storage"));
+    router.push("/");
+  };
   return (
     <div className="relative w-full max-w-[750px] bg-white/10 backdrop-blur-2xl rounded-[3rem] p-12 md:p-16 shadow-2xl border border-white/20 flex flex-col items-center animate-in fade-in zoom-in duration-500">
       {/* Close Button */}
@@ -54,11 +63,14 @@ export default function SignInPage() {
           </div>
         </div>
 
-        <Link href="/" className="block pt-4">
+        <div 
+          onClick={handleSignIn}
+          className="block pt-4 cursor-pointer"
+        >
           <Button variant="primary" className="w-full py-4 text-[1rem]">
             Sign In
           </Button>
-        </Link>
+        </div>
       </div>
     </div>
   );

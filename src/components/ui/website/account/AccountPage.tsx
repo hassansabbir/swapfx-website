@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { Button } from "@/components/ui/Button";
 import { 
@@ -22,6 +23,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 const AccountPage = () => {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.setItem("isLoggedIn", "false");
+    window.dispatchEvent(new Event("storage"));
+    router.push("/");
+  };
   const menuItems1 = [
     { label: "Personal Information", icon: <User size={20} />, hasAlert: true, href: "/account/personal-info" },
     { label: "My ID", icon: <Contact size={20} />, hasAlert: true, href: "/account/my-id" },
@@ -76,7 +84,10 @@ const AccountPage = () => {
 
           {/* Logout Button */}
           <div className="flex justify-end pr-2">
-            <button className="flex items-center gap-2 text-slate-600 hover:text-red-500 transition-colors font-bold text-[0.9rem]">
+            <button 
+              onClick={handleLogout}
+              className="flex items-center gap-2 text-slate-600 hover:text-red-500 transition-colors font-bold text-[0.9rem]"
+            >
               <LogOut size={18} />
               Logout
             </button>

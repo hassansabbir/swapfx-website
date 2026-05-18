@@ -444,7 +444,7 @@ export const SwapConfirmationView = ({
               </div>
             ) : (
               <div className="flex gap-4 w-full pt-4 max-w-[500px] mx-auto animate-in fade-in slide-in-from-top-6 duration-600">
-                <Link href="/chat?swapper=Bob Builder" className="flex-1">
+                <Link href="/chat/bob-builder" className="flex-1">
                   <Button className="w-full py-4 rounded-xl text-[1rem] font-bold bg-[#09A6A4] text-white shadow-xl shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform">
                     Contact Swapper
                   </Button>
