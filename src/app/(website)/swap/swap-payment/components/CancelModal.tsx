@@ -33,7 +33,7 @@ export default function CancelModal({
             Cancel This Swap?
           </h3>
           <p className="text-[0.88rem] font-medium text-slate-500 leading-relaxed px-2">
-            If you cancel this swap, the admin fee will not be refunded, and the transaction will be permanently terminated. Are you sure you want to proceed?
+            If you cancel, this will not be refunded, the swap cannot be arranged as stated, and this may impact your trust score. The counter swapper must be informed and must approve the cancellation. Do you want to proceed?
           </p>
         </div>
 

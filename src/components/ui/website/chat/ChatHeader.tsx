@@ -51,9 +51,10 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ participant }) => {
       <div className="relative">
         <button
           onClick={() => setShowDropdown(!showDropdown)}
-          className="w-10 h-10 rounded-full hover:bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-600 transition-colors"
+          className="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-50 shadow-sm flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus:outline-none"
+          title="More Options"
         >
-          <MoreHorizontal size={22} />
+          <MoreHorizontal size={20} className="stroke-[2.5]" />
         </button>
 
         {showDropdown && (
