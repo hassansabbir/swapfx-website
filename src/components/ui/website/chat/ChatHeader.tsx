@@ -1,13 +1,22 @@
 import React, { useState } from "react";
-import { Shield, CheckCircle2, MoreHorizontal } from "lucide-react";
+import {
+  Shield,
+  CheckCircle2,
+  MoreHorizontal,
+  AlertCircle,
+} from "lucide-react";
 import Link from "next/link";
 import { User } from "./types";
 
 interface ChatHeaderProps {
   participant: User;
+  onTriggerCancelRequest?: () => void;
 }
 
-export const ChatHeader: React.FC<ChatHeaderProps> = ({ participant }) => {
+export const ChatHeader: React.FC<ChatHeaderProps> = ({
+  participant,
+  onTriggerCancelRequest,
+}) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
@@ -47,29 +56,44 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ participant }) => {
         </div>
       </div>
 
-      {/* Dropdown Menu actions */}
-      <div className="relative">
-        <button
-          onClick={() => setShowDropdown(!showDropdown)}
-          className="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-50 shadow-sm flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus:outline-none"
-          title="More Options"
-        >
-          <MoreHorizontal size={20} className="stroke-[2.5]" />
-        </button>
-
-        {showDropdown && (
-          <div className="absolute right-0 top-full mt-2 w-40 bg-white rounded-xl shadow-xl border border-slate-100 z-50 py-1.5 animate-in fade-in zoom-in-95 duration-200">
-            <Link
-              href={`/swap/createswap?from=chat&swapper=${encodeURIComponent(
-                participant.name
-              )}`}
-              onClick={() => setShowDropdown(false)}
-              className="w-full block px-4 py-2.5 hover:bg-slate-50 text-[0.88rem] font-bold text-slate-700 text-left transition-colors"
-            >
-              Create Swap
-            </Link>
-          </div>
+      {/* Header Actions Panel */}
+      <div className="flex items-center gap-3">
+        {/* Demo Cancel Request Simulation Button */}
+        {onTriggerCancelRequest && (
+          <button
+            onClick={onTriggerCancelRequest}
+            className="px-3 h-10 rounded-xl border border-rose-200 bg-rose-50 text-rose-600 hover:bg-rose-100 shadow-sm flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 focus:outline-none text-[0.82rem] font-bold cursor-pointer"
+            title="This button is just showing the cancellation request card. This will be removed in production"
+          >
+            <AlertCircle size={15} className="stroke-[2.5]" />
+            <span className="hidden sm:inline">Demo Cancel</span>
+          </button>
         )}
+
+        {/* Dropdown Menu actions */}
+        <div className="relative">
+          <button
+            onClick={() => setShowDropdown(!showDropdown)}
+            className="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-50 shadow-sm flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus:outline-none"
+            title="More Options"
+          >
+            <MoreHorizontal size={20} className="stroke-[2.5]" />
+          </button>
+
+          {showDropdown && (
+            <div className="absolute right-0 top-full mt-2 w-40 bg-white rounded-xl shadow-xl border border-slate-100 z-50 py-1.5 animate-in fade-in zoom-in-95 duration-200">
+              <Link
+                href={`/swap/createswap?from=chat&swapper=${encodeURIComponent(
+                  participant.name,
+                )}`}
+                onClick={() => setShowDropdown(false)}
+                className="w-full block px-4 py-2.5 hover:bg-slate-50 text-[0.88rem] font-bold text-slate-700 text-left transition-colors"
+              >
+                Create Swap
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

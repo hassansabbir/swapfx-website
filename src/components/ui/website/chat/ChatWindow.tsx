@@ -57,14 +57,41 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
       {/* Chat Frame */}
       <GlassContainer className="w-full overflow-hidden flex flex-col h-[92vh] border border-white/50 relative p-0 bg-white/20">
         {/* Header Bar */}
-        <ChatHeader participant={session.participant} />
-
-
+        <ChatHeader
+          participant={session.participant}
+          onTriggerCancelRequest={() => {
+            const newMsg: ChatMessage = {
+              id: `cancel-${Date.now()}`,
+              sender: "them",
+              senderName: session.participant.name,
+              avatarUrl: session.participant.avatarUrl,
+              message: "Your counter swapper wants to cancel this swap.",
+              time: new Date().toLocaleTimeString("en-US", {
+                hour: "numeric",
+                minute: "2-digit",
+                hour12: true,
+              }) + " UTC",
+              isCancellationRequest: true,
+              cancellationApproved: false,
+            };
+            setMessages((prev) => [...prev, newMsg]);
+          }}
+        />
 
         {/* Conversation Bubbles Panel */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-slate-50/20">
           {messages.map((msg) => (
-            <MessageBubble key={msg.id} msg={msg} />
+            <MessageBubble
+              key={msg.id}
+              msg={msg}
+              onApproveCancellation={(msgId) => {
+                setMessages((prev) =>
+                  prev.map((m) =>
+                    m.id === msgId ? { ...m, cancellationApproved: true } : m
+                  )
+                );
+              }}
+            />
           ))}
 
           {/* Special Inline Swap Offer Card (shown only if offerCreated=true) */}
