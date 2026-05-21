@@ -78,11 +78,28 @@ export const Navbar = () => {
     };
   }, []);
 
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   if (!isLoggedIn) {
     return (
-      <header className="sticky top-0 z-50 w-full bg-white/60 backdrop-blur-md transition-all">
+      <header className="sticky top-0 z-[100] w-full bg-white/60 backdrop-blur-md transition-all">
         <nav className="flex items-center justify-between py-2 px-4 md:px-8 max-w-[1250px] mx-auto w-full">
           <div className="flex items-center gap-2">
             <Link href="/">
@@ -109,8 +126,9 @@ export const Navbar = () => {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/60 backdrop-blur-md transition-all">
-      <nav className="flex items-center justify-between py-4 px-4 md:px-8 max-w-[1250px] mx-auto w-full">
+    <>
+      <header className="sticky top-0 z-[100] w-full h-20 bg-white/60 backdrop-blur-md transition-all">
+        <nav className="flex items-center justify-between h-full px-4 md:px-8 max-w-[1250px] mx-auto w-full">
         {/* Logo */}
         <div className="flex items-center shrink-0">
           <Link href="/">
@@ -190,64 +208,65 @@ export const Navbar = () => {
             {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
+      </nav>
+    </header>
 
-        {/* Mobile Drawer Overlay */}
-        {isMenuOpen && (
-          <div className="fixed inset-0 top-[88px] bg-white/80 backdrop-blur-xl z-40 md:hidden animate-in fade-in slide-in-from-top-4 duration-300">
-            <div className="flex flex-col items-center gap-8 py-12">
-              <NavLink
-                href="/"
-                icon={<Home />}
-                label="Home"
-                active={pathname === "/"}
-                onClick={toggleMenu}
-              />
-              <NavLink
-                href="/market"
-                icon={<Store />}
-                label="Market"
-                active={pathname === "/market"}
-                onClick={toggleMenu}
-              />
-              <NavLink
-                href="/swap"
-                icon={<ArrowLeftRight />}
-                label="Swap"
-                active={pathname === "/swap"}
-                onClick={toggleMenu}
-              />
-              <NavLink
-                href="/chat"
-                icon={<MessageSquare />}
-                label="Chat"
-                active={pathname === "/chat"}
-                onClick={toggleMenu}
-              />
-              <NavLink
-                href="/account"
-                icon={<UserCircle />}
-                label="Account"
-                active={pathname === "/account"}
-                onClick={toggleMenu}
-              />
+    {/* Mobile Drawer Overlay */}
+    {isMenuOpen && (
+      <div className="fixed inset-x-0 bottom-0 top-20 bg-white/95 backdrop-blur-xl z-[100] md:hidden border-t border-slate-100 overflow-y-auto animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="flex flex-col items-center gap-8 py-12">
+          <NavLink
+            href="/"
+            icon={<Home />}
+            label="Home"
+            active={pathname === "/"}
+            onClick={toggleMenu}
+          />
+          <NavLink
+            href="/market"
+            icon={<Store />}
+            label="Market"
+            active={pathname === "/market"}
+            onClick={toggleMenu}
+          />
+          <NavLink
+            href="/swap"
+            icon={<ArrowLeftRight />}
+            label="Swap"
+            active={pathname === "/swap"}
+            onClick={toggleMenu}
+          />
+          <NavLink
+            href="/chat"
+            icon={<MessageSquare />}
+            label="Chat"
+            active={pathname === "/chat"}
+            onClick={toggleMenu}
+          />
+          <NavLink
+            href="/account"
+            icon={<UserCircle />}
+            label="Account"
+            active={pathname === "/account"}
+            onClick={toggleMenu}
+          />
 
-              <div className="pt-4 border-t border-slate-100 w-full flex justify-center">
-                <div className="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl w-[80%] max-w-[300px]">
-                  <div className="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 font-bold">
-                    PS
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-bold text-slate-800 text-sm">
-                      Silver Swap
-                    </p>
-                    <p className="text-xs text-slate-500">Verified Account</p>
-                  </div>
-                </div>
+          <div className="pt-4 border-t border-slate-100 w-full flex justify-center">
+            <div className="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl w-[80%] max-w-[300px]">
+              <div className="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 font-bold">
+                PS
+              </div>
+              <div className="flex-1">
+                <p className="font-bold text-slate-800 text-sm">
+                  Silver Swap
+                </p>
+                <p className="text-xs text-slate-500">Verified Account</p>
               </div>
             </div>
           </div>
-        )}
-      </nav>
-    </header>
+        </div>
+      </div>
+    )}
+  </>
   );
 };
