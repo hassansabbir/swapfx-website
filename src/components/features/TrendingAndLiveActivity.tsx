@@ -23,7 +23,7 @@ export const TrendingAndLiveActivity = () => {
                 Top Currency
               </span>
               <div className="flex items-center justify-center text-[2.5rem] leading-none drop-shadow-sm">
-                🇺🇸
+                USD
               </div>
             </div>
           </div>
