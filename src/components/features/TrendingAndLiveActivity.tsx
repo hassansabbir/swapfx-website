@@ -96,7 +96,7 @@ export const TrendingAndLiveActivity = () => {
                 <TrendingUp className="w-5 h-5 text-[#09A6A4] group-hover:text-white transition-colors duration-300" />
               </div>
               <h4 className="font-bold text-[0.98rem] text-slate-700 group-hover:text-slate-900 transition-colors">
-                Swappers Joind
+                Swappers Joined
               </h4>
             </div>
             <span className="text-[1.25rem] font-extrabold text-transparent bg-clip-text bg-linear-to-r from-[#09A6A4] to-[#1ACCC9]">
