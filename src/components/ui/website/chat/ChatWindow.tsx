@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { ArrowLeft, Paperclip, Send } from "lucide-react";
+import { ArrowLeft, Paperclip, Send, Info, X } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { ChatSession, ChatMessage } from "./types";
 import { ChatHeader } from "./ChatHeader";
@@ -11,15 +12,19 @@ interface ChatWindowProps {
   session: ChatSession;
   onBack: () => void;
   offerCreated?: boolean;
+  isReinstateFlow?: boolean;
 }
 
 export const ChatWindow: React.FC<ChatWindowProps> = ({
   session,
   onBack,
   offerCreated = false,
+  isReinstateFlow = false,
 }) => {
+  const router = useRouter();
   const [messages, setMessages] = useState<ChatMessage[]>(session.messages);
   const [typedMessage, setTypedMessage] = useState("");
+  const [isNoteVisible, setIsNoteVisible] = useState(true);
 
   // Keep messages state synced if the session changes
   useEffect(() => {
@@ -45,7 +50,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
   };
 
   return (
-    <div className="relative w-full flex items-center justify-center min-h-[92vh]">
+    <div className="relative w-full flex items-center justify-center min-h-[98vh]">
       {/* Circle Back Button */}
       <button
         onClick={onBack}
@@ -55,7 +60,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
       </button>
 
       {/* Chat Frame */}
-      <GlassContainer className="w-full overflow-hidden flex flex-col h-[92vh] border border-white/50 relative p-0 bg-white/20">
+      <GlassContainer className="w-full overflow-hidden flex flex-col h-[110vh] border border-white/50 relative p-0 bg-white/20">
         {/* Header Bar */}
         <ChatHeader
           participant={session.participant}
@@ -79,7 +84,45 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
         />
 
         {/* Conversation Bubbles Panel */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-slate-50/20">
+        <div className="flex-1 overflow-y-auto p-4 md:p-5 space-y-3 bg-slate-50/20">
+          
+          {/* Reinstate Swap Flow Banner */}
+          {isReinstateFlow && (
+            <div className="mb-4 bg-teal-50 border border-teal-100 rounded-xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+              <div>
+                <h4 className="font-bold text-teal-800 text-[0.95rem]">Ready to Reinstate?</h4>
+                <p className="text-[0.82rem] text-teal-700 font-medium mt-0.5">
+                  Once you've agreed with the swapper, you can start the swap countdown again.
+                </p>
+              </div>
+              <button
+                onClick={() => router.push("/swap/swap-payment?reinstated=true")}
+                className="shrink-0 bg-[#09A6A4] hover:bg-[#089593] text-white px-5 py-2.5 rounded-xl font-bold text-[0.9rem] shadow-sm transition-transform hover:scale-[1.02]"
+              >
+                Reinstate Now
+              </button>
+            </div>
+          )}
+
+          {/* Top Inline Safety Banner */}
+          {isNoteVisible && (
+            <div className="mb-4 bg-[#F8FAFC]/95 border border-slate-200/80 rounded-xl p-3 md:p-4 text-[0.78rem] text-slate-500 font-medium shadow-sm relative pr-10">
+              <button 
+                onClick={() => setIsNoteVisible(false)}
+                className="absolute right-2 top-2 p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors"
+                title="Dismiss"
+              >
+                <X size={14} />
+              </button>
+              <div className="flex gap-2 items-start">
+                <Info size={16} className="text-[#09A6A4] shrink-0 mt-0.5" />
+                <p className="leading-relaxed">
+                  <strong className="text-slate-700">Safety Note:</strong> For your safety and to follow platform rules, please do not share personal contact details such as phone numbers, email addresses, social media, or home addresses. Keep all communication on the platform to protect your privacy and ensure a secure swapping experience. All chatting going through this inbox is being monitored by the admin.
+                </p>
+              </div>
+            </div>
+          )}
+
           {messages.map((msg) => (
             <MessageBubble
               key={msg.id}
@@ -100,16 +143,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
           )}
         </div>
 
-        {/* Safety Warning Note */}
-        <div className="px-6 pb-4 shrink-0 bg-slate-50/20">
-          <div className="bg-[#F8FAFC]/95 border border-slate-200/80 rounded-2xl p-4 md:p-5 text-[0.78rem] text-slate-500 font-medium leading-relaxed shadow-sm">
-            <span className="font-bold text-slate-700">Note:</span> For your safety
-            and to follow platform rules, please do not share personal contact details
-            such as phone numbers, email addresses, social media, or home addresses.
-            Keep all communication on the platform to protect your privacy and ensure
-            a secure swapping experience.
-          </div>
-        </div>
+
 
         {/* Bottom message text input panel */}
         <div className="p-4.5 shrink-0 bg-[#09A6A4] flex items-center gap-4.5 z-20">

@@ -6,36 +6,42 @@ import { Button } from "../../Button";
 
 interface SwapOfferCardProps {
   participant: User;
+  isMe?: boolean;
 }
 
 export const SwapOfferCard: React.FC<SwapOfferCardProps> = ({
   participant,
+  isMe = true,
 }) => {
   return (
-    <div className="flex gap-3 max-w-[85%] animate-in fade-in duration-300">
+    <div className={`flex gap-3 max-w-[85%] animate-in fade-in duration-300 ${isMe ? "ml-auto flex-row-reverse" : ""}`}>
       {/* Sender Avatar */}
-      <div className="relative shrink-0 w-9 h-9">
-        <img
-          src={participant.avatarUrl}
-          alt={participant.name}
-          className="w-full h-full rounded-full object-cover border border-white"
-        />
-        {participant.isVerified && (
-          <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-[#FFBF00] rounded-full border border-white flex items-center justify-center shadow-sm">
-            <Shield size={7} className="text-white fill-current" />
-          </div>
-        )}
-      </div>
+      {!isMe && (
+        <div className="relative shrink-0 w-9 h-9">
+          <img
+            src={participant.avatarUrl}
+            alt={participant.name}
+            className="w-full h-full rounded-full object-cover border border-white"
+          />
+          {participant.isVerified && (
+            <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-[#FFBF00] rounded-full border border-white flex items-center justify-center shadow-sm">
+              <Shield size={7} className="text-white fill-current" />
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Message Column */}
       <div className="space-y-1.5 flex-1">
         {/* Sender Name */}
-        <span className="text-[0.88rem] font-bold text-slate-800 pl-1 block">
-          {participant.name}
-        </span>
+        {!isMe && (
+          <span className="text-[0.88rem] font-bold text-slate-800 pl-1 block">
+            {participant.name}
+          </span>
+        )}
 
         {/* Dynamic Swap Offer Details Box */}
-        <div className="bg-white rounded-[1.25rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] pt-5 pb-5 overflow-hidden flex flex-col space-y-4 max-w-[580px] w-full">
+        <div className={`bg-white rounded-[1.25rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] pt-5 pb-5 overflow-hidden flex flex-col space-y-4 max-w-[580px] w-full ${isMe ? "ml-auto" : ""}`}>
           {/* Centered Profile Header */}
           <div className="flex flex-col items-center justify-center space-y-1 text-center px-4">
             <h4 className="text-[1.05rem] font-bold text-slate-800 tracking-tight leading-tight">
@@ -87,8 +93,8 @@ export const SwapOfferCard: React.FC<SwapOfferCardProps> = ({
           </div>
         </div>
 
-        {/* Right Aligned Timestamp */}
-        <span className="text-[0.72rem] text-slate-400 font-semibold block text-right max-w-[580px] pr-2 pt-0.5">
+        {/* Timestamp */}
+        <span className={`text-[0.72rem] text-slate-400 font-semibold block pt-0.5 max-w-[580px] ${isMe ? "text-right pr-2 ml-auto" : "text-left pl-2 mr-auto"}`}>
           Oct 24, 14:32:01 UTC
         </span>
       </div>

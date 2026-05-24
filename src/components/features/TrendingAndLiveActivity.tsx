@@ -34,13 +34,21 @@ export const TrendingAndLiveActivity = () => {
               <span className="text-[0.8rem] font-bold text-slate-400 uppercase tracking-widest">
                 Top Corridor
               </span>
-              <div className="flex items-center justify-center gap-5 text-[2.5rem] leading-none drop-shadow-sm">
-                <span>🇺🇸</span>
+              <div className="flex items-center justify-center gap-5 mt-3 drop-shadow-sm">
+                <img
+                  src="https://flagcdn.com/w80/us.png"
+                  alt="US Flag"
+                  className="w-10 h-auto rounded-sm"
+                />
                 <ArrowRight
-                  className="w-8 h-8 text-[#09A6A4] opacity-80"
+                  className="w-7 h-7 text-[#09A6A4] opacity-80"
                   strokeWidth={3}
                 />
-                <span>🇵🇰</span>
+                <img
+                  src="https://flagcdn.com/w80/pk.png"
+                  alt="PK Flag"
+                  className="w-10 h-auto rounded-sm"
+                />
               </div>
             </div>
           </div>

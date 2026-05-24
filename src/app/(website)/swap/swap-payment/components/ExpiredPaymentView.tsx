@@ -1,6 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Info, X } from "lucide-react";
 
 interface ExpiredPaymentViewProps {
   setTimeLeft: React.Dispatch<React.SetStateAction<{ minutes: number; seconds: number }>>;
@@ -11,6 +13,9 @@ export default function ExpiredPaymentView({
   setTimeLeft,
   onOpenDispute,
 }: ExpiredPaymentViewProps) {
+  const router = useRouter();
+  const [showReinstateModal, setShowReinstateModal] = useState(false);
+
   return (
     <div className="max-w-[720px] mx-auto w-full space-y-6 pt-4 animate-in zoom-in duration-300">
       {/* Alert Warning Circle with ! */}
@@ -96,7 +101,7 @@ export default function ExpiredPaymentView({
       {/* Actions */}
       <div className="space-y-3 pt-3">
         <button
-          onClick={() => setTimeLeft({ minutes: 30, seconds: 0 })}
+          onClick={() => setShowReinstateModal(true)}
           className="w-full py-3.5 bg-[#09A6A4] hover:bg-[#089593] text-white text-[0.95rem] font-semibold rounded-xl shadow-md shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform text-center cursor-pointer focus:outline-none"
         >
           Reinstate Swap
@@ -115,6 +120,49 @@ export default function ExpiredPaymentView({
           </button>
         </div>
       </div>
+
+      {/* Reinstate Swap Confirmation Modal */}
+      {showReinstateModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+          <div className="bg-white w-full max-w-md rounded-3xl p-6 shadow-2xl animate-in zoom-in-95 duration-200">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-[1.25rem] font-bold text-slate-800 flex items-center gap-2">
+                <Info className="text-[#09A6A4]" size={20} />
+                Reinstate Swap
+              </h3>
+              <button 
+                onClick={() => setShowReinstateModal(false)}
+                className="text-slate-400 hover:text-slate-600 transition-colors p-1.5 rounded-full hover:bg-slate-100"
+              >
+                <X size={18} />
+              </button>
+            </div>
+            
+            <p className="text-[0.92rem] text-slate-600 leading-relaxed mb-6 font-medium">
+              Time swap reinstate will begin and the timer will start from the very beginning like the initial time. 
+              Also, you should contact the other swapper before reinstating the swap to ensure they are ready.
+            </p>
+            
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={() => router.push("/chat/2?reinstate=true")}
+                className="w-full py-3.5 bg-[#09A6A4] hover:bg-[#089593] text-white text-[0.95rem] font-semibold rounded-xl transition-transform hover:scale-[1.01] shadow-md shadow-[#09A6A4]/20"
+              >
+                Contact Swapper
+              </button>
+              <button
+                onClick={() => {
+                  setTimeLeft({ minutes: 30, seconds: 0 });
+                  setShowReinstateModal(false);
+                }}
+                className="w-full py-3.5 bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 text-[0.95rem] font-semibold rounded-xl transition-colors shadow-sm"
+              >
+                Reinstate Now
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

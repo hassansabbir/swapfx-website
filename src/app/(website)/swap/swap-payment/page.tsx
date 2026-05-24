@@ -21,7 +21,15 @@ export default function SwapPaymentPage() {
 
   // Interactive checkout states
   const [paymentDone, setPaymentDone] = useState(false);
-  const [timeLeft, setTimeLeft] = useState({ minutes: 9, seconds: 12 });
+  const [timeLeft, setTimeLeft] = useState(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("reinstated") === "true") {
+        return { minutes: 30, seconds: 0 };
+      }
+    }
+    return { minutes: 9, seconds: 12 };
+  });
   const [customNote] = useState(
     "zxiahsfoihdoifoisajdpojaopskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkasdasdf"
   );
