@@ -36,7 +36,7 @@ export const HowItWorks = () => {
   return (
     <div className="space-y-8 mt-16 relative">
       <div className="px-2">
-        <h2 className="text-[1.25rem] font-bold text-slate-800 mb-4 px-2">
+        <h2 className="text-[1.25rem] font-bold text-slate-800 mb-4">
           How it works
         </h2>
         <p className="text-[0.95rem] text-slate-500 max-w-[700px] leading-relaxed">

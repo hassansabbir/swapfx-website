@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight, RefreshCcw, Users, TrendingUp } from "lucide-react";
+import { ArrowRight, RefreshCcw, Users, TrendingUp, Currency, DollarSign, Handshake } from "lucide-react";
 
 export const TrendingAndLiveActivity = () => {
   return (
@@ -50,7 +50,7 @@ export const TrendingAndLiveActivity = () => {
       {/* Live Activity Feed Section */}
       <section>
         <h2 className="text-[1.25rem] font-bold text-slate-800 mb-5 px-2">
-          Live Activity Feed
+          Weekly Highlights
         </h2>
         <div className="space-y-4 relative">
           {/* Subtle background glow effect */}
@@ -61,7 +61,7 @@ export const TrendingAndLiveActivity = () => {
             <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-linear-to-b from-[#09A6A4] to-[#1ACCC9] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="flex items-center gap-4 relative z-10">
               <div className="w-11 h-11 rounded-xl bg-[#09A6A4]/10 flex items-center justify-center group-hover:bg-[#09A6A4] transition-colors duration-300 shadow-inner">
-                <RefreshCcw className="w-5 h-5 text-[#09A6A4] group-hover:text-white transition-colors duration-300" />
+                <Handshake className="w-5 h-5 text-[#09A6A4] group-hover:text-white transition-colors duration-300" />
               </div>
               <h4 className="font-bold text-[0.98rem] text-slate-700 group-hover:text-slate-900 transition-colors">
                 Total Number Of Swaps
@@ -77,14 +77,14 @@ export const TrendingAndLiveActivity = () => {
             <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-linear-to-b from-[#09A6A4] to-[#1ACCC9] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="flex items-center gap-4 relative z-10">
               <div className="w-11 h-11 rounded-xl bg-[#09A6A4]/10 flex items-center justify-center group-hover:bg-[#09A6A4] transition-colors duration-300 shadow-inner">
-                <Users className="w-5 h-5 text-[#09A6A4] group-hover:text-white transition-colors duration-300" />
+                <DollarSign className="w-5 h-5 text-[#09A6A4] group-hover:text-white transition-colors duration-300" />
               </div>
               <h4 className="font-bold text-[0.98rem] text-slate-700 group-hover:text-slate-900 transition-colors">
                 Total Amount Of Swaps
               </h4>
             </div>
             <span className="text-[1.25rem] font-extrabold text-transparent bg-clip-text bg-linear-to-r from-[#09A6A4] to-[#1ACCC9]">
-              $457880
+              $457,880
             </span>
           </div>
 
@@ -100,7 +100,7 @@ export const TrendingAndLiveActivity = () => {
               </h4>
             </div>
             <span className="text-[1.25rem] font-extrabold text-transparent bg-clip-text bg-linear-to-r from-[#09A6A4] to-[#1ACCC9]">
-              5633
+              5,633
             </span>
           </div>
         </div>
