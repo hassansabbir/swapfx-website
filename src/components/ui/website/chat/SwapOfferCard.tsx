@@ -88,7 +88,7 @@ export const SwapOfferCard: React.FC<SwapOfferCardProps> = ({
               href="/swap/confirmation?from=chat"
               className="w-[85%] max-w-[450px]"
             >
-              <Button className="w-full">View Details</Button>
+              <Button className="w-full">View Offer</Button>
             </Link>
           </div>
         </div>
