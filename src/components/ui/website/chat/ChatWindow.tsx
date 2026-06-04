@@ -13,6 +13,7 @@ interface ChatWindowProps {
   onBack: () => void;
   offerCreated?: boolean;
   isReinstateFlow?: boolean;
+  isCancelled?: boolean;
 }
 
 export const ChatWindow: React.FC<ChatWindowProps> = ({
@@ -20,6 +21,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
   onBack,
   offerCreated = false,
   isReinstateFlow = false,
+  isCancelled = false,
 }) => {
   const router = useRouter();
   const [messages, setMessages] = useState<ChatMessage[]>(session.messages);
@@ -30,6 +32,29 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
   useEffect(() => {
     setMessages(session.messages);
   }, [session]);
+
+  useEffect(() => {
+    if (isCancelled) {
+      const newMsg: ChatMessage = {
+        id: `cancel-${Date.now()}`,
+        sender: "me",
+        senderName: "Nazrul",
+        avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop",
+        message: "You sent a cancellation request.",
+        time: new Date().toLocaleTimeString("en-US", {
+          hour: "numeric",
+          minute: "2-digit",
+          hour12: true,
+        }) + " UTC",
+        isCancellationRequest: true,
+        cancellationApproved: false,
+      };
+      setMessages((prev) => {
+        if (prev.some((m) => m.isCancellationRequest)) return prev;
+        return [...prev, newMsg];
+      });
+    }
+  }, [isCancelled]);
 
   const handleSendMessage = () => {
     if (!typedMessage.trim()) return;
@@ -64,13 +89,14 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
         {/* Header Bar */}
         <ChatHeader
           participant={session.participant}
+          offerCreated={offerCreated}
           onTriggerCancelRequest={() => {
             const newMsg: ChatMessage = {
               id: `cancel-${Date.now()}`,
-              sender: "them",
-              senderName: session.participant.name,
-              avatarUrl: session.participant.avatarUrl,
-              message: "Your counter swapper wants to cancel this swap.",
+              sender: "me",
+              senderName: "Nazrul",
+              avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop",
+              message: "You sent a cancellation request.",
               time: new Date().toLocaleTimeString("en-US", {
                 hour: "numeric",
                 minute: "2-digit",
@@ -81,28 +107,28 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
             };
             setMessages((prev) => [...prev, newMsg]);
           }}
+          onTriggerReinstateRequest={() => {
+            const newMsg: ChatMessage = {
+              id: `reinstate-${Date.now()}`,
+              sender: "me",
+              senderName: "Nazrul",
+              avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop",
+              message: "You sent a reinstatement request.",
+              time: new Date().toLocaleTimeString("en-US", {
+                hour: "numeric",
+                minute: "2-digit",
+                hour12: true,
+              }) + " UTC",
+              isReinstateRequest: true,
+            };
+            setMessages((prev) => [...prev, newMsg]);
+          }}
         />
 
         {/* Conversation Bubbles Panel */}
         <div className="flex-1 overflow-y-auto p-4 md:p-5 space-y-3 bg-slate-50/20">
           
-          {/* Reinstate Swap Flow Banner */}
-          {isReinstateFlow && (
-            <div className="mb-4 bg-teal-50 border border-teal-100 rounded-xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
-              <div>
-                <h4 className="font-bold text-teal-800 text-[0.95rem]">Ready to Reinstate?</h4>
-                <p className="text-[0.82rem] text-teal-700 font-medium mt-0.5">
-                  Once you've agreed with the swapper, you can start the swap countdown again.
-                </p>
-              </div>
-              <button
-                onClick={() => router.push("/swap/swap-payment?reinstated=true")}
-                className="shrink-0 bg-[#09A6A4] hover:bg-[#089593] text-white px-5 py-2.5 rounded-xl font-bold text-[0.9rem] shadow-sm transition-transform hover:scale-[1.02]"
-              >
-                Reinstate Now
-              </button>
-            </div>
-          )}
+
 
           {/* Top Inline Safety Banner */}
           {isNoteVisible && (

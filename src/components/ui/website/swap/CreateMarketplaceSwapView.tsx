@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { Button } from "@/components/ui/Button";
-import { ArrowLeft, ChevronDown, AlertCircle } from "lucide-react";
+import { ArrowLeft, ChevronDown, AlertCircle, X } from "lucide-react";
 
 export const CreateMarketplaceSwapView = ({
   onBack,
+  onClose,
   onSubmit,
   swapperName,
 }: {
   onBack: () => void;
+  onClose: () => void;
   onSubmit: () => void;
   swapperName?: string;
 }) => {
@@ -32,6 +34,14 @@ export const CreateMarketplaceSwapView = ({
           className="absolute top-6 left-6 w-10 h-10 rounded-full bg-slate-400 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-lg"
         >
           <ArrowLeft size={24} />
+        </button>
+
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-400 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-lg"
+        >
+          <X size={24} />
         </button>
 
         <div className="space-y-8 max-w-[750px] mx-auto">

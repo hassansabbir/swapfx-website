@@ -145,19 +145,10 @@ export default function ExpiredPaymentView({
             
             <div className="flex flex-col gap-3">
               <button
-                onClick={() => router.push("/chat/2?reinstate=true")}
-                className="w-full py-3.5 bg-[#09A6A4] hover:bg-[#089593] text-white text-[0.95rem] font-semibold rounded-xl transition-transform hover:scale-[1.01] shadow-md shadow-[#09A6A4]/20"
+                onClick={() => router.push("/chat/bob-builder")}
+                className="w-full py-3.5 bg-[#09A6A4] hover:bg-[#089593] text-white text-[0.95rem] font-semibold rounded-xl transition-transform hover:scale-[1.01] shadow-md shadow-[#09A6A4]/20 text-center"
               >
                 Contact Swapper
-              </button>
-              <button
-                onClick={() => {
-                  setTimeLeft({ minutes: 30, seconds: 0 });
-                  setShowReinstateModal(false);
-                }}
-                className="w-full py-3.5 bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 text-[0.95rem] font-semibold rounded-xl transition-colors shadow-sm"
-              >
-                Reinstate Now
               </button>
             </div>
           </div>

@@ -1,5 +1,5 @@
-import React from "react";
-import { Star, Shield, ArrowRight } from "lucide-react";
+import React, { useState } from "react";
+import { Star, Shield, ArrowRight, RefreshCw } from "lucide-react";
 import Link from "next/link";
 import { User } from "./types";
 import { Button } from "../../Button";
@@ -11,8 +11,9 @@ interface SwapOfferCardProps {
 
 export const SwapOfferCard: React.FC<SwapOfferCardProps> = ({
   participant,
-  isMe = true,
+  isMe: initialIsMe = true,
 }) => {
+  const [isMe, setIsMe] = useState(initialIsMe);
   return (
     <div className={`flex gap-3 max-w-[85%] animate-in fade-in duration-300 ${isMe ? "ml-auto flex-row-reverse" : ""}`}>
       {/* Sender Avatar */}
@@ -41,15 +42,24 @@ export const SwapOfferCard: React.FC<SwapOfferCardProps> = ({
         )}
 
         {/* Dynamic Swap Offer Details Box */}
-        <div className={`bg-white rounded-[1.25rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] pt-5 pb-5 overflow-hidden flex flex-col space-y-4 max-w-[580px] w-full ${isMe ? "ml-auto" : ""}`}>
+        <div className={`bg-white rounded-[1.25rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] pt-5 pb-5 overflow-hidden flex flex-col space-y-4 max-w-[580px] w-full relative ${isMe ? "ml-auto" : ""}`}>
+          {/* Demo toggle button */}
+          <button
+            onClick={() => setIsMe(!isMe)}
+            className="absolute top-3 right-3 p-1.5 rounded-full text-slate-400 hover:text-[#09A6A4] hover:bg-slate-100 transition-colors z-20 cursor-pointer"
+            title="Toggle Sender/Receiver View"
+          >
+            <RefreshCw size={14} />
+          </button>
+
           {/* Centered Profile Header */}
           <div className="flex flex-col items-center justify-center space-y-1 text-center px-4">
             <h4 className="text-[1.05rem] font-bold text-slate-800 tracking-tight leading-tight">
-              Bob Builder
+              {participant.name}
             </h4>
             <div className="flex items-center justify-center gap-1.5 text-[0.82rem] text-slate-500 font-semibold select-none">
               <Star size={12} className="text-yellow-400 fill-yellow-400" />
-              <span>4.7 (56)</span>
+              <span>{participant.rating} ({participant.reviews})</span>
             </div>
           </div>
 
@@ -82,15 +92,51 @@ export const SwapOfferCard: React.FC<SwapOfferCardProps> = ({
             </div>
           </div>
 
-          {/* Centered Teal View Details Button */}
-          <div className="w-full flex justify-center px-6 pt-1">
-            <Link
-              href="/swap/confirmation?from=chat"
-              className="w-[85%] max-w-[450px]"
-            >
-              <Button className="w-full">View Offer</Button>
-            </Link>
-          </div>
+          {/* Action Buttons */}
+          {isMe ? (
+            <div className="w-full flex justify-center px-6 pt-1">
+              <Link
+                href="/swap/confirmation?from=chat"
+                className="w-full"
+              >
+                <Button className="w-full" variant="primary">
+                  View Details
+                </Button>
+              </Link>
+            </div>
+          ) : (
+            <div className="w-full flex flex-col gap-3 px-6 pt-1">
+              <Link
+                href="/swap/confirmation?from=chat"
+                className="w-full"
+              >
+                <Button className="w-full" variant="primary">
+                  View Details
+                </Button>
+              </Link>
+              <div className="w-full flex gap-3">
+                <Link
+                  href="/swap/payment"
+                  className="flex-1"
+                >
+                  <Button className="w-full" variant="primary">
+                    Accept Offer
+                  </Button>
+                </Link>
+                <Link
+                  href={`/chat/${participant.id}`}
+                  className="flex-1"
+                >
+                  <Button
+                    className="w-full border-red-500 text-red-500 hover:bg-red-50"
+                    variant="white"
+                  >
+                    Reject Offer
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Timestamp */}

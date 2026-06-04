@@ -19,6 +19,7 @@ export interface ChatMessage {
   isSwapCard?: boolean;
   isCancellationRequest?: boolean;
   cancellationApproved?: boolean;
+  isReinstateRequest?: boolean;
 }
 
 export interface ChatSession {

@@ -3,8 +3,9 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { GlassContainer } from "@/components/ui/GlassContainer";
-import { ArrowLeft, ArrowRight, Shield, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Shield, Check, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import CancelModal from "@/app/(website)/swap/swap-payment/components/CancelModal";
 
 type PaymentState = "summary" | "payment_method";
 
@@ -18,6 +19,12 @@ export default function FeePaymentPage() {
   const [customNote, setCustomNote] = useState(
     "zxiahsfoihdoifoisajdpojaopskkkkkkkkkkkkkkkkkkkkkkkkkkasdasdf",
   );
+  const [showCancelModal, setShowCancelModal] = useState(false);
+
+  const handleCancelSwapYes = () => {
+    setShowCancelModal(false);
+    router.push("/chat/bob-builder?offerCreated=true&cancelled=true");
+  };
 
   const totalPayable = safetyShieldChecked ? 150 : 100;
 
@@ -106,6 +113,14 @@ export default function FeePaymentPage() {
 
         {/* Payment Main Frame */}
         <GlassContainer className="w-full overflow-hidden p-6 md:p-10 border border-white/50 bg-white/20 shadow-xl rounded-4xl flex flex-col relative space-y-4">
+          {/* Close/Cross Button */}
+          <button
+            onClick={() => router.push("/chat/bob-builder?offerCreated=true")}
+            className="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-400 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-lg z-30 cursor-pointer"
+          >
+            <X size={20} />
+          </button>
+
           <h2 className="text-[1.5rem] font-extrabold text-slate-800 text-center tracking-tight animate-in fade-in duration-400">
             Fee Payment
           </h2>
@@ -338,8 +353,25 @@ export default function FeePaymentPage() {
               </div>
             </div>
           )}
+
+          {/* Cancel Swap Button at the very bottom of the card */}
+          <div className="w-full flex justify-center pt-2 border-t border-slate-100/50 mt-4">
+            <button
+              onClick={() => setShowCancelModal(true)}
+              className="w-full max-w-[450px] py-3 bg-rose-50 border border-rose-200 text-rose-600 text-[0.92rem] font-semibold rounded-xl hover:bg-rose-100 transition-colors shadow-sm text-center cursor-pointer focus:outline-none"
+            >
+              Cancel Swap
+            </button>
+          </div>
         </GlassContainer>
       </div>
+
+      {showCancelModal && (
+        <CancelModal
+          onClose={() => setShowCancelModal(false)}
+          onConfirmYes={handleCancelSwapYes}
+        />
+      )}
     </div>
   );
 }

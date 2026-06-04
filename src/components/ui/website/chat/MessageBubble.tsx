@@ -1,6 +1,8 @@
-import React from "react";
-import { Shield, AlertCircle, CheckCircle } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Shield, AlertCircle, CheckCircle, RefreshCw } from "lucide-react";
+import Link from "next/link";
 import { ChatMessage } from "./types";
+import { Button } from "../../Button";
 
 interface MessageBubbleProps {
   msg: ChatMessage;
@@ -8,32 +10,49 @@ interface MessageBubbleProps {
 }
 
 export const MessageBubble: React.FC<MessageBubbleProps> = ({ msg, onApproveCancellation }) => {
-  const isMe = msg.sender === "me";
+  const [isMe, setIsMe] = useState(msg.sender === "me");
+
+  useEffect(() => {
+    setIsMe(msg.sender === "me");
+  }, [msg.sender]);
 
   if (msg.isCancellationRequest) {
     return (
-      <div className="flex gap-3 max-w-[85%] animate-in fade-in duration-300">
+      <div className={`flex gap-3 max-w-[85%] animate-in fade-in duration-300 ${isMe ? "ml-auto flex-row-reverse" : ""}`}>
         {/* Sender Avatar */}
-        <div className="relative shrink-0 w-9 h-9">
-          <img
-            src={msg.avatarUrl}
-            alt={msg.senderName}
-            className="w-full h-full rounded-full object-cover border border-white"
-          />
-          <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-[#FFBF00] rounded-full border border-white flex items-center justify-center shadow-sm">
-            <Shield size={7} className="text-white fill-current" />
+        {!isMe && (
+          <div className="relative shrink-0 w-9 h-9">
+            <img
+              src={msg.avatarUrl}
+              alt={msg.senderName}
+              className="w-full h-full rounded-full object-cover border border-white"
+            />
+            <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-[#FFBF00] rounded-full border border-white flex items-center justify-center shadow-sm">
+              <Shield size={7} className="text-white fill-current" />
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Message Column */}
         <div className="space-y-1.5 flex-1">
           {/* Sender Name */}
-          <span className="text-[0.88rem] font-bold text-slate-800 pl-1 block">
-            {msg.senderName}
-          </span>
+          {!isMe && (
+            <span className="text-[0.88rem] font-bold text-slate-800 pl-1 block">
+              {msg.senderName}
+            </span>
+          )}
 
           {/* Cancellation Card details box */}
-          <div className="bg-white rounded-[1.25rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] p-5 overflow-hidden flex flex-col space-y-4 max-w-[580px] w-full">
+          <div className={`bg-white rounded-[1.25rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] p-5 overflow-hidden flex flex-col space-y-4 max-w-[580px] w-full relative ${isMe ? "ml-auto" : ""}`}>
+            {/* Demo toggle button */}
+            <button
+              onClick={() => setIsMe(!isMe)}
+              className="absolute top-3 right-3 p-1.5 rounded-full text-slate-400 hover:text-rose-500 hover:bg-slate-100 transition-colors z-20 cursor-pointer"
+              title="Toggle Sender/Receiver View"
+            >
+              <RefreshCw size={14} />
+            </button>
+
             {/* Header info */}
             <div className="flex items-center gap-2.5 text-rose-500">
               <AlertCircle size={20} className="shrink-0" />
@@ -44,35 +63,136 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ msg, onApproveCanc
 
             {/* Description */}
             <p className="text-[0.88rem] font-medium text-slate-600 leading-relaxed">
-              Your counter swapper wants to cancel this swap. Any fee you pay will be refunded if you approve. Do you want to approve the cancellation request?
+              {isMe
+                ? "You have requested to cancel this swap. The other person needs to approve your cancellation request."
+                : "Your counter swapper wants to cancel this swap. Any fee you pay will be refunded if you approve."}
             </p>
 
-            {/* Approve Button / Approved State */}
-            {msg.cancellationApproved ? (
-              <div className="space-y-3">
-                <div className="h-px bg-slate-100/85" />
-                <div className="flex items-center gap-2 text-emerald-600 font-bold text-[0.92rem]">
-                  <CheckCircle size={18} className="shrink-0" />
-                  <span>Swap Cancelled</span>
-                </div>
-                <p className="text-[0.82rem] font-medium text-slate-500 leading-relaxed">
-                  The swap has been successfully cancelled and your fee will be refunded.
-                </p>
+            {/* Action Buttons */}
+            {isMe ? (
+              <div className="w-full text-center pt-1 font-bold text-amber-500 text-[0.88rem]">
+                waiting for the other swappers approval
               </div>
             ) : (
               <div className="w-full pt-1">
-                <button
-                  onClick={() => onApproveCancellation && onApproveCancellation(msg.id)}
-                  className="w-full py-2.5 rounded-xl bg-rose-500 text-white text-[0.88rem] font-bold hover:bg-rose-600 hover:scale-[1.01] active:scale-[0.99] transition-all shadow-sm shadow-rose-500/10 cursor-pointer focus:outline-none"
-                >
-                  Approve
-                </button>
+                {msg.cancellationApproved ? (
+                  <div className="space-y-3">
+                    <div className="h-px bg-slate-100/85" />
+                    <div className="flex items-center gap-2 text-emerald-600 font-bold text-[0.92rem]">
+                      <CheckCircle size={18} className="shrink-0" />
+                      <span>Swap Cancelled</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="w-full flex gap-3">
+                    <Button
+                      onClick={() => onApproveCancellation && onApproveCancellation(msg.id)}
+                      className="flex-1"
+                      variant="primary"
+                    >
+                      Accept Cancellation
+                    </Button>
+                    <Button
+                      onClick={() => setIsMe(true)} // Mock reject by switching to sender
+                      className="flex-1 border-red-500 text-red-500 hover:bg-red-50"
+                      variant="white"
+                    >
+                      Reject Cancellation
+                    </Button>
+                  </div>
+                )}
               </div>
             )}
           </div>
 
           {/* Timestamp */}
-          <span className="text-[0.72rem] text-slate-400 font-semibold block text-left max-w-[580px] pr-2 pt-0.5">
+          <span className={`text-[0.72rem] text-slate-400 font-semibold block pt-0.5 max-w-[580px] ${isMe ? "text-right pr-2 ml-auto" : "text-left pl-2 mr-auto"}`}>
+            {msg.time}
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  if (msg.isReinstateRequest) {
+    return (
+      <div className={`flex gap-3 max-w-[85%] animate-in fade-in duration-300 ${isMe ? "ml-auto flex-row-reverse" : ""}`}>
+        {/* Sender Avatar */}
+        {!isMe && (
+          <div className="relative shrink-0 w-9 h-9">
+            <img
+              src={msg.avatarUrl}
+              alt={msg.senderName}
+              className="w-full h-full rounded-full object-cover border border-white"
+            />
+            <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-[#FFBF00] rounded-full border border-white flex items-center justify-center shadow-sm">
+              <Shield size={7} className="text-white fill-current" />
+            </div>
+          </div>
+        )}
+
+        {/* Message Column */}
+        <div className="space-y-1.5 flex-1">
+          {/* Sender Name */}
+          {!isMe && (
+            <span className="text-[0.88rem] font-bold text-slate-800 pl-1 block">
+              {msg.senderName}
+            </span>
+          )}
+
+          {/* Reinstate Card details box */}
+          <div className={`bg-white rounded-[1.25rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] p-5 overflow-hidden flex flex-col space-y-4 max-w-[580px] w-full relative ${isMe ? "ml-auto" : ""}`}>
+            {/* Demo toggle button */}
+            <button
+              onClick={() => setIsMe(!isMe)}
+              className="absolute top-3 right-3 p-1.5 rounded-full text-slate-400 hover:text-emerald-500 hover:bg-slate-100 transition-colors z-20 cursor-pointer"
+              title="Toggle Sender/Receiver View"
+            >
+              <RefreshCw size={14} />
+            </button>
+
+            {/* Header info */}
+            <div className="flex items-center gap-2.5 text-[#09A6A4]">
+              <RefreshCw size={20} className="shrink-0" />
+              <h4 className="text-[1.02rem] font-bold tracking-tight leading-tight">
+                Reinstate Swap Request
+              </h4>
+            </div>
+
+            {/* Description */}
+            <p className="text-[0.88rem] font-medium text-slate-600 leading-relaxed">
+              {isMe
+                ? "You have requested to reinstate this swap. The other person needs to approve the reinstatement to restart the countdown."
+                : "Your counter swapper wants to reinstate this swap. Approve to restart the swap countdown."}
+            </p>
+
+            {/* Action Buttons */}
+            {isMe ? (
+              <div className="w-full text-center pt-1 font-bold text-amber-500 text-[0.88rem]">
+                waiting for approval of the other swapper
+              </div>
+            ) : (
+              <div className="w-full pt-1">
+                <div className="w-full flex gap-3">
+                  <Link href="/swap/swap-payment?reinstated=true" className="flex-1">
+                    <Button className="w-full" variant="primary">
+                      Accept
+                    </Button>
+                  </Link>
+                  <Button
+                    onClick={() => setIsMe(true)} // Mock reject by switching to sender
+                    className="flex-1 border-red-500 text-red-500 hover:bg-red-50"
+                    variant="white"
+                  >
+                    Reject
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Timestamp */}
+          <span className={`text-[0.72rem] text-slate-400 font-semibold block pt-0.5 max-w-[580px] ${isMe ? "text-right pr-2 ml-auto" : "text-left pl-2 mr-auto"}`}>
             {msg.time}
           </span>
         </div>

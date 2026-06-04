@@ -35,9 +35,18 @@ function CreateSwapContent() {
     }
   };
 
+  const handleClose = () => {
+    if (from === "chat") {
+      router.push(`/chat/${getSwapperId(swapper)}`);
+    } else {
+      router.push("/swap");
+    }
+  };
+
   return (
     <CreateMarketplaceSwapView
       onBack={handleBack}
+      onClose={handleClose}
       onSubmit={handleSubmit}
       swapperName={swapper}
     />

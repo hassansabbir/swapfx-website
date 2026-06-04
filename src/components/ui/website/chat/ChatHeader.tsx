@@ -11,11 +11,15 @@ import { User } from "./types";
 interface ChatHeaderProps {
   participant: User;
   onTriggerCancelRequest?: () => void;
+  onTriggerReinstateRequest?: () => void;
+  offerCreated?: boolean;
 }
 
 export const ChatHeader: React.FC<ChatHeaderProps> = ({
   participant,
   onTriggerCancelRequest,
+  onTriggerReinstateRequest,
+  offerCreated = false,
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -58,17 +62,6 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
 
       {/* Header Actions Panel */}
       <div className="flex items-center gap-3">
-        {/* Demo Cancel Request Simulation Button */}
-        {onTriggerCancelRequest && (
-          <button
-            onClick={onTriggerCancelRequest}
-            className="px-3 h-10 rounded-xl border border-rose-200 bg-rose-50 text-rose-600 hover:bg-rose-100 shadow-sm flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 focus:outline-none text-[0.82rem] font-bold cursor-pointer"
-            title="This button is just showing the cancellation request card. This will be removed in production"
-          >
-            <AlertCircle size={15} className="stroke-[2.5]" />
-            <span className="hidden sm:inline">Demo Cancel</span>
-          </button>
-        )}
 
         {/* Dropdown Menu actions */}
         <div className="relative">
@@ -81,7 +74,7 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
           </button>
 
           {showDropdown && (
-            <div className="absolute right-0 top-full mt-2 w-40 bg-white rounded-xl shadow-xl border border-slate-100 z-50 py-1.5 animate-in fade-in zoom-in-95 duration-200">
+            <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 z-50 py-1.5 animate-in fade-in zoom-in-95 duration-200">
               <Link
                 href={`/swap/createswap?from=chat&swapper=${encodeURIComponent(
                   participant.name,
@@ -91,6 +84,40 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
               >
                 Create Swap
               </Link>
+
+              {/* Reinstate Swap */}
+              {offerCreated ? (
+                <button
+                  onClick={() => {
+                    if (onTriggerReinstateRequest) onTriggerReinstateRequest();
+                    setShowDropdown(false);
+                  }}
+                  className="w-full block px-4 py-2.5 hover:bg-slate-50 text-[0.88rem] font-bold text-slate-700 text-left transition-colors"
+                >
+                  Reinstate Swap
+                </button>
+              ) : (
+                <span className="w-full block px-4 py-2.5 text-[0.88rem] font-bold text-slate-300 text-left cursor-not-allowed select-none border-t border-slate-100/50 pt-2">
+                  Reinstate Swap
+                </span>
+              )}
+
+              {/* Cancel Swap */}
+              {offerCreated ? (
+                <button
+                  onClick={() => {
+                    if (onTriggerCancelRequest) onTriggerCancelRequest();
+                    setShowDropdown(false);
+                  }}
+                  className="w-full block px-4 py-2.5 hover:bg-rose-50 hover:text-rose-600 text-[0.88rem] font-bold text-slate-700 text-left transition-colors"
+                >
+                  Cancel Swap
+                </button>
+              ) : (
+                <span className="w-full block px-4 py-2.5 text-[0.88rem] font-bold text-slate-300 text-left cursor-not-allowed select-none">
+                  Cancel Swap
+                </span>
+              )}
             </div>
           )}
         </div>

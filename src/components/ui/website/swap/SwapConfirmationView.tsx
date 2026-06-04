@@ -432,9 +432,17 @@ export const SwapConfirmationView = ({
 
             {/* Action Buttons */}
             {from === "chat" ? (
-              <div className="flex justify-center pt-4 max-w-[500px] mx-auto w-full animate-in fade-in slide-in-from-top-6 duration-600">
-                <Link href="/swap/payment" className="w-full">
-                  <Button className="w-full ">Confirm</Button>
+              <div className="flex gap-4 w-full pt-4 max-w-[500px] mx-auto animate-in fade-in slide-in-from-top-6 duration-600">
+                <Link href="/swap/payment" className="flex-1">
+                  <Button className="w-full" variant="primary">Accept Offer</Button>
+                </Link>
+                <Link href="/chat/bob-builder" className="flex-1">
+                  <Button
+                    className="w-full border-red-500 text-red-500 hover:bg-red-50"
+                    variant="white"
+                  >
+                    Reject Offer
+                  </Button>
                 </Link>
               </div>
             ) : (

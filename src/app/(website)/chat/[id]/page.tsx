@@ -13,6 +13,7 @@ function ChatDetailsContent() {
   const id = params.id as string;
   const offerCreated = searchParams.get("offerCreated") === "true";
   const isReinstateFlow = searchParams.get("reinstate") === "true";
+  const cancelled = searchParams.get("cancelled") === "true";
 
   // Resolve target chat session matching dynamic ID path, fall back to Bob Builder
   const session =
@@ -29,6 +30,7 @@ function ChatDetailsContent() {
         onBack={handleBack}
         offerCreated={offerCreated}
         isReinstateFlow={isReinstateFlow}
+        isCancelled={cancelled}
       />
     </div>
   );

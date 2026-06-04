@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { GlassContainer } from "@/components/ui/GlassContainer";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, X } from "lucide-react";
 
 // Sub-components import
 import ActivePaymentView from "./components/ActivePaymentView";
@@ -48,7 +48,7 @@ export default function SwapPaymentPage() {
 
   const handleCancelSwapYes = () => {
     setShowCancelModal(false);
-    router.push("/chat");
+    router.push("/chat/bob-builder?offerCreated=true&cancelled=true");
   };
 
   // Countdown timer simulation
@@ -108,6 +108,14 @@ export default function SwapPaymentPage() {
 
         {/* Swap Payment Container */}
         <GlassContainer className="w-full overflow-hidden p-6 md:p-10 border border-white/50 bg-white/20 shadow-xl rounded-4xl flex flex-col relative space-y-4">
+          {/* Close/Cross Button */}
+          <button
+            onClick={() => router.push("/chat/bob-builder?offerCreated=true")}
+            className="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-400 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-lg z-30 cursor-pointer"
+          >
+            <X size={20} />
+          </button>
+
           <h2 className="text-[1.5rem] font-semibold text-slate-800 text-center tracking-tight">
             {disputeStep === "form"
               ? "File Dispute"
