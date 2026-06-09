@@ -76,7 +76,7 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
           {showDropdown && (
             <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 z-50 py-1.5 animate-in fade-in zoom-in-95 duration-200">
               <Link
-                href={`/swap/createswap?from=chat&swapper=${encodeURIComponent(
+                href={`/swap/agreement?from=chat&swapper=${encodeURIComponent(
                   participant.name,
                 )}`}
                 onClick={() => setShowDropdown(false)}

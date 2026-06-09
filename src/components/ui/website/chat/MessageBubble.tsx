@@ -57,52 +57,46 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ msg, onApproveCanc
             <div className="flex items-center gap-2.5 text-rose-500">
               <AlertCircle size={20} className="shrink-0" />
               <h4 className="text-[1.02rem] font-bold tracking-tight leading-tight">
-                Cancellation Request
+                {isMe ? "Cancellation Request Sent" : "Cancellation Request"}
               </h4>
             </div>
 
             {/* Description */}
             <p className="text-[0.88rem] font-medium text-slate-600 leading-relaxed">
               {isMe
-                ? "You have requested to cancel this swap. The other person needs to approve your cancellation request."
-                : "Your counter swapper wants to cancel this swap. Any fee you pay will be refunded if you approve."}
+                ? "Your cancellation request has been sent to the counter swapper for approval."
+                : "You’ve received a cancellation request from the counter swapper."}
             </p>
 
             {/* Action Buttons */}
-            {isMe ? (
-              <div className="w-full text-center pt-1 font-bold text-amber-500 text-[0.88rem]">
-                waiting for the other swappers approval
-              </div>
-            ) : (
-              <div className="w-full pt-1">
-                {msg.cancellationApproved ? (
-                  <div className="space-y-3">
-                    <div className="h-px bg-slate-100/85" />
-                    <div className="flex items-center gap-2 text-emerald-600 font-bold text-[0.92rem]">
-                      <CheckCircle size={18} className="shrink-0" />
-                      <span>Swap Cancelled</span>
-                    </div>
+            <div className="w-full pt-1">
+              {msg.cancellationApproved ? (
+                <div className="space-y-3">
+                  <div className="h-px bg-slate-100/85" />
+                  <div className="flex items-center gap-2 text-emerald-600 font-bold text-[0.92rem]">
+                    <CheckCircle size={18} className="shrink-0" />
+                    <span>Swap Cancelled</span>
                   </div>
-                ) : (
-                  <div className="w-full flex gap-3">
-                    <Button
-                      onClick={() => onApproveCancellation && onApproveCancellation(msg.id)}
-                      className="flex-1"
-                      variant="primary"
-                    >
-                      Accept Cancellation
-                    </Button>
-                    <Button
-                      onClick={() => setIsMe(true)} // Mock reject by switching to sender
-                      className="flex-1 border-red-500 text-red-500 hover:bg-red-50"
-                      variant="white"
-                    >
-                      Reject Cancellation
-                    </Button>
-                  </div>
-                )}
-              </div>
-            )}
+                </div>
+              ) : (
+                <div className="w-full flex gap-3">
+                  <Button
+                    onClick={() => onApproveCancellation && onApproveCancellation(msg.id)}
+                    className="flex-1"
+                    variant="primary"
+                  >
+                    Accept
+                  </Button>
+                  <Button
+                    onClick={() => setIsMe(true)} // Mock reject by switching to sender
+                    className="flex-1 border-red-500 text-red-500 hover:bg-red-50"
+                    variant="white"
+                  >
+                    Reject
+                  </Button>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Timestamp */}
@@ -152,19 +146,14 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ msg, onApproveCanc
             </button>
 
             {/* Header info */}
-            <div className="flex items-center gap-2.5 text-[#09A6A4]">
-              <RefreshCw size={20} className="shrink-0" />
-              <h4 className="text-[1.02rem] font-bold tracking-tight leading-tight">
-                Reinstate Swap Request
+            <div className="flex items-start gap-2.5 text-[#09A6A4]">
+              <RefreshCw size={20} className="shrink-0 mt-0.5" />
+              <h4 className="text-[1.02rem] font-bold tracking-tight leading-relaxed">
+                {isMe
+                  ? "Your reinstatement request has been sent to the contact swapper for approval."
+                  : "You have received a reinstatement request from the counter swapper."}
               </h4>
             </div>
-
-            {/* Description */}
-            <p className="text-[0.88rem] font-medium text-slate-600 leading-relaxed">
-              {isMe
-                ? "You have requested to reinstate this swap. The other person needs to approve the reinstatement to restart the countdown."
-                : "Your counter swapper wants to reinstate this swap. Approve to restart the swap countdown."}
-            </p>
 
             {/* Action Buttons */}
             {isMe ? (

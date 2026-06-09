@@ -302,7 +302,7 @@ export const SwapConfirmationView = ({
             {/* Card 2: Swap Confirmation Main Card */}
             <div className="bg-white rounded-4xl p-6 md:p-8 border border-slate-200/60 shadow-[0_8px_30px_rgb(0,0,0,0.02)] space-y-5 animate-in fade-in slide-in-from-top-4 duration-400">
               <h3 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pt-2">
-                Swap Confirmation
+                Swap Request
               </h3>
 
               {/* I Will Receive Box */}
@@ -434,14 +434,14 @@ export const SwapConfirmationView = ({
             {from === "chat" ? (
               <div className="flex gap-4 w-full pt-4 max-w-[500px] mx-auto animate-in fade-in slide-in-from-top-6 duration-600">
                 <Link href="/swap/payment" className="flex-1">
-                  <Button className="w-full" variant="primary">Accept Offer</Button>
+                  <Button className="w-full" variant="primary">Accept</Button>
                 </Link>
                 <Link href="/chat/bob-builder" className="flex-1">
                   <Button
                     className="w-full border-red-500 text-red-500 hover:bg-red-50"
                     variant="white"
                   >
-                    Reject Offer
+                    Reject
                   </Button>
                 </Link>
               </div>

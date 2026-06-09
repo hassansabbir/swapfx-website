@@ -93,50 +93,16 @@ export const SwapOfferCard: React.FC<SwapOfferCardProps> = ({
           </div>
 
           {/* Action Buttons */}
-          {isMe ? (
-            <div className="w-full flex justify-center px-6 pt-1">
-              <Link
-                href="/swap/confirmation?from=chat"
-                className="w-full"
-              >
-                <Button className="w-full" variant="primary">
-                  View Details
-                </Button>
-              </Link>
-            </div>
-          ) : (
-            <div className="w-full flex flex-col gap-3 px-6 pt-1">
-              <Link
-                href="/swap/confirmation?from=chat"
-                className="w-full"
-              >
-                <Button className="w-full" variant="primary">
-                  View Details
-                </Button>
-              </Link>
-              <div className="w-full flex gap-3">
-                <Link
-                  href="/swap/payment"
-                  className="flex-1"
-                >
-                  <Button className="w-full" variant="primary">
-                    Accept Offer
-                  </Button>
-                </Link>
-                <Link
-                  href={`/chat/${participant.id}`}
-                  className="flex-1"
-                >
-                  <Button
-                    className="w-full border-red-500 text-red-500 hover:bg-red-50"
-                    variant="white"
-                  >
-                    Reject Offer
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          )}
+          <div className="w-full flex justify-center px-6 pt-1">
+            <Link
+              href="/swap/confirmation?from=chat"
+              className="w-full"
+            >
+              <Button className="w-full" variant="primary">
+                View Details
+              </Button>
+            </Link>
+          </div>
         </div>
 
         {/* Timestamp */}
