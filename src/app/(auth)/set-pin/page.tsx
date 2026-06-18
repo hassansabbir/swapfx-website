@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { IconButton } from "@/components/ui/IconButton";
 import Link from "next/link";
 
 export default function SetPinPage() {
@@ -20,12 +21,9 @@ export default function SetPinPage() {
   return (
     <div className="relative w-full max-w-[750px] bg-white/10 backdrop-blur-2xl rounded-[3rem] p-12 md:p-16 shadow-2xl border border-white/20 flex flex-col items-center animate-in fade-in zoom-in duration-500">
       {/* Back Button */}
-      <Link
-        href="/verify-email"
-        className="absolute top-8 left-8 w-10 h-10 rounded-full bg-slate-400/50 flex items-center justify-center text-white hover:bg-slate-500/50 transition-colors"
-      >
+      <IconButton href="/verify-email" className="absolute top-8 left-8 bg-slate-400/50 hover:bg-slate-500/50">
         <ChevronLeft className="w-6 h-6" />
-      </Link>
+      </IconButton>
 
       <div className="w-full max-w-[400px] mt-8 text-center space-y-12">
         <h2 className="text-[1.5rem] font-bold text-slate-800">Set PIN</h2>

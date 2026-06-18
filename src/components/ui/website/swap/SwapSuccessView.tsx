@@ -1,6 +1,7 @@
 import React from "react";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { Button } from "@/components/ui/Button";
+import { IconButton } from "@/components/ui/IconButton";
 import { Check, X } from "lucide-react";
 
 export const SwapSuccessView = ({
@@ -14,12 +15,9 @@ export const SwapSuccessView = ({
     <div className="py-6 md:py-10 px-3 md:px-8 max-w-[1200px] mx-auto w-full animate-in fade-in duration-700 h-[80vh] flex items-center justify-center">
       <GlassContainer className="p-10 md:p-16 relative overflow-visible max-w-[600px] w-full">
         {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-400 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-lg z-10 animate-in fade-in duration-300"
-        >
+        <IconButton onClick={onClose} className="absolute top-6 right-6 animate-in fade-in duration-300">
           <X size={24} />
-        </button>
+        </IconButton>
 
         <div className="flex flex-col items-center text-center space-y-8">
           {/* Animated Checkmark Circle */}

@@ -1,5 +1,6 @@
 import React from "react";
 import { GlassContainer } from "@/components/ui/GlassContainer";
+import { IconButton } from "@/components/ui/IconButton";
 import { ArrowLeft, CheckCircle2, Star } from "lucide-react";
 
 export const SwapHistoryDetailsView = ({
@@ -13,12 +14,9 @@ export const SwapHistoryDetailsView = ({
     <div className="py-6 md:py-10 px-3 md:px-8 max-w-[1200px] mx-auto w-full animate-in fade-in duration-500">
       <GlassContainer className="p-6 md:p-12 relative overflow-visible">
         {/* Back Button */}
-        <button
-          onClick={onBack}
-          className="absolute top-6 left-6 w-11 h-11 rounded-full bg-slate-400/85 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-md z-10 animate-in fade-in duration-300"
-        >
+        <IconButton onClick={onBack} className="absolute top-6 left-6 w-11 h-11 bg-slate-400/85 shadow-md animate-in fade-in duration-300">
           <ArrowLeft size={20} />
-        </button>
+        </IconButton>
 
         <div className="space-y-6 max-w-[750px] mx-auto">
           {/* Header Title */}

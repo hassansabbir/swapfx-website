@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { Button } from "@/components/ui/Button";
+import { IconButton } from "@/components/ui/IconButton";
 import {
   ChevronLeft,
   X,
@@ -159,7 +160,8 @@ export const SelfiePage = () => {
       <div className="min-h-screen bg-black text-white flex flex-col justify-between p-6 relative overflow-hidden animate-in fade-in duration-500">
         {/* Top bar controls */}
         <div className="flex items-center justify-between z-10">
-          <button
+          <IconButton
+            variant="dark"
             onClick={() => {
               if (forceMobileMode) {
                 setForceMobileMode(false);
@@ -167,21 +169,20 @@ export const SelfiePage = () => {
                 router.push("/account/my-id");
               }
             }}
-            className="w-10 h-10 rounded-full bg-neutral-800 text-white flex items-center justify-center hover:bg-neutral-700 transition-colors"
           >
             <ChevronLeft size={20} />
-          </button>
+          </IconButton>
 
           <span className="font-bold text-[1rem] tracking-tight">
             Take Your Selfie
           </span>
 
-          <button
+          <IconButton
+            variant="dark"
             onClick={() => router.push("/account")}
-            className="w-10 h-10 rounded-full bg-neutral-800 text-white flex items-center justify-center hover:bg-neutral-700 transition-colors"
           >
             <X size={20} />
-          </button>
+          </IconButton>
         </div>
 
         {/* Live Camera circular scanner viewport */}
@@ -296,12 +297,9 @@ export const SelfiePage = () => {
     <div className="py-6 md:py-10 px-3 md:px-8 max-w-[1000px] mx-auto w-full animate-in fade-in duration-700">
       <GlassContainer className="p-6 md:p-12 relative overflow-visible">
         {/* Back Button */}
-        <Link
-          href="/account/my-id"
-          className="absolute top-6 left-6 w-10 h-10 rounded-full bg-slate-400 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-lg z-10"
-        >
+        <IconButton href="/account/my-id" className="absolute top-6 left-6">
           <ChevronLeft size={24} />
-        </Link>
+        </IconButton>
 
         <div className="max-w-[800px] mx-auto space-y-8">
           <div className="text-center space-y-1">

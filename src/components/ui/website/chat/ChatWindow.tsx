@@ -3,6 +3,7 @@ import { ArrowLeft, Paperclip, Send, Info, X } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { GlassContainer } from "@/components/ui/GlassContainer";
+import { IconButton } from "@/components/ui/IconButton";
 import { ChatSession, ChatMessage } from "./types";
 import { ChatHeader } from "./ChatHeader";
 import { MessageBubble } from "./MessageBubble";
@@ -77,12 +78,12 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
   return (
     <div className="relative w-full flex items-center justify-center min-h-[98vh]">
       {/* Circle Back Button */}
-      <button
+      <IconButton
         onClick={onBack}
-        className="absolute -left-4 md:-left-12 top-2 w-11 h-11 rounded-full bg-slate-400/85 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-md z-30"
+        className="absolute -left-4 md:-left-12 top-2 w-11 h-11 bg-slate-400/85 shadow-md z-30"
       >
         <ArrowLeft size={20} />
-      </button>
+      </IconButton>
 
       {/* Chat Frame */}
       <GlassContainer className="w-full overflow-hidden flex flex-col h-[110vh] border border-white/50 relative p-0 bg-white/20">

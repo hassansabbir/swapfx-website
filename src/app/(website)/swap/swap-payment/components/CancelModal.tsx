@@ -2,6 +2,7 @@
 
 import React from "react";
 import { X, AlertCircle } from "lucide-react";
+import { IconButton } from "@/components/ui/IconButton";
 
 interface CancelModalProps {
   onClose: () => void;
@@ -16,12 +17,13 @@ export default function CancelModal({
     <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-300">
       <div className="bg-white rounded-3xl p-6 md:p-8 max-w-[460px] w-full shadow-2xl relative flex flex-col items-center text-center space-y-5 animate-in zoom-in duration-300 border border-slate-100">
         {/* Close Button */}
-        <button
+        <IconButton
           onClick={onClose}
-          className="absolute right-4 top-4 w-9 h-9 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center hover:bg-slate-200 transition-all shadow-inner focus:outline-none"
+          variant="light"
+          className="absolute right-4 top-4 w-9 h-9"
         >
           <X size={18} strokeWidth={2.5} />
-        </button>
+        </IconButton>
 
         {/* Warning Exclamation Circle */}
         <div className="w-16 h-16 rounded-2xl bg-rose-50/70 text-rose-500 flex items-center justify-center shadow-sm">

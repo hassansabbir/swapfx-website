@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { GlassContainer } from "@/components/ui/GlassContainer";
+import { IconButton } from "@/components/ui/IconButton";
 import { ChevronLeft, ChevronRight, Lock, RectangleEllipsis, UserX, X, Trash2, ChevronDown, Eye, EyeOff } from "lucide-react";
 
 export default function AccountSettingsPage() {
@@ -15,12 +16,12 @@ export default function AccountSettingsPage() {
       <GlassContainer className="p-6 md:p-12 relative bg-white/40 border border-white/60 shadow-2xl rounded-4xl min-h-[420px] flex flex-col justify-center">
         {/* Close Button (visible only in main menu) */}
         {viewState === "menu" && (
-          <button
+          <IconButton
             onClick={() => router.back()}
-            className="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-400/80 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-md z-20 focus:outline-none"
+            className="absolute top-6 right-6 w-9 h-9 bg-slate-400/80 shadow-md z-20"
           >
             <X size={18} />
-          </button>
+          </IconButton>
         )}
 
         {/* Dynamic Views */}
@@ -89,12 +90,12 @@ export default function AccountSettingsPage() {
           /* ========================================================= */
           <div className="max-w-[750px] mx-auto w-full space-y-6 pt-4 relative animate-in fade-in duration-300">
             {/* Back circle chevron button in top left matching mockup */}
-            <button
+            <IconButton
               onClick={() => setViewState("menu")}
-              className="absolute top-2 left-0 w-10 h-10 rounded-full bg-[#949CA9] text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-md z-20 focus:outline-none"
+              className="absolute top-2 left-0 bg-[#949CA9] hover:bg-slate-500 shadow-md z-20"
             >
               <ChevronLeft size={22} />
-            </button>
+            </IconButton>
 
             {/* Header Title */}
             <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-3">
@@ -142,12 +143,12 @@ export default function AccountSettingsPage() {
           /* ========================================================= */
           <div className="max-w-[750px] mx-auto w-full space-y-6 pt-4 relative animate-in fade-in duration-300">
             {/* Back circle chevron button in top left */}
-            <button
+            <IconButton
               onClick={() => setViewState("menu")}
-              className="absolute top-2 left-0 w-10 h-10 rounded-full bg-[#949CA9] text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-md z-20 focus:outline-none"
+              className="absolute top-2 left-0 bg-[#949CA9] hover:bg-slate-500 shadow-md z-20"
             >
               <ChevronLeft size={22} />
-            </button>
+            </IconButton>
 
             {/* Header Title */}
             <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-3">
@@ -200,12 +201,12 @@ export default function AccountSettingsPage() {
           /* ========================================================= */
           <div className="max-w-[750px] mx-auto w-full space-y-6 pt-4 relative animate-in fade-in duration-300">
             {/* Back circle chevron button in top left (goes back to manage_pin) */}
-            <button
+            <IconButton
               onClick={() => setViewState("manage_pin")}
-              className="absolute top-2 left-0 w-10 h-10 rounded-full bg-[#949CA9] text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-md z-20 focus:outline-none"
+              className="absolute top-2 left-0 bg-[#949CA9] hover:bg-slate-500 shadow-md z-20"
             >
               <ChevronLeft size={22} />
-            </button>
+            </IconButton>
 
             {/* Header Title */}
             <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-3">
@@ -257,12 +258,12 @@ export default function AccountSettingsPage() {
           /* ========================================================= */
           <div className="max-w-[750px] mx-auto w-full space-y-6 pt-4 relative animate-in fade-in duration-300">
             {/* Close Button top right */}
-            <button
+            <IconButton
               onClick={() => setViewState("menu")}
-              className="absolute top-2 right-0 w-10 h-10 rounded-full bg-[#949CA9] text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-md z-20 focus:outline-none"
+              className="absolute top-2 right-0 bg-[#949CA9] hover:bg-slate-500 shadow-md z-20"
             >
               <X size={20} />
-            </button>
+            </IconButton>
 
             <div className="max-w-[500px] mx-auto w-full flex flex-col items-center pt-6 space-y-5">
               
@@ -322,12 +323,12 @@ export default function AccountSettingsPage() {
           /* ========================================================= */
           <div className="max-w-[750px] mx-auto w-full space-y-6 pt-4 relative animate-in fade-in duration-300">
             {/* Back circle chevron button */}
-            <button
+            <IconButton
               onClick={() => setViewState("manage_pin")}
-              className="absolute top-2 left-0 w-10 h-10 rounded-full bg-[#949CA9] text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-md z-20 focus:outline-none"
+              className="absolute top-2 left-0 bg-[#949CA9] hover:bg-slate-500 shadow-md z-20"
             >
               <ChevronLeft size={22} />
-            </button>
+            </IconButton>
 
             {/* Header Title */}
             <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-3">

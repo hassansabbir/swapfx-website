@@ -3,6 +3,7 @@
 import React from "react";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { Button } from "@/components/ui/Button";
+import { IconButton } from "@/components/ui/IconButton";
 import { X, Check } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -15,12 +16,9 @@ const IDSuccessPage = () => {
     <div className="py-6 md:py-10 px-3 md:px-8 max-w-[1000px] mx-auto w-full animate-in fade-in duration-700 h-[80vh] flex items-center">
       <GlassContainer className="p-10 md:p-16 relative overflow-visible max-w-[600px]">
         {/* Close Button */}
-        <Link 
-          href="/account"
-          className="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-400 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-lg z-10"
-        >
+        <IconButton href="/account" className="absolute top-6 right-6">
           <X size={24} />
-        </Link>
+        </IconButton>
 
         <div className="flex flex-col items-center text-center space-y-8">
           {/* Animated Checkmark Circle */}

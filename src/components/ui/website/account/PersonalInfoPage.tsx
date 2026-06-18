@@ -3,6 +3,7 @@
 import React from "react";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { Button } from "@/components/ui/Button";
+import { IconButton } from "@/components/ui/IconButton";
 import {
   X,
   Camera,
@@ -18,12 +19,9 @@ const PersonalInfoPage = () => {
     <div className="py-6 md:py-10 px-3 md:px-8 max-w-[1150px] mx-auto w-full animate-in fade-in duration-700">
       <GlassContainer className="p-6 md:p-10 relative overflow-visible">
         {/* Close Button */}
-        <Link
-          href="/account"
-          className="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-400 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-lg z-10"
-        >
+        <IconButton href="/account" className="absolute top-6 right-6">
           <X size={24} />
-        </Link>
+        </IconButton>
 
         <div className="max-w-[700px] mx-auto space-y-10">
           {/* Profile Header */}

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { GlassContainer } from "@/components/ui/GlassContainer";
+import { IconButton } from "@/components/ui/IconButton";
 import { ChevronLeft, Check } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -214,7 +215,7 @@ export default function IndianVerificationPage() {
         
         {/* Navigation back arrow */}
         {step !== "fetching" && step !== "kyc_complete" && !isVerifyingSelfie && (
-          <button 
+          <IconButton 
             onClick={() => {
               if (step === "landing") router.push("/account/my-id");
               else if (step === "login") setStep("landing");
@@ -226,10 +227,10 @@ export default function IndianVerificationPage() {
               else if (step === "selfie_scan") setStep("aadhar_success");
               else if (step === "selfie_captured") setStep("selfie_scan");
             }}
-            className="absolute top-6 left-6 w-10 h-10 rounded-full bg-slate-400 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-lg z-10 focus:outline-none cursor-pointer"
+            className="absolute top-6 left-6"
           >
             <ChevronLeft size={24} />
-          </button>
+          </IconButton>
         )}
 
         <div className="max-w-[550px] mx-auto w-full space-y-6">

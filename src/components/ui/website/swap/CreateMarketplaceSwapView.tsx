@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { Button } from "@/components/ui/Button";
+import { IconButton } from "@/components/ui/IconButton";
 import { ArrowLeft, ChevronDown, AlertCircle, X } from "lucide-react";
 
 export const CreateMarketplaceSwapView = ({
@@ -29,20 +30,14 @@ export const CreateMarketplaceSwapView = ({
     <div className="py-6 md:py-10 px-3 md:px-8 max-w-[1200px] mx-auto w-full animate-in fade-in slide-in-from-right-4 duration-500">
       <GlassContainer className="p-6 md:p-10 relative">
         {/* Back Button */}
-        <button
-          onClick={onBack}
-          className="absolute top-6 left-6 w-10 h-10 rounded-full bg-slate-400 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-lg"
-        >
+        <IconButton onClick={onBack} className="absolute top-6 left-6">
           <ArrowLeft size={24} />
-        </button>
+        </IconButton>
 
         {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-400 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-lg"
-        >
+        <IconButton onClick={onClose} className="absolute top-6 right-6">
           <X size={24} />
-        </button>
+        </IconButton>
 
         <div className="space-y-8 max-w-[750px] mx-auto">
           <div className="text-center space-y-1">

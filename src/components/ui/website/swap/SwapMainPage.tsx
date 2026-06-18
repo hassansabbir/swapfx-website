@@ -23,11 +23,11 @@ const SwapMainPage = () => {
           </div>
 
           {/* Stats Row */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="flex flex-row justify-center gap-4">
             <div className="flex-1 max-w-[180px] bg-white/50 backdrop-blur-md rounded-3xl p-5 text-center border border-white/60 shadow-sm space-y-0.5">
               <h2 className="text-[1.8rem] font-bold text-[#001D3D]">20</h2>
               <p className="text-[0.8rem] font-medium text-slate-500">
-                Complete
+                Completed
               </p>
             </div>
             <div className="flex-1 max-w-[180px] bg-white/50 backdrop-blur-md rounded-3xl p-5 text-center border border-white/60 shadow-sm space-y-0.5">
@@ -45,14 +45,14 @@ const SwapMainPage = () => {
               onClick={() => router.push("/swap/agreement")}
               className="w-full"
             >
-              Create Market Swap
+              Publish Market Swap
             </Button>
           </div>
 
           {/* Swap History */}
           <div className="space-y-4 pt-3">
             <h3 className="text-[1.1rem] font-semibold text-slate-500 tracking-tight">
-              Swap History
+              Swap Activity
             </h3>
 
             <div className="space-y-4">
@@ -83,11 +83,10 @@ const SwapMainPage = () => {
                 <button
                   key={num}
                   className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-[0.8rem] transition-all shadow-[0_2px_8px_rgba(0,0,0,0.04)]
-                  ${
-                    num === 1
+                  ${num === 1
                       ? "bg-[#09A6A4] text-white shadow-sm shadow-[#09A6A4]/30"
                       : "bg-white text-slate-600 border border-slate-100 hover:bg-slate-50 hover:shadow-md"
-                  }
+                    }
                 `}
                 >
                   {num}

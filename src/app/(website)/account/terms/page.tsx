@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { GlassContainer } from "@/components/ui/GlassContainer";
+import { IconButton } from "@/components/ui/IconButton";
 import { ArrowLeft, ChevronRight, FileText, Shield, X } from "lucide-react";
 
 export default function TermsPage() {
@@ -14,12 +15,12 @@ export default function TermsPage() {
       <GlassContainer className="p-6 md:p-12 relative bg-white/40 border border-white/60 shadow-2xl rounded-4xl flex flex-col justify-center">
         {/* Close Button (visible only in main menu) */}
         {viewState === "menu" && (
-          <button
+          <IconButton
             onClick={() => router.back()}
-            className="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-400/80 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-md z-20 focus:outline-none"
+            className="absolute top-6 right-6 w-9 h-9 bg-slate-400/80 shadow-md z-20"
           >
             <X size={18} />
-          </button>
+          </IconButton>
         )}
 
         {/* Dynamic Views rendering sequentially */}
@@ -74,12 +75,12 @@ export default function TermsPage() {
           /* ========================================================= */
           <div className="max-w-[750px] mx-auto w-full space-y-5 pt-8 relative animate-in fade-in duration-300">
             {/* Back circle arrow button in top left */}
-            <button
+            <IconButton
               onClick={() => setViewState("menu")}
-              className="absolute top-0 left-0 w-9 h-9 rounded-full bg-slate-400/80 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-md z-20 focus:outline-none"
+              className="absolute top-0 left-0 w-9 h-9 bg-slate-400/80 shadow-md z-20"
             >
               <ArrowLeft size={18} />
-            </button>
+            </IconButton>
 
             {/* Header Title */}
             <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-3">
@@ -165,12 +166,12 @@ export default function TermsPage() {
           /* ========================================================= */
           <div className="max-w-[750px] mx-auto w-full space-y-5 pt-8 relative animate-in fade-in duration-300">
             {/* Back circle arrow button in top left */}
-            <button
+            <IconButton
               onClick={() => setViewState("menu")}
-              className="absolute top-0 left-0 w-9 h-9 rounded-full bg-slate-400/80 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-md z-20 focus:outline-none"
+              className="absolute top-0 left-0 w-9 h-9 bg-slate-400/80 shadow-md z-20"
             >
               <ArrowLeft size={18} />
-            </button>
+            </IconButton>
 
             {/* Header Title */}
             <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-3">

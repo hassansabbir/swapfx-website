@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { Button } from "@/components/ui/Button";
+import { IconButton } from "@/components/ui/IconButton";
 import { ChevronLeft, Info, AlertCircle, Globe, MapPin } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -26,7 +27,7 @@ const MyIDPage = () => {
     <div className="py-6 md:py-10 px-3 md:px-8 max-w-[1000px] mx-auto w-full animate-in fade-in duration-700">
       <GlassContainer className="p-6 md:p-12 relative overflow-visible">
         {/* Back Button */}
-        <button
+        <IconButton
           onClick={() => {
             if (step === "location") {
               setStep("info");
@@ -34,10 +35,10 @@ const MyIDPage = () => {
               router.push("/account");
             }
           }}
-          className="absolute top-6 left-6 w-10 h-10 rounded-full bg-slate-400 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-lg z-10 focus:outline-none cursor-pointer"
+          className="absolute top-6 left-6"
         >
           <ChevronLeft size={24} />
-        </button>
+        </IconButton>
 
         <div className="max-w-[550px] mx-auto space-y-8">
           <h1 className="text-center text-[1.8rem] font-bold text-slate-800 tracking-tight mb-4">

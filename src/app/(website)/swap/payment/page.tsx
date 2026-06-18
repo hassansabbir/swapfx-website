@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { ArrowLeft, ArrowRight, Shield, Check, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { IconButton } from "@/components/ui/IconButton";
 import CancelModal from "@/app/(website)/swap/swap-payment/components/CancelModal";
 
 type PaymentState = "summary" | "payment_method";
@@ -104,22 +105,22 @@ export default function FeePaymentPage() {
     <div className="py-6 md:py-10 px-3 md:px-8 max-w-[1200px] mx-auto w-full animate-in fade-in duration-500">
       <div className="relative flex items-center justify-center min-h-[85vh]">
         {/* Circle Back Button */}
-        <button
+        <IconButton
           onClick={handleBack}
-          className="absolute -left-4 md:-left-12 top-2 w-11 h-11 rounded-full bg-slate-400/85 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-md z-30"
+          className="absolute -left-4 md:-left-12 top-2 w-11 h-11 bg-slate-400/85 shadow-md z-30"
         >
           <ArrowLeft size={20} />
-        </button>
+        </IconButton>
 
         {/* Payment Main Frame */}
         <GlassContainer className="w-full overflow-hidden p-6 md:p-10 border border-white/50 bg-white/20 shadow-xl rounded-4xl flex flex-col relative space-y-4">
           {/* Close/Cross Button */}
-          <button
+          <IconButton
             onClick={() => router.push("/chat/bob-builder?offerCreated=true")}
-            className="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-400 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-lg z-30 cursor-pointer"
+            className="absolute top-6 right-6 shadow-lg z-30"
           >
             <X size={20} />
-          </button>
+          </IconButton>
 
           <h2 className="text-[1.5rem] font-extrabold text-slate-800 text-center tracking-tight animate-in fade-in duration-400">
             Fee Payment

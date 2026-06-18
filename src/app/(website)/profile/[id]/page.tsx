@@ -3,6 +3,7 @@
 import React, { Suspense } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { GlassContainer } from "@/components/ui/GlassContainer";
+import { IconButton } from "@/components/ui/IconButton";
 import { CheckCircle2, Shield, Star, X } from "lucide-react";
 
 function ProfileContent() {
@@ -96,12 +97,12 @@ function ProfileContent() {
         </h2>
 
         {/* Circular Close X Button in top right */}
-        <button
+        <IconButton
           onClick={() => router.back()}
-          className="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-400/80 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-md z-20 focus:outline-none"
+          className="absolute top-6 right-6 w-9 h-9 bg-slate-400/80 shadow-md z-20"
         >
           <X size={18} />
-        </button>
+        </IconButton>
 
         <div className="space-y-6 max-w-[640px] mx-auto">
           {/* Swapper Card (Avatar overlapping the Teal banner container) */}

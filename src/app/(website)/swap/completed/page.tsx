@@ -13,6 +13,7 @@ import {
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { IconButton } from "@/components/ui/IconButton";
 
 function SwapCompletedContent() {
   const router = useRouter();
@@ -74,12 +75,12 @@ function SwapCompletedContent() {
     <div className="py-6 md:py-10 px-3 md:px-8 max-w-[1200px] mx-auto w-full animate-in fade-in duration-500">
       <div className="relative flex items-center justify-center min-h-[85vh]">
         {/* Circle Back Button */}
-        <button
+        <IconButton
           onClick={handleBack}
-          className="absolute -left-4 md:-left-12 top-2 w-11 h-11 rounded-full bg-slate-400/85 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-md z-30"
+          className="absolute -left-4 md:-left-12 top-2 w-11 h-11 bg-slate-400/85 shadow-md z-30"
         >
           <ArrowLeft size={20} />
-        </button>
+        </IconButton>
 
         {/* Completed Card Container */}
         <GlassContainer className="w-full overflow-hidden p-6 md:p-10 border border-white/50 bg-white/20 shadow-xl rounded-4xl flex flex-col relative space-y-5 max-w-[850px]">
@@ -242,12 +243,13 @@ function SwapCompletedContent() {
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-300">
           <div className="bg-white rounded-3xl p-6 md:p-8 max-w-[460px] w-full shadow-2xl relative flex flex-col items-center text-center space-y-5 animate-in zoom-in duration-300 border border-slate-100">
             {/* Close Button */}
-            <button
+            <IconButton
               onClick={() => setShowReviewModal(false)}
-              className="absolute right-4 top-4 w-9 h-9 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center hover:bg-slate-200 transition-all shadow-inner"
+              variant="light"
+              className="absolute right-4 top-4 w-9 h-9"
             >
               <X size={18} strokeWidth={2.5} />
-            </button>
+            </IconButton>
 
             <h3 className="text-[1.32rem] font-semibold text-slate-800 tracking-tight leading-tight">
               Share Your Experience.

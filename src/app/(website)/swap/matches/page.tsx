@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ChevronRight, CheckCircle2, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { GlassContainer } from "@/components/ui/GlassContainer";
+import { IconButton } from "@/components/ui/IconButton";
 
 interface Match {
   id: string;
@@ -98,18 +99,16 @@ export default function MatchesPage() {
       {/* GlassContainer at full 1150px default width */}
       <GlassContainer className="relative bg-white/20 border border-white/50 shadow-xl p-6 md:p-10 overflow-visible">
         {/* ── X Close button – inside glass container, top-right corner ── */}
-        <Link
+        <IconButton
           href="/"
           className="absolute top-5 right-5 md:top-6 md:right-6 z-20
-                     w-11 h-11 rounded-full
+                     w-11 h-11
                      bg-slate-300/70 hover:bg-slate-400/80
-                     flex items-center justify-center
                      shadow-md backdrop-blur-sm
-                     text-slate-600 hover:text-slate-800
-                     transition-all duration-200"
+                     text-slate-600 hover:text-slate-800"
         >
           <X className="w-5 h-5 stroke-[2.5]" />
-        </Link>
+        </IconButton>
 
         {/* Inner content wrapper – keeps cards at 680px centered */}
         <div className="w-full max-w-[680px] mx-auto flex flex-col items-center">

@@ -14,6 +14,7 @@ import {
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { IconButton } from "@/components/ui/IconButton";
 import CancelModal from "@/app/(website)/swap/swap-payment/components/CancelModal";
 
 export default function ProofOfPaymentPage() {
@@ -122,23 +123,22 @@ export default function ProofOfPaymentPage() {
     <div className="py-6 md:py-10 px-3 md:px-8 max-w-[1200px] mx-auto w-full animate-in fade-in duration-500">
       <div className="relative flex items-center justify-center min-h-[85vh]">
         {/* Circle Back Button */}
-        <button
+        <IconButton
           onClick={handleBack}
-          className="absolute -left-4 md:-left-12 top-2 w-11 h-11 rounded-full bg-slate-400/85 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-md z-30"
+          className="absolute -left-4 md:-left-12 top-2 w-11 h-11 bg-slate-400/85 shadow-md z-30"
         >
           <ArrowLeft size={20} />
-        </button>
+        </IconButton>
 
         {/* Proof details Card container */}
         <GlassContainer className="w-full overflow-hidden p-6 md:p-10 border border-white/50 bg-white/20 shadow-xl rounded-4xl flex flex-col relative space-y-4">
           {/* Close/Cross Button */}
-          <button
-            type="button"
+          <IconButton
             onClick={() => router.push("/chat/bob-builder?offerCreated=true")}
-            className="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-400 text-white flex items-center justify-center hover:bg-slate-500 transition-colors shadow-lg z-30 cursor-pointer"
+            className="absolute top-6 right-6 shadow-lg z-30"
           >
             <X size={20} />
-          </button>
+          </IconButton>
 
           <h2 className="text-[1.5rem] font-extrabold text-slate-800 text-center tracking-tight">
             Proof of Payment
@@ -294,12 +294,13 @@ export default function ProofOfPaymentPage() {
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-300">
           <div className="bg-white rounded-3xl p-6 md:p-10 max-w-[500px] w-full shadow-2xl relative flex flex-col items-center text-center space-y-6 animate-in zoom-in duration-300">
             {/* Circular Close Button */}
-            <button
+            <IconButton
               onClick={() => setShowSuccessModal(false)}
-              className="absolute right-4 top-4 w-9 h-9 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center hover:bg-slate-200 transition-all shadow-inner"
+              variant="light"
+              className="absolute right-4 top-4 w-9 h-9"
             >
               <X size={18} strokeWidth={2.5} />
-            </button>
+            </IconButton>
 
             {/* Large check icon and confetti bursts */}
             <div className="relative w-28 h-28 flex items-center justify-center">
