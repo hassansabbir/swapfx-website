@@ -8,14 +8,14 @@ import logo from "@/assets/logo.png";
 
 export default function AuthMethodPage() {
   return (
-    <div className="relative w-full max-w-[750px] bg-white/10 backdrop-blur-sm rounded-[3rem] p-16 shadow-2xl border border-white/20 flex flex-col items-center animate-in fade-in zoom-in duration-500">
+    <div className="relative w-full max-w-[750px] bg-white/10 backdrop-blur-sm rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 md:p-16 shadow-2xl border border-white/20 flex flex-col items-center animate-in fade-in zoom-in duration-500">
       {/* Close Button */}
-      <IconButton href="/" className="absolute top-8 right-8 bg-slate-400/50 hover:bg-slate-500/50">
+      <IconButton href="/" className="absolute top-5 right-5 sm:top-8 sm:right-8 bg-slate-400/50 hover:bg-slate-500/50">
         <X className="w-6 h-6" />
       </IconButton>
 
       {/* Logo */}
-      <div className="mb-12">
+      <div className="mb-12 mt-8">
         <Image
           src={logo}
           alt="SwapFX Logo"

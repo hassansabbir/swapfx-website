@@ -23,7 +23,7 @@ const PersonalInfoPage = () => {
           <X size={24} />
         </IconButton>
 
-        <div className="max-w-[700px] mx-auto space-y-10">
+        <div className="max-w-[700px] mx-auto space-y-10 mt-8">
           {/* Profile Header */}
           <div className="flex flex-col items-center text-center space-y-4">
             <div className="relative group cursor-pointer">
@@ -88,8 +88,8 @@ const PersonalInfoPage = () => {
             {/* Phone */}
             <div className="md:col-span-2">
               <FormGroup label="Phone">
-                <div className="flex gap-4">
-                  <div className="relative w-32 shrink-0">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                  <div className="relative w-full sm:w-32 sm:shrink-0">
                     <div className="w-full h-14 px-4 rounded-xl bg-white/50 border border-slate-200 flex items-center justify-between cursor-pointer">
                       <div className="flex items-center gap-2">
                         <div className="w-6 h-4 bg-red-500 rounded-sm relative overflow-hidden">
@@ -107,7 +107,7 @@ const PersonalInfoPage = () => {
                   <input
                     type="text"
                     defaultValue="+123 456 789"
-                    className="flex-1 h-14 px-4 rounded-xl bg-white/50 border border-slate-200 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-[#09A6A4]/20 focus:border-[#09A6A4] transition-all"
+                    className="flex-1 min-w-0 h-14 px-4 rounded-xl bg-white/50 border border-slate-200 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-[#09A6A4]/20 focus:border-[#09A6A4] transition-all"
                   />
                 </div>
               </FormGroup>

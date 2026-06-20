@@ -40,7 +40,7 @@ const MyIDPage = () => {
           <ChevronLeft size={24} />
         </IconButton>
 
-        <div className="max-w-[550px] mx-auto space-y-8">
+        <div className="max-w-[550px] mx-auto space-y-8 mt-8">
           <h1 className="text-center text-[1.8rem] font-bold text-slate-800 tracking-tight mb-4">
             My ID
           </h1>

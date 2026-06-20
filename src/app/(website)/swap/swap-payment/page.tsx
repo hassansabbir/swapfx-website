@@ -102,7 +102,7 @@ export default function SwapPaymentPage() {
         {/* Circle Back Button */}
         <IconButton
           onClick={handleBack}
-          className="absolute -left-4 md:-left-12 top-2 w-11 h-11 bg-slate-400/85 shadow-md z-30"
+          className="absolute left-2 md:-left-12 top-2 w-11 h-11 bg-slate-400/85 shadow-md z-30"
         >
           <ArrowLeft size={20} />
         </IconButton>
@@ -117,7 +117,7 @@ export default function SwapPaymentPage() {
             <X size={20} />
           </IconButton>
 
-          <h2 className="text-[1.5rem] font-semibold text-slate-800 text-center tracking-tight">
+          <h2 className="text-[1.5rem] font-semibold text-slate-800 text-center tracking-tight mt-8">
             {disputeStep === "form"
               ? "File Dispute"
               : disputeStep !== "none"

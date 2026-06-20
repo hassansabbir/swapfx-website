@@ -20,7 +20,7 @@ export const SwapHistoryDetailsView = ({
 
         <div className="space-y-6 max-w-[750px] mx-auto">
           {/* Header Title */}
-          <div className="text-center pt-2">
+          <div className="text-center pt-12">
             <h2 className="text-[1.5rem] font-bold text-slate-800 tracking-tight">
               Swap History
             </h2>

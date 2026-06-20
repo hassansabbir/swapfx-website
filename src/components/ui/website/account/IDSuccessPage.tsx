@@ -20,7 +20,7 @@ const IDSuccessPage = () => {
           <X size={24} />
         </IconButton>
 
-        <div className="flex flex-col items-center text-center space-y-8">
+        <div className="flex flex-col items-center text-center space-y-8 mt-8">
           {/* Animated Checkmark Circle */}
           <div className="relative">
             {/* Confetti particles - simulated with CSS */}

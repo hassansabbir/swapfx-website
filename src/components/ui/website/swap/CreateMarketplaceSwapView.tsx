@@ -39,7 +39,7 @@ export const CreateMarketplaceSwapView = ({
           <X size={24} />
         </IconButton>
 
-        <div className="space-y-8 max-w-[750px] mx-auto">
+        <div className="space-y-8 max-w-[750px] mx-auto mt-8">
           <div className="text-center space-y-1">
             <h2 className="text-[1.5rem] font-bold text-slate-800">
               {swapperName ? "Create Peer Swap" : "Create Marketplace Swap"}
@@ -89,9 +89,9 @@ export const CreateMarketplaceSwapView = ({
                       setShowWantDrop(false);
                       setShowDurationDrop(false);
                     }}
-                    className="w-32 bg-white rounded-xl px-4 py-3.5 border border-slate-100 flex items-center justify-between cursor-pointer shadow-sm hover:bg-slate-50 transition-colors"
+                    className="w-20 sm:w-32 shrink-0 bg-white rounded-xl px-2 sm:px-4 py-3.5 border border-slate-100 flex items-center justify-between cursor-pointer shadow-sm hover:bg-slate-50 transition-colors"
                   >
-                    <span className="font-bold text-slate-700">
+                    <span className="font-bold text-slate-700 text-[0.85rem] sm:text-[1rem]">
                       {offerCurrency}
                     </span>
                     <ChevronDown
@@ -101,7 +101,7 @@ export const CreateMarketplaceSwapView = ({
                   </div>
 
                   {showOfferDrop && (
-                    <div className="absolute top-full left-0 w-32 mt-1 bg-white rounded-xl shadow-xl border border-slate-100 z-50 py-2 animate-in fade-in zoom-in-95 duration-200">
+                    <div className="absolute top-full left-0 w-20 sm:w-32 mt-1 bg-white rounded-xl shadow-xl border border-slate-100 z-50 py-2 animate-in fade-in zoom-in-95 duration-200">
                       {currencies.map((curr) => (
                         <div
                           key={curr}
@@ -121,7 +121,7 @@ export const CreateMarketplaceSwapView = ({
                     type="text"
                     defaultValue={swapperName ? "150,000.00" : ""}
                     placeholder="150,000.00"
-                    className="flex-1 bg-white rounded-xl px-5 py-3.5 border border-slate-100 font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#09A6A4]/10 shadow-sm"
+                    className="flex-1 min-w-0 bg-white rounded-xl px-5 py-3.5 border border-slate-100 font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#09A6A4]/10 shadow-sm"
                   />
                 </div>
               </div>
@@ -142,9 +142,9 @@ export const CreateMarketplaceSwapView = ({
                       setShowOfferDrop(false);
                       setShowDurationDrop(false);
                     }}
-                    className="w-32 bg-white rounded-xl px-4 py-3.5 border border-slate-100 flex items-center justify-between cursor-pointer shadow-sm hover:bg-slate-50 transition-colors"
+                    className="w-20 sm:w-32 shrink-0 bg-white rounded-xl px-2 sm:px-4 py-3.5 border border-slate-100 flex items-center justify-between cursor-pointer shadow-sm hover:bg-slate-50 transition-colors"
                   >
-                    <span className="font-bold text-slate-700">
+                    <span className="font-bold text-slate-700 text-[0.85rem] sm:text-[1rem]">
                       {wantCurrency}
                     </span>
                     <ChevronDown
@@ -154,7 +154,7 @@ export const CreateMarketplaceSwapView = ({
                   </div>
 
                   {showWantDrop && (
-                    <div className="absolute top-full left-0 w-32 mt-1 bg-white rounded-xl shadow-xl border border-slate-100 z-50 py-2 animate-in fade-in zoom-in-95 duration-200">
+                    <div className="absolute top-full left-0 w-20 sm:w-32 mt-1 bg-white rounded-xl shadow-xl border border-slate-100 z-50 py-2 animate-in fade-in zoom-in-95 duration-200">
                       {currencies.map((curr) => (
                         <div
                           key={curr}
@@ -174,7 +174,7 @@ export const CreateMarketplaceSwapView = ({
                     type="text"
                     defaultValue={swapperName ? "7,500.00" : ""}
                     placeholder="7,500.00"
-                    className="flex-1 bg-white rounded-xl px-5 py-3.5 border border-slate-100 font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#09A6A4]/10 shadow-sm"
+                    className="flex-1 min-w-0 bg-white rounded-xl px-5 py-3.5 border border-slate-100 font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#09A6A4]/10 shadow-sm"
                   />
                 </div>
               </div>
@@ -193,9 +193,9 @@ export const CreateMarketplaceSwapView = ({
                     type="text"
                     defaultValue={swapperName ? "380" : ""}
                     placeholder="380"
-                    className="flex-1 bg-white rounded-xl px-5 py-3.5 border border-slate-100 font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#09A6A4]/10 shadow-sm"
+                    className="flex-1 min-w-0 bg-white rounded-xl px-5 py-3.5 border border-slate-100 font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#09A6A4]/10 shadow-sm"
                   />
-                  <div className="w-32 bg-white/50 rounded-xl px-4 py-3.5 border border-white flex items-center justify-center font-bold text-slate-400 shadow-sm">
+                  <div className="w-20 sm:w-32 shrink-0 bg-white/50 rounded-xl px-2 sm:px-4 py-3.5 border border-white flex items-center justify-center font-bold text-slate-400 shadow-sm">
                     {offerCurrency}
                   </div>
                 </div>

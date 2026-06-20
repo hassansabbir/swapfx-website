@@ -8,13 +8,13 @@ import Link from "next/link";
 
 export default function SignUpPage() {
   return (
-    <div className="relative w-full max-w-[850px] bg-white/10 backdrop-blur-2xl rounded-[3rem] p-10 md:p-14 shadow-2xl border border-white/20 flex flex-col items-center animate-in fade-in zoom-in duration-500 overflow-y-auto max-h-[92vh] custom-scrollbar">
+    <div className="relative w-full max-w-[850px] bg-white/10 backdrop-blur-2xl rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 md:p-14 shadow-2xl border border-white/20 flex flex-col items-center animate-in fade-in zoom-in duration-500 overflow-y-auto max-h-[92vh] custom-scrollbar">
       {/* Back Button */}
-      <IconButton href="/verify-phone" className="absolute top-8 left-8 bg-slate-400/50 hover:bg-slate-500/50">
+      <IconButton href="/verify-phone" className="absolute top-5 left-5 sm:top-8 sm:left-8 bg-slate-400/50 hover:bg-slate-500/50">
         <ChevronLeft className="w-6 h-6" />
       </IconButton>
 
-      <div className="w-full max-w-[650px] text-center mb-8">
+      <div className="w-full max-w-[650px] text-center mb-8 mt-8">
         <h2 className="text-[1.8rem] font-bold text-slate-800">Sign Up</h2>
         <p className="text-[0.95rem] text-slate-500 font-medium mt-1">
           Welcome Back Swapr
@@ -23,8 +23,8 @@ export default function SignUpPage() {
 
       <div className="w-full max-w-[650px] space-y-5">
         {/* Name Row */}
-        <div className="flex gap-4 w-full">
-          <div className="space-y-2 w-[120px] shrink-0">
+        <div className="flex flex-col sm:flex-row gap-4 w-full">
+          <div className="space-y-2 w-full sm:w-[120px] sm:shrink-0">
             <label className="text-[0.9rem] font-semibold text-slate-700">
               Title
             </label>

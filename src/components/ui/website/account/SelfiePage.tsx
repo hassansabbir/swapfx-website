@@ -301,7 +301,7 @@ export const SelfiePage = () => {
           <ChevronLeft size={24} />
         </IconButton>
 
-        <div className="max-w-[800px] mx-auto space-y-8">
+        <div className="max-w-[800px] mx-auto space-y-8 mt-8">
           <div className="text-center space-y-1">
             <h1 className="text-[1.8rem] font-bold text-slate-800 tracking-tight leading-none">
               Facial Verification

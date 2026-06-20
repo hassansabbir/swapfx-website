@@ -30,7 +30,7 @@ export default function TermsPage() {
           /* ========================================================= */
           <div className="max-w-[650px] mx-auto w-full space-y-6 animate-in fade-in duration-300">
             {/* Header Title */}
-            <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-3">
+            <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-3 mt-8">
               Terms
             </h2>
 
@@ -73,7 +73,7 @@ export default function TermsPage() {
           /* ========================================================= */
           /* 2. TERMS & CONDITIONS DETAILED VIEW */
           /* ========================================================= */
-          <div className="max-w-[750px] mx-auto w-full space-y-5 pt-8 relative animate-in fade-in duration-300">
+          <div className="max-w-[750px] mx-auto w-full space-y-5 pt-12 relative animate-in fade-in duration-300">
             {/* Back circle arrow button in top left */}
             <IconButton
               onClick={() => setViewState("menu")}
@@ -164,7 +164,7 @@ export default function TermsPage() {
           /* ========================================================= */
           /* 3. PRIVACY POLICY DETAILED VIEW */
           /* ========================================================= */
-          <div className="max-w-[750px] mx-auto w-full space-y-5 pt-8 relative animate-in fade-in duration-300">
+          <div className="max-w-[750px] mx-auto w-full space-y-5 pt-12 relative animate-in fade-in duration-300">
             {/* Back circle arrow button in top left */}
             <IconButton
               onClick={() => setViewState("menu")}

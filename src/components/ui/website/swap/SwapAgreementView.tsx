@@ -17,11 +17,11 @@ export const SwapAgreementView = ({
     <div className="py-6 md:py-10 px-3 md:px-8 max-w-[1200px] mx-auto w-full animate-in fade-in zoom-in-95 duration-500">
       <GlassContainer className="p-6 md:p-12 relative overflow-visible">
         {/* Close Button */}
-        <IconButton onClick={onCancel} className="absolute -top-4 -right-4 md:top-6 md:right-6">
+        <IconButton onClick={onCancel} className="absolute top-3 right-3 md:top-6 md:right-6">
           <X size={24} />
         </IconButton>
 
-        <div className="space-y-8 max-w-[750px] mx-auto">
+        <div className="space-y-8 max-w-[750px] mx-auto mt-8">
           <div className="space-y-4">
             <h2 className="text-[1.5rem] font-bold text-slate-800">
               Swap Agreement Confirmation

@@ -92,7 +92,7 @@ function ProfileContent() {
     <div className="py-6 md:py-10 px-3 md:px-8 max-w-[900px] mx-auto w-full animate-in fade-in duration-500">
       <GlassContainer className="p-6 md:p-12 relative overflow-hidden bg-white/40 border border-white/60 shadow-2xl rounded-4xl">
         {/* Top Centered Header Title */}
-        <h2 className="text-center text-[1.12rem] font-bold text-slate-800 tracking-tight pb-6 pt-2">
+        <h2 className="text-center text-[1.12rem] font-bold text-slate-800 tracking-tight pb-6 pt-8">
           Profile
         </h2>
 

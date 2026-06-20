@@ -67,7 +67,7 @@ export const SwapConfirmationView = ({
           /* ========================================================= */
           /* CREATE COUNTER OFFER VIEW */
           /* ========================================================= */
-          <div className="max-w-[700px] mx-auto w-full space-y-6 pt-4 animate-in fade-in duration-300">
+          <div className="max-w-[700px] mx-auto w-full space-y-6 pt-12 animate-in fade-in duration-300">
             {/* Header Title */}
             <h2 className="text-center text-[1.4rem] font-bold text-slate-800 tracking-tight pb-2 pt-2">
               Create Counter Offer
@@ -80,25 +80,25 @@ export const SwapConfirmationView = ({
               </h3>
 
               {/* To : Bob Builder */}
-              <div className="flex items-center justify-between gap-4">
-                <span className="text-[0.9rem] font-semibold text-slate-500 w-24 shrink-0">
+              <div className="flex items-center justify-between gap-2 sm:gap-4">
+                <span className="text-[0.9rem] font-semibold text-slate-500 w-20 sm:w-24 shrink-0">
                   To :
                 </span>
                 <input
                   type="text"
                   readOnly
                   value="Bob Builder"
-                  className="w-full bg-slate-50/50 border border-slate-200/80 rounded-xl px-4 py-3.5 text-[0.88rem] font-medium text-slate-400 select-none focus:outline-none cursor-not-allowed"
+                  className="w-full min-w-0 bg-slate-50/50 border border-slate-200/80 rounded-xl px-4 py-3.5 text-[0.88rem] font-medium text-slate-400 select-none focus:outline-none cursor-not-allowed"
                 />
               </div>
 
               {/* I offer : PKR | 150,000.00 */}
-              <div className="flex items-center justify-between gap-4">
-                <span className="text-[0.9rem] font-semibold text-slate-500 w-24 shrink-0">
+              <div className="flex items-center justify-between gap-2 sm:gap-4">
+                <span className="text-[0.9rem] font-semibold text-slate-500 w-20 sm:w-24 shrink-0">
                   I offer :
                 </span>
-                <div className="flex gap-3 w-full">
-                  <div className="w-[120px] bg-slate-50/50 border border-slate-200/80 rounded-xl py-3.5 text-center text-[0.88rem] font-bold text-slate-700 select-none flex items-center justify-center">
+                <div className="flex gap-2 sm:gap-3 w-full">
+                  <div className="w-16 sm:w-[120px] shrink-0 bg-slate-50/50 border border-slate-200/80 rounded-xl py-3.5 text-center text-[0.78rem] sm:text-[0.88rem] font-bold text-slate-700 select-none flex items-center justify-center">
                     PKR
                   </div>
                   <input
@@ -126,18 +126,18 @@ export const SwapConfirmationView = ({
                         setOfferAmount(cleaned);
                       }
                     }}
-                    className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-[0.88rem] font-semibold text-slate-700 focus:outline-none focus:border-[#09A6A4]/60 transition-colors shadow-sm text-right"
+                    className="w-full min-w-0 bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-[0.88rem] font-semibold text-slate-700 focus:outline-none focus:border-[#09A6A4]/60 transition-colors shadow-sm text-right"
                   />
                 </div>
               </div>
 
               {/* I want : GBP | 7,500.00 */}
-              <div className="flex items-center justify-between gap-4">
-                <span className="text-[0.9rem] font-semibold text-slate-500 w-24 shrink-0">
+              <div className="flex items-center justify-between gap-2 sm:gap-4">
+                <span className="text-[0.9rem] font-semibold text-slate-500 w-20 sm:w-24 shrink-0">
                   I want :
                 </span>
-                <div className="flex gap-3 w-full">
-                  <div className="w-[120px] bg-slate-50/50 border border-slate-200/80 rounded-xl py-3.5 text-center text-[0.88rem] font-bold text-slate-700 select-none flex items-center justify-center">
+                <div className="flex gap-2 sm:gap-3 w-full">
+                  <div className="w-16 sm:w-[120px] shrink-0 bg-slate-50/50 border border-slate-200/80 rounded-xl py-3.5 text-center text-[0.78rem] sm:text-[0.88rem] font-bold text-slate-700 select-none flex items-center justify-center">
                     GBP
                   </div>
                   <input
@@ -165,17 +165,17 @@ export const SwapConfirmationView = ({
                         setWantAmount(cleaned);
                       }
                     }}
-                    className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-[0.88rem] font-semibold text-slate-700 focus:outline-none focus:border-[#09A6A4]/60 transition-colors shadow-sm text-right"
+                    className="w-full min-w-0 bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-[0.88rem] font-semibold text-slate-700 focus:outline-none focus:border-[#09A6A4]/60 transition-colors shadow-sm text-right"
                   />
                 </div>
               </div>
 
               {/* Proposed swap rate : 380 | PKR */}
-              <div className="flex items-center justify-between gap-4 pt-1">
-                <span className="text-[0.9rem] font-semibold text-slate-500 w-24 shrink-0 leading-tight">
+              <div className="flex items-center justify-between gap-2 sm:gap-4 pt-1">
+                <span className="text-[0.85rem] sm:text-[0.9rem] font-semibold text-slate-500 w-20 sm:w-24 shrink-0 leading-tight">
                   Proposed swap rate :
                 </span>
-                <div className="flex gap-3 w-full">
+                <div className="flex gap-2 sm:gap-3 w-full">
                   <input
                     type="text"
                     value={swapRate}
@@ -184,16 +184,16 @@ export const SwapConfirmationView = ({
                       const cleaned = val.replace(/[^0-9]/g, "");
                       setSwapRate(cleaned);
                     }}
-                    className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-[0.88rem] font-semibold text-slate-700 focus:outline-none focus:border-[#09A6A4]/60 transition-colors shadow-sm text-center"
+                    className="w-full min-w-0 bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-[0.88rem] font-semibold text-slate-700 focus:outline-none focus:border-[#09A6A4]/60 transition-colors shadow-sm text-center"
                   />
-                  <div className="w-[120px] bg-slate-50/50 border border-slate-200/80 rounded-xl py-3.5 text-center text-[0.88rem] font-semibold text-slate-400 select-none flex items-center justify-center">
+                  <div className="w-16 sm:w-[120px] shrink-0 bg-slate-50/50 border border-slate-200/80 rounded-xl py-3.5 text-center text-[0.78rem] sm:text-[0.88rem] font-semibold text-slate-400 select-none flex items-center justify-center">
                     PKR
                   </div>
                 </div>
               </div>
 
               {/* Market rate indicator & note */}
-              <div className="space-y-1.5 pl-[112px] pt-1">
+              <div className="space-y-1.5 pl-0 sm:pl-[112px] pt-1">
                 <p className="text-[0.78rem] font-semibold text-slate-400">
                   (Market rate : 375 PKR)
                 </p>
@@ -267,7 +267,7 @@ export const SwapConfirmationView = ({
           /* ========================================================= */
           /* SWAP CONFIRMATION MAIN VIEW */
           /* ========================================================= */
-          <div className="space-y-5 max-w-[700px] mx-auto">
+          <div className="space-y-5 max-w-[700px] mx-auto mt-12">
             {/* Card 1: User Profile Header Card */}
             <div className="bg-white rounded-2xl p-4 border border-slate-200/60 flex items-center gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.01)] animate-in fade-in slide-in-from-top-3 duration-300">
               <div className="relative shrink-0 w-11 h-11">

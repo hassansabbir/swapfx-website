@@ -93,7 +93,7 @@ const AccountPage = () => {
           <ChevronLeft size={24} />
         </IconButton>
 
-        <div className="max-w-[750px] mx-auto space-y-8">
+        <div className="max-w-[750px] mx-auto space-y-8 mt-8">
           {/* Profile Header Card */}
           <div className="bg-[#09A6A4] rounded-3xl p-6 md:p-8 flex items-center gap-5 shadow-xl shadow-[#09A6A4]/20 relative overflow-hidden">
             {/* Background pattern/glow */}

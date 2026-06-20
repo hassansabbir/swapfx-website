@@ -24,13 +24,13 @@ export default function SuccessPage() {
     router.push("/");
   };
   return (
-    <div className="relative w-full max-w-[750px] bg-white/10 backdrop-blur-2xl rounded-[3rem] p-12 md:p-16 shadow-2xl border border-white/20 flex flex-col items-center animate-in fade-in zoom-in duration-500 text-center">
+    <div className="relative w-full max-w-[750px] bg-white/10 backdrop-blur-2xl rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 md:p-16 shadow-2xl border border-white/20 flex flex-col items-center animate-in fade-in zoom-in duration-500 text-center">
       {/* Close Button */}
-      <IconButton href="/" className="absolute top-8 right-8 bg-slate-400/50 hover:bg-slate-500/50">
+      <IconButton href="/" className="absolute top-5 right-5 sm:top-8 sm:right-8 bg-slate-400/50 hover:bg-slate-500/50">
         <X className="w-6 h-6" />
       </IconButton>
 
-      <div className="relative mb-10">
+      <div className="relative mb-10 mt-8">
         {/* Confetti Particles (Mock) */}
         <div className="absolute -top-6 -left-6 w-3 h-3 bg-cyan-400 rounded-sm rotate-12 animate-pulse" />
         <div className="absolute top-0 -right-8 w-4 h-2 bg-teal-500 rounded-full -rotate-45 animate-bounce" />

@@ -88,7 +88,7 @@ export default function AccountSettingsPage() {
           /* ========================================================= */
           /* 2. MANAGE PIN SUBMENU */
           /* ========================================================= */
-          <div className="max-w-[750px] mx-auto w-full space-y-6 pt-4 relative animate-in fade-in duration-300">
+          <div className="max-w-[750px] mx-auto w-full space-y-6 pt-10 relative animate-in fade-in duration-300">
             {/* Back circle chevron button in top left matching mockup */}
             <IconButton
               onClick={() => setViewState("menu")}
@@ -141,7 +141,7 @@ export default function AccountSettingsPage() {
           /* ========================================================= */
           /* 3. CHANGE PASSWORD FORM */
           /* ========================================================= */
-          <div className="max-w-[750px] mx-auto w-full space-y-6 pt-4 relative animate-in fade-in duration-300">
+          <div className="max-w-[750px] mx-auto w-full space-y-6 pt-10 relative animate-in fade-in duration-300">
             {/* Back circle chevron button in top left */}
             <IconButton
               onClick={() => setViewState("menu")}
@@ -199,7 +199,7 @@ export default function AccountSettingsPage() {
           /* ========================================================= */
           /* 4. CHANGE PIN FORM */
           /* ========================================================= */
-          <div className="max-w-[750px] mx-auto w-full space-y-6 pt-4 relative animate-in fade-in duration-300">
+          <div className="max-w-[750px] mx-auto w-full space-y-6 pt-10 relative animate-in fade-in duration-300">
             {/* Back circle chevron button in top left (goes back to manage_pin) */}
             <IconButton
               onClick={() => setViewState("manage_pin")}
@@ -256,7 +256,7 @@ export default function AccountSettingsPage() {
           /* ========================================================= */
           /* 5. CLOSE ACCOUNT FORM */
           /* ========================================================= */
-          <div className="max-w-[750px] mx-auto w-full space-y-6 pt-4 relative animate-in fade-in duration-300">
+          <div className="max-w-[750px] mx-auto w-full space-y-6 pt-10 relative animate-in fade-in duration-300">
             {/* Close Button top right */}
             <IconButton
               onClick={() => setViewState("menu")}
@@ -265,7 +265,7 @@ export default function AccountSettingsPage() {
               <X size={20} />
             </IconButton>
 
-            <div className="max-w-[500px] mx-auto w-full flex flex-col items-center pt-6 space-y-5">
+            <div className="max-w-[500px] mx-auto w-full flex flex-col items-center pt-2 space-y-5">
               
               {/* Trash Icon */}
               <div className="w-20 h-20 bg-red-100/70 rounded-2xl flex items-center justify-center mb-2 shadow-sm">
@@ -321,7 +321,7 @@ export default function AccountSettingsPage() {
           /* ========================================================= */
           /* 6. VIEW PIN */
           /* ========================================================= */
-          <div className="max-w-[750px] mx-auto w-full space-y-6 pt-4 relative animate-in fade-in duration-300">
+          <div className="max-w-[750px] mx-auto w-full space-y-6 pt-10 relative animate-in fade-in duration-300">
             {/* Back circle chevron button */}
             <IconButton
               onClick={() => setViewState("manage_pin")}

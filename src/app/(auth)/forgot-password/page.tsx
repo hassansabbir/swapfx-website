@@ -8,13 +8,13 @@ import Link from "next/link";
 
 export default function ForgotPasswordPage() {
   return (
-    <div className="relative w-full max-w-[750px] bg-white/10 backdrop-blur-2xl rounded-[3rem] p-12 md:p-16 shadow-2xl border border-white/20 flex flex-col items-center animate-in fade-in zoom-in duration-500">
+    <div className="relative w-full max-w-[750px] bg-white/10 backdrop-blur-2xl rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 md:p-16 shadow-2xl border border-white/20 flex flex-col items-center animate-in fade-in zoom-in duration-500">
       {/* Back Button */}
-      <IconButton href="/login" className="absolute top-8 left-8 bg-slate-400/50 hover:bg-slate-500/50">
+      <IconButton href="/login" className="absolute top-5 left-5 sm:top-8 sm:left-8 bg-slate-400/50 hover:bg-slate-500/50">
         <ChevronLeft className="w-6 h-6" />
       </IconButton>
 
-      <div className="w-full max-w-[450px] text-center mb-10">
+      <div className="w-full max-w-[450px] text-center mb-10 mt-8">
         <h2 className="text-[1.8rem] font-bold text-slate-800">
           Forget Password
         </h2>

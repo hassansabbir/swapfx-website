@@ -113,7 +113,7 @@ export default function MatchesPage() {
         {/* Inner content wrapper – keeps cards at 680px centered */}
         <div className="w-full max-w-[680px] mx-auto flex flex-col items-center">
           {/* Title */}
-          <h2 className="text-[1.5rem] font-bold text-slate-800 tracking-tight text-center mb-6">
+          <h2 className="text-[1.5rem] font-bold text-slate-800 tracking-tight text-center mb-6 mt-8">
             Matches
           </h2>
 

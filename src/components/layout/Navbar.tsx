@@ -100,14 +100,14 @@ export const Navbar = () => {
   if (!isLoggedIn) {
     return (
       <header className="sticky top-0 z-[100] w-full bg-white/60 backdrop-blur-md transition-all">
-        <nav className="flex items-center justify-between py-2 px-4 md:px-8 max-w-[1250px] mx-auto w-full">
+        <nav className="flex items-center justify-between py-3 px-4 md:px-8 max-w-[1250px] mx-auto w-full">
           <div className="flex items-center gap-2">
             <Link href="/">
               <Image
                 src={logo}
                 alt="SwapFX Logo"
-                width={100}
-                height={40}
+                width={80}
+                height={32}
                 className="object-contain"
                 priority
               />
@@ -135,8 +135,8 @@ export const Navbar = () => {
               <Image
                 src={logo}
                 alt="SwapFX Logo"
-                width={110}
-                height={40}
+                width={85}
+                height={32}
                 className="object-contain"
                 priority
               />
@@ -251,8 +251,8 @@ export const Navbar = () => {
               onClick={toggleMenu}
             />
 
-            <div className="pt-4 border-t border-slate-100 w-full flex justify-center">
-              <div className="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl w-[80%] max-w-[300px]">
+            <div className="pt-4 border-t border-slate-100 w-full flex justify-center px-6">
+              <div className="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl w-full max-w-[300px]">
                 <div className="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 font-bold">
                   HP
                 </div>
