@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { Button } from "@/components/ui/Button";
 import {
@@ -75,6 +75,29 @@ const MarketMainPage = () => {
   const [filterPublishedDate, setFilterPublishedDate] = useState("Select");
 
   const countries = ["USA", "UK", "Europe", "Pakistan", "Canada", "Australia"];
+
+  // Close any open dropdown when clicking outside of it
+  const searchRef = useRef<HTMLDivElement>(null);
+  const leftDropRef = useRef<HTMLDivElement>(null);
+  const rightDropRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as Node;
+      if (searchRef.current && !searchRef.current.contains(target)) {
+        setShowSearchSuggestions(false);
+      }
+      if (leftDropRef.current && !leftDropRef.current.contains(target)) {
+        setShowLeftDrop(false);
+      }
+      if (rightDropRef.current && !rightDropRef.current.contains(target)) {
+        setShowRightDrop(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const renderFlag = (c: string) => {
     if (c === "USA") {
@@ -199,7 +222,7 @@ const MarketMainPage = () => {
           </div>
 
           {/* Search bar block */}
-          <div className="relative">
+          <div className="relative" ref={searchRef}>
             <div className="flex gap-3 w-full">
               <div className="flex-1 bg-white rounded-xl border border-slate-100 flex items-center px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-[#09A6A4]/15 transition-all">
                 <Search size={20} className="text-slate-400 mr-3 shrink-0" />
@@ -297,7 +320,7 @@ const MarketMainPage = () => {
             </h3>
             <div className="grid grid-cols-2 gap-4">
               {/* Left Dropdown */}
-              <div className="relative">
+              <div className="relative" ref={leftDropRef}>
                 <div
                   onClick={() => {
                     setShowLeftDrop(!showLeftDrop);
@@ -330,7 +353,7 @@ const MarketMainPage = () => {
               </div>
 
               {/* Right Dropdown */}
-              <div className="relative">
+              <div className="relative" ref={rightDropRef}>
                 <div
                   onClick={() => {
                     setShowRightDrop(!showRightDrop);

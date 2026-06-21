@@ -67,25 +67,25 @@ export default function FeePaymentPage() {
               {/* Connector line */}
               {index > 0 && (
                 <div
-                  className={`flex-1 h-1 mx-2 rounded-full transition-colors duration-300 ${
+                  className={`flex-1 h-1 mx-1 sm:mx-2 rounded-full transition-colors duration-300 ${
                     step.num <= 2 ? "bg-[#09A6A4]" : "bg-slate-200"
                   }`}
                 />
               )}
 
               {/* Step indicator circle */}
-              <div className="flex flex-col items-center space-y-1.5 relative">
+              <div className="flex flex-col items-center space-y-1 sm:space-y-1.5 relative shrink-0">
                 <div
-                  className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-[0.88rem] transition-all duration-300 ${
+                  className={`w-6 h-6 sm:w-9 sm:h-9 rounded-full flex items-center justify-center font-bold text-[0.62rem] sm:text-[0.88rem] transition-all duration-300 ${
                     isActive || isCompleted
                       ? "bg-[#09A6A4] text-white shadow-md shadow-[#09A6A4]/25 scale-105"
                       : "bg-white border-2 border-slate-200 text-slate-400"
                   }`}
                 >
-                  {isCompleted ? <Check size={16} strokeWidth={3} /> : step.num}
+                  {isCompleted ? <Check size={14} strokeWidth={3} /> : step.num}
                 </div>
                 <span
-                  className={`text-[0.78rem] font-bold tracking-tight transition-colors duration-300 ${
+                  className={`text-[0.6rem] sm:text-[0.78rem] font-bold tracking-tight whitespace-nowrap leading-none transition-colors duration-300 ${
                     isActive || isCompleted
                       ? "text-[#09A6A4]"
                       : "text-slate-400"

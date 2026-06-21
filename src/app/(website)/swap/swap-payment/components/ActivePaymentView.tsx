@@ -99,9 +99,9 @@ export default function ActivePaymentView({
           <span className="text-[0.78rem] font-semibold text-slate-400 uppercase tracking-wider block">
             Time remaining
           </span>
-          <div className="flex items-center justify-center gap-2 text-[2.2rem] font-black text-[#EF4444] font-mono leading-none tracking-tight">
-            <Clock size={28} className="animate-pulse" />
-            <span>
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-[1.5rem] sm:text-[2.2rem] font-black text-[#EF4444] font-mono leading-none tracking-tight">
+            <Clock size={20} className="shrink-0 animate-pulse sm:w-7 sm:h-7" />
+            <span className="whitespace-nowrap">
               00 : {formatTime(timeLeft.minutes)} :{" "}
               {formatTime(timeLeft.seconds)}
             </span>
@@ -211,17 +211,17 @@ export default function ActivePaymentView({
         <span className="text-[0.8rem] font-bold text-slate-400 pl-1">
           Note
         </span>
-        <div className="w-full bg-white border border-slate-200/60 rounded-2xl px-4 py-4 text-[0.82rem] font-medium text-slate-600 leading-relaxed shadow-sm">
+        <div className="w-full bg-white border border-slate-200/60 rounded-2xl px-4 py-4 text-[0.82rem] font-medium text-slate-600 leading-relaxed shadow-sm break-words">
           {customNote}
         </div>
       </div>
 
       {/* Secondary Actions (Request Extension & Cancel Swap) */}
-      <div className="flex gap-4 max-w-[720px] mx-auto w-full pt-4">
-        <Button onClick={() => setShowExtensionModal(true)} className="flex-1">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-[720px] mx-auto w-full pt-4">
+        <Button onClick={() => setShowExtensionModal(true)} className="w-full sm:flex-1">
           Request Extension
         </Button>
-        <Button onClick={() => setShowCancelModal(true)} className="flex-1">
+        <Button onClick={() => setShowCancelModal(true)} className="w-full sm:flex-1">
           Cancel Swap
         </Button>
       </div>

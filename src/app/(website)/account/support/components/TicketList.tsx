@@ -111,15 +111,17 @@ export default function TicketList({
       </div>
 
       {/* Pagination Controls */}
-      <div className="flex items-center justify-center gap-2 pt-6">
-        <button className="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors flex items-center justify-center focus:outline-none">
-          <ChevronLeft size={18} />
+      <div className="flex items-center justify-center gap-1.5 sm:gap-2 pt-6">
+        <button className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 rounded-full border border-slate-200 bg-white text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors flex items-center justify-center focus:outline-none">
+          <ChevronLeft size={16} className="sm:w-[18px] sm:h-[18px]" />
         </button>
-        
+
         {[1, 2, 3, 4, 5, 6].map((num) => (
           <button
             key={num}
-            className={`w-10 h-10 rounded-full font-bold text-[0.88rem] transition-colors flex items-center justify-center focus:outline-none cursor-pointer ${
+            className={`w-8 h-8 sm:w-10 sm:h-10 shrink-0 rounded-full font-bold text-[0.78rem] sm:text-[0.88rem] transition-colors flex items-center justify-center focus:outline-none cursor-pointer ${
+              num > 3 ? "hidden sm:flex" : ""
+            } ${
               num === 1
                 ? "bg-[#09A6A4] text-white shadow-md"
                 : "border border-slate-200 bg-white text-slate-500 hover:bg-slate-50"
@@ -129,14 +131,14 @@ export default function TicketList({
           </button>
         ))}
 
-        <span className="text-slate-400 font-medium px-1">...</span>
+        <span className="text-slate-400 font-medium px-0.5 sm:px-1">...</span>
 
-        <button className="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-500 font-bold text-[0.88rem] hover:bg-slate-50 flex items-center justify-center">
+        <button className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 rounded-full border border-slate-200 bg-white text-slate-500 font-bold text-[0.78rem] sm:text-[0.88rem] hover:bg-slate-50 flex items-center justify-center">
           10
         </button>
 
-        <button className="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors flex items-center justify-center focus:outline-none">
-          <ChevronRight size={18} />
+        <button className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 rounded-full border border-slate-200 bg-white text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors flex items-center justify-center focus:outline-none">
+          <ChevronRight size={16} className="sm:w-[18px] sm:h-[18px]" />
         </button>
       </div>
     </div>

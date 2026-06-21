@@ -107,14 +107,14 @@ export default function ExpiredPaymentView({
           Reinstate Swap
         </button>
         
-        <div className="flex gap-4 w-full">
-          <button className="flex-1 py-3 bg-white border border-slate-200 text-[#09A6A4] text-[0.92rem] font-semibold rounded-xl hover:bg-slate-50 transition-colors shadow-sm text-center cursor-pointer focus:outline-none">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
+          <button className="w-full sm:flex-1 py-3 bg-white border border-slate-200 text-[#09A6A4] text-[0.92rem] font-semibold rounded-xl hover:bg-slate-50 transition-colors shadow-sm text-center cursor-pointer focus:outline-none">
             Contact Support
           </button>
-          
+
           <button
             onClick={onOpenDispute}
-            className="flex-1 py-3 bg-white border border-slate-200 text-[#09A6A4] text-[0.92rem] font-semibold rounded-xl hover:bg-slate-50 transition-colors shadow-sm text-center cursor-pointer focus:outline-none"
+            className="w-full sm:flex-1 py-3 bg-white border border-slate-200 text-[#09A6A4] text-[0.92rem] font-semibold rounded-xl hover:bg-slate-50 transition-colors shadow-sm text-center cursor-pointer focus:outline-none"
           >
             Open Dispute
           </button>

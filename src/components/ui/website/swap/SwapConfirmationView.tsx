@@ -433,11 +433,11 @@ export const SwapConfirmationView = ({
 
             {/* Action Buttons */}
             {from === "chat" ? (
-              <div className="flex gap-4 w-full pt-4 max-w-[500px] mx-auto animate-in fade-in slide-in-from-top-6 duration-600">
-                <Link href="/swap/payment" className="flex-1">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full pt-4 max-w-[500px] mx-auto animate-in fade-in slide-in-from-top-6 duration-600">
+                <Link href="/swap/payment" className="w-full sm:flex-1">
                   <Button className="w-full" variant="primary">Accept</Button>
                 </Link>
-                <Link href="/chat/bob-builder" className="flex-1">
+                <Link href="/chat/bob-builder" className="w-full sm:flex-1">
                   <Button
                     className="w-full border-red-500 text-red-500 hover:bg-red-50"
                     variant="white"
@@ -447,13 +447,13 @@ export const SwapConfirmationView = ({
                 </Link>
               </div>
             ) : (
-              <div className="flex gap-4 w-full pt-4 max-w-[500px] mx-auto animate-in fade-in slide-in-from-top-6 duration-600">
-                <Link href="/chat/bob-builder" className="flex-1">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full pt-4 max-w-[500px] mx-auto animate-in fade-in slide-in-from-top-6 duration-600">
+                <Link href="/chat/bob-builder" className="w-full sm:flex-1">
                   <Button className="w-full">Contact Swapper</Button>
                 </Link>
                 <Button
                   onClick={() => setShowCounterOffer(true)}
-                  className="flex-1"
+                  className="w-full sm:flex-1"
                 >
                   Counter Offer
                 </Button>

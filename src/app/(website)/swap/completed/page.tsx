@@ -52,15 +52,15 @@ function SwapCompletedContent() {
             <React.Fragment key={step.num}>
               {/* Connector line */}
               {index > 0 && (
-                <div className="flex-1 h-1 mx-2 rounded-full bg-[#09A6A4]" />
+                <div className="flex-1 h-1 mx-1 sm:mx-2 rounded-full bg-[#09A6A4]" />
               )}
 
               {/* Step indicator circle */}
-              <div className="flex flex-col items-center space-y-1.5 relative">
-                <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-[0.88rem] bg-[#09A6A4] text-white shadow-md shadow-[#09A6A4]/25 scale-105 transition-all">
-                  <Check size={16} strokeWidth={3} />
+              <div className="flex flex-col items-center space-y-1 sm:space-y-1.5 relative shrink-0">
+                <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-full flex items-center justify-center font-bold text-[0.62rem] sm:text-[0.88rem] bg-[#09A6A4] text-white shadow-md shadow-[#09A6A4]/25 scale-105 transition-all">
+                  <Check size={14} strokeWidth={3} />
                 </div>
-                <span className="text-[0.78rem] font-bold tracking-tight text-[#09A6A4]">
+                <span className="text-[0.6rem] sm:text-[0.78rem] font-bold tracking-tight whitespace-nowrap leading-none text-[#09A6A4]">
                   {step.label}
                 </span>
               </div>
@@ -221,16 +221,16 @@ function SwapCompletedContent() {
           </div>
 
           {/* Footer Actions */}
-          <div className="flex items-center justify-center gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-4">
             <Button
               onClick={() => router.push("/account/support")}
-              className="flex-1 max-w-[220px] py-3.5 rounded-xl bg-[#09A6A4] text-white text-[0.92rem] font-semibold shadow-md shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform"
+              className="w-full sm:flex-1 sm:max-w-[220px] py-3.5 rounded-xl bg-[#09A6A4] text-white text-[0.92rem] font-semibold shadow-md shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform"
             >
               Contact Support
             </Button>
             <Button
               onClick={() => setShowReviewModal(true)}
-              className="flex-1 max-w-[220px] py-3.5 rounded-xl bg-[#09A6A4] text-white text-[0.92rem] font-semibold shadow-md shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform"
+              className="w-full sm:flex-1 sm:max-w-[220px] py-3.5 rounded-xl bg-[#09A6A4] text-white text-[0.92rem] font-semibold shadow-md shadow-[#09A6A4]/20 hover:scale-[1.01] transition-transform"
             >
               Share Review
             </Button>
