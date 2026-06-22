@@ -80,7 +80,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
       {/* Circle Back Button */}
       <IconButton
         onClick={onBack}
-        className="absolute -left-4 md:-left-12 top-2 w-11 h-11 bg-slate-400/85 shadow-md z-30"
+        className="absolute -left-5 md:-left-12 top-2 w-11 h-11 bg-slate-400/85 shadow-md z-30"
       >
         <ArrowLeft size={20} />
       </IconButton>

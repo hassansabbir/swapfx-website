@@ -64,8 +64,8 @@ export const SwapOfferCard: React.FC<SwapOfferCardProps> = ({
           </div>
 
           {/* Centered Currencies Display */}
-          <div className="flex items-center justify-center gap-7 px-4 py-2">
-            <h3 className="text-[1.25rem] font-extrabold text-slate-800 tracking-tight">
+          <div className="flex items-center justify-center gap-3 sm:gap-7 px-4 py-2">
+            <h3 className="text-[1rem] sm:text-[1.25rem] font-extrabold text-slate-800 tracking-tight whitespace-nowrap">
               £200 GBP
             </h3>
             <ArrowRight
@@ -73,21 +73,21 @@ export const SwapOfferCard: React.FC<SwapOfferCardProps> = ({
               className="text-[#09A6A4] shrink-0"
               strokeWidth={2.5}
             />
-            <h3 className="text-[1.25rem] font-extrabold text-[#09A6A4] tracking-tight">
+            <h3 className="text-[1rem] sm:text-[1.25rem] font-extrabold text-[#09A6A4] tracking-tight whitespace-nowrap">
               $250 USD
             </h3>
           </div>
 
           {/* Full-Width Gray Details bar */}
-          <div className="bg-slate-50 border-y border-slate-100/60 px-5 py-2.5 flex justify-between items-center text-[0.78rem] tracking-wide">
-            <div className="flex items-center gap-1">
-              <span className="font-extrabold text-slate-800">Rate:</span>
+          <div className="bg-slate-50 border-y border-slate-100/60 px-5 py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1.5 sm:gap-0 text-[0.78rem] tracking-wide">
+            <div className="flex items-center gap-1 whitespace-nowrap">
+              <span className="font-extrabold text-slate-800 shrink-0">Rate:</span>
               <span className="font-semibold text-slate-500">
                 1 GBP = 10.00 PKR
               </span>
             </div>
-            <div className="flex items-center gap-1">
-              <span className="font-extrabold text-slate-800">Required:</span>
+            <div className="flex items-center gap-1 whitespace-nowrap">
+              <span className="font-extrabold text-slate-800 shrink-0">Required:</span>
               <span className="font-semibold text-slate-500">&lt;1 hr</span>
             </div>
           </div>

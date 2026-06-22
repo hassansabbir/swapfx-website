@@ -80,11 +80,11 @@ export const SwapHistoryCard = ({
     </div>
 
     {/* Bottom Row: Currency Amounts */}
-    <div className="flex items-baseline gap-4 pl-1">
-      <span className="text-[1.15rem] md:text-[1.25rem] font-bold text-slate-800 tracking-tight">
+    <div className="flex items-baseline gap-2 sm:gap-4 pl-1">
+      <span className="text-[0.95rem] sm:text-[1.15rem] md:text-[1.25rem] font-bold text-slate-800 tracking-tight whitespace-nowrap">
         {offerAmount}
       </span>
-      <span className="text-[1.15rem] md:text-[1.25rem] font-bold text-[#09A6A4] tracking-tight">
+      <span className="text-[0.95rem] sm:text-[1.15rem] md:text-[1.25rem] font-bold text-[#09A6A4] tracking-tight whitespace-nowrap">
         {receiveAmount}
       </span>
     </div>

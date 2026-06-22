@@ -444,7 +444,7 @@ const MarketMainPage = () => {
                     <span className="text-[0.72rem] font-bold text-slate-400 uppercase tracking-wider block">
                       Offer
                     </span>
-                    <h2 className="text-[1.8rem] md:text-[2rem] font-extrabold text-slate-800 leading-none tracking-tight">
+                    <h2 className="text-[1.2rem] sm:text-[1.6rem] md:text-[2rem] font-extrabold text-slate-800 leading-none tracking-tight whitespace-nowrap">
                       {offer.offerAmount}
                     </h2>
                   </div>
@@ -457,7 +457,7 @@ const MarketMainPage = () => {
                     <span className="text-[0.72rem] font-bold text-slate-400 uppercase tracking-wider block">
                       Want
                     </span>
-                    <h2 className="text-[1.8rem] md:text-[2rem] font-extrabold text-[#09A6A4] leading-none tracking-tight">
+                    <h2 className="text-[1.2rem] sm:text-[1.6rem] md:text-[2rem] font-extrabold text-[#09A6A4] leading-none tracking-tight whitespace-nowrap">
                       {offer.wantAmount}
                     </h2>
                   </div>

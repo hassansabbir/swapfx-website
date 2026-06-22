@@ -312,7 +312,7 @@ export const SwapConfirmationView = ({
                   <span className="text-[0.75rem] font-bold text-slate-400 tracking-wider block">
                     I WILL RECEIVE
                   </span>
-                  <h2 className="text-[2rem] md:text-[2.2rem] font-extrabold text-slate-800 leading-tight tracking-tight">
+                  <h2 className="text-[1.4rem] sm:text-[1.8rem] md:text-[2.2rem] font-extrabold text-slate-800 leading-tight tracking-tight whitespace-nowrap">
                     200 GBP
                   </h2>
                 </div>
@@ -363,7 +363,7 @@ export const SwapConfirmationView = ({
                   <span className="text-[0.75rem] font-bold text-slate-400 tracking-wider block">
                     I WILL GIVE
                   </span>
-                  <h2 className="text-[2rem] md:text-[2.2rem] font-extrabold text-[#09A6A4] leading-tight tracking-tight">
+                  <h2 className="text-[1.4rem] sm:text-[1.8rem] md:text-[2.2rem] font-extrabold text-[#09A6A4] leading-tight tracking-tight whitespace-nowrap">
                     74,900 PKR
                   </h2>
                 </div>

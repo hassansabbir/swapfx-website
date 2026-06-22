@@ -175,11 +175,11 @@ export default function FeePaymentPage() {
 
                 {/* Amount Corridors */}
                 <div className="bg-slate-50/70 rounded-2xl p-4 flex items-center justify-between border border-slate-100">
-                  <span className="text-[1.05rem] font-extrabold text-slate-700">
+                  <span className="text-[0.88rem] sm:text-[1.05rem] font-extrabold text-slate-700 whitespace-nowrap">
                     200 GBP
                   </span>
                   <ArrowRight size={18} className="text-[#09A6A4] shrink-0" />
-                  <span className="text-[1.05rem] font-extrabold text-[#09A6A4]">
+                  <span className="text-[0.88rem] sm:text-[1.05rem] font-extrabold text-[#09A6A4] whitespace-nowrap">
                     74,900 PKR
                   </span>
                 </div>

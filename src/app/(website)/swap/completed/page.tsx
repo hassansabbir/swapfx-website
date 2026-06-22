@@ -135,11 +135,11 @@ function SwapCompletedContent() {
 
             {/* Currency conversion block */}
             <div className="bg-slate-50/50 rounded-xl px-5 py-3 border border-slate-100 flex items-center justify-between">
-              <h3 className="text-[1.12rem] font-extrabold text-slate-850">
+              <h3 className="text-[0.92rem] sm:text-[1.12rem] font-extrabold text-slate-850 whitespace-nowrap">
                 200 GBP
               </h3>
-              <span className="text-[#09A6A4] text-lg font-bold">→</span>
-              <h3 className="text-[1.12rem] font-extrabold text-[#09A6A4]">
+              <span className="text-[#09A6A4] text-lg font-bold shrink-0">→</span>
+              <h3 className="text-[0.92rem] sm:text-[1.12rem] font-extrabold text-[#09A6A4] whitespace-nowrap">
                 74.900 PKR
               </h3>
             </div>
