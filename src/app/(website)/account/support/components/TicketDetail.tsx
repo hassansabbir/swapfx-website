@@ -33,7 +33,7 @@ export default function TicketDetail({
         <ChevronLeft size={22} />
       </button>
 
-      <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-3">
+      <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-3 mt-8">
         Help & Support
       </h2>
 
@@ -67,7 +67,7 @@ export default function TicketDetail({
         
         {/* Card 1: User's Initial Message */}
         <div className="bg-white rounded-3xl border border-slate-200/80 shadow-[0_4px_25px_rgba(0,0,0,0.01)] overflow-hidden">
-          <div className="bg-[#F8FAFC]/50 border-b border-slate-100 px-6 py-4 flex justify-between items-center text-[0.88rem]">
+          <div className="bg-[#F8FAFC]/50 border-b border-slate-100 px-6 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0 text-[0.88rem]">
             <p className="text-slate-700 font-bold">
               To: <span className="text-slate-400 font-medium ml-2">Support Team</span>
             </p>
@@ -123,7 +123,7 @@ export default function TicketDetail({
         {/* Card 2: Support Response (Official Badge) */}
         {(selectedTicket?.supportBody || selectedTicket?.id === "TK-9921") && (
           <div className="bg-white rounded-3xl border border-slate-200/80 shadow-[0_4px_25px_rgba(0,0,0,0.01)] overflow-hidden">
-            <div className="bg-[#F8FAFC]/50 border-b border-slate-100 px-6 py-4 flex justify-between items-center text-[0.88rem]">
+            <div className="bg-[#F8FAFC]/50 border-b border-slate-100 px-6 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0 text-[0.88rem]">
               <div className="flex items-center gap-2">
                 <span className="font-bold text-slate-800">Support Team</span>
                 <span className="bg-slate-200 text-slate-500 text-[0.62rem] font-bold px-2 py-0.5 rounded tracking-wide uppercase">

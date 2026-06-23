@@ -36,7 +36,7 @@ export default function TicketReply({
         <X size={20} />
       </button>
 
-      <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-3">
+      <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-3 mt-8">
         Help & Support
       </h2>
 
@@ -64,14 +64,14 @@ export default function TicketReply({
       <div className="bg-white rounded-3xl border border-slate-200/85 shadow-[0_4px_25px_rgba(0,0,0,0.015)] overflow-hidden flex flex-col min-h-[420px] mt-2">
         
         {/* To Header */}
-        <div className="border-b border-slate-100 px-6 py-4 flex items-center gap-6 text-[0.92rem]">
-          <span className="text-slate-400 font-bold w-14">To:</span>
+        <div className="border-b border-slate-100 px-6 py-4 flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-6 text-[0.92rem]">
+          <span className="text-slate-400 font-bold sm:w-14 sm:shrink-0">To:</span>
           <span className="text-slate-700 font-semibold">Support Team</span>
         </div>
 
         {/* Subject Header */}
-        <div className="border-b border-slate-100 px-6 py-4 flex items-center gap-6 text-[0.92rem]">
-          <span className="text-slate-400 font-bold w-14">Subject:</span>
+        <div className="border-b border-slate-100 px-6 py-4 flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-6 text-[0.92rem]">
+          <span className="text-slate-400 font-bold sm:w-14 sm:shrink-0">Subject:</span>
           <span className="text-slate-400 font-medium">Re: Password Change Problem</span>
         </div>
 

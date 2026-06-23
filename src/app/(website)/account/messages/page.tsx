@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { ChevronLeft, ChevronRight, Paperclip, X, ArrowRight, FileText, Image as ImageIcon } from "lucide-react";
@@ -14,6 +14,10 @@ export default function AccountMessagesPage() {
   const [viewState, setViewState] = useState<ViewState>("list");
   const [replyText, setReplyText] = useState("");
   const [selectedMessage, setSelectedMessage] = useState<any>(null);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [viewState]);
 
   const inboxMessages = [
     {
@@ -96,7 +100,7 @@ export default function AccountMessagesPage() {
           /* 1. MESSAGES LIST */
           /* ========================================================= */
           <div className="max-w-[800px] mx-auto w-full pt-4 pb-4 space-y-6 animate-in fade-in duration-300">
-            <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-2">
+            <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-2 mt-8">
               Messages
             </h2>
 
@@ -165,16 +169,18 @@ export default function AccountMessagesPage() {
             </div>
 
             {/* Pagination Controls */}
-            <div className="flex items-center justify-center gap-2 pt-6">
-              <button className="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors flex items-center justify-center focus:outline-none">
-                <ChevronLeft size={18} />
+            <div className="flex items-center justify-center gap-1.5 sm:gap-2 pt-6">
+              <button className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 rounded-full border border-slate-200 bg-white text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors flex items-center justify-center focus:outline-none">
+                <ChevronLeft size={16} className="sm:w-[18px] sm:h-[18px]" />
               </button>
-              
+
               {[1, 2, 3, 4, 5, 6].map((num) => (
                 <button
                   key={num}
                   onClick={() => setCurrentPage(num)}
-                  className={`w-10 h-10 rounded-full font-bold text-[0.88rem] transition-colors flex items-center justify-center focus:outline-none cursor-pointer ${
+                  className={`w-8 h-8 sm:w-10 sm:h-10 shrink-0 rounded-full font-bold text-[0.88rem] transition-colors flex items-center justify-center focus:outline-none cursor-pointer ${
+                    num > 3 ? "hidden sm:flex" : ""
+                  } ${
                     currentPage === num
                       ? "bg-[#09A6A4] text-white shadow-md"
                       : "border border-slate-200 bg-white text-slate-500 hover:bg-slate-50"
@@ -188,7 +194,7 @@ export default function AccountMessagesPage() {
 
               <button
                 onClick={() => setCurrentPage(10)}
-                className={`w-10 h-10 rounded-full font-bold text-[0.88rem] transition-colors flex items-center justify-center focus:outline-none cursor-pointer ${
+                className={`w-8 h-8 sm:w-10 sm:h-10 shrink-0 rounded-full font-bold text-[0.88rem] transition-colors flex items-center justify-center focus:outline-none cursor-pointer ${
                   currentPage === 10
                     ? "bg-[#09A6A4] text-white shadow-md"
                     : "border border-slate-200 bg-white text-slate-500 hover:bg-slate-50"
@@ -197,8 +203,8 @@ export default function AccountMessagesPage() {
                 10
               </button>
 
-              <button className="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors flex items-center justify-center focus:outline-none">
-                <ChevronRight size={18} />
+              <button className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 rounded-full border border-slate-200 bg-white text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors flex items-center justify-center focus:outline-none">
+                <ChevronRight size={16} className="sm:w-[18px] sm:h-[18px]" />
               </button>
             </div>
           </div>
@@ -214,7 +220,7 @@ export default function AccountMessagesPage() {
               <ChevronLeft size={22} />
             </button>
 
-            <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-2">
+            <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-2 mt-8">
               Messages
             </h2>
 
@@ -226,7 +232,7 @@ export default function AccountMessagesPage() {
 
             <div className="bg-white rounded-3xl border border-slate-200/60 shadow-sm overflow-hidden mt-6">
               {/* Card Header */}
-              <div className="bg-slate-50/70 border-b border-slate-100 px-6 py-4 flex justify-between items-center">
+              <div className="bg-slate-50/70 border-b border-slate-100 px-6 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
                 <span className="font-bold text-slate-800 text-[0.92rem]">Support Team</span>
                 <span className="text-[0.72rem] text-slate-400 font-bold uppercase tracking-wider">
                   {selectedMessage?.date || "OCT 24, 2026 11:20 AM"}
@@ -271,21 +277,21 @@ export default function AccountMessagesPage() {
               <X size={20} />
             </button>
 
-            <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-3">
+            <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-3 mt-8">
               Messages
             </h2>
 
             <div className="bg-white rounded-3xl border border-slate-200/80 shadow-[0_4px_25px_rgba(0,0,0,0.015)] overflow-hidden flex flex-col min-h-[420px]">
-              
+
               {/* To Header */}
-              <div className="border-b border-slate-100 px-6 py-4 flex items-center gap-6 text-[0.92rem]">
-                <span className="text-slate-400 font-bold w-14">To:</span>
+              <div className="border-b border-slate-100 px-6 py-4 flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-6 text-[0.92rem]">
+                <span className="text-slate-400 font-bold sm:w-14 sm:shrink-0">To:</span>
                 <span className="text-slate-700 font-semibold">Support Team</span>
               </div>
 
               {/* Subject Header */}
-              <div className="border-b border-slate-100 px-6 py-4 flex items-center gap-6 text-[0.92rem]">
-                <span className="text-slate-400 font-bold w-14">Subject:</span>
+              <div className="border-b border-slate-100 px-6 py-4 flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-6 text-[0.92rem]">
+                <span className="text-slate-400 font-bold sm:w-14 sm:shrink-0">Subject:</span>
                 <span className="text-slate-400 font-medium">Re: {selectedMessage?.subject || "Password Change Problem"}</span>
               </div>
 
@@ -348,7 +354,7 @@ export default function AccountMessagesPage() {
               <ChevronLeft size={22} />
             </button>
 
-            <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-2">
+            <h2 className="text-center text-[1.25rem] font-bold text-slate-800 tracking-tight pb-2 mt-8">
               Messages
             </h2>
 
@@ -363,7 +369,7 @@ export default function AccountMessagesPage() {
               
               {/* Message 1 (From Support) */}
               <div className="bg-white rounded-3xl border border-slate-200/60 shadow-sm overflow-hidden">
-                <div className="bg-slate-50/70 border-b border-slate-100 px-6 py-4 flex justify-between items-center">
+                <div className="bg-slate-50/70 border-b border-slate-100 px-6 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
                   <span className="font-bold text-slate-800 text-[0.92rem]">Support Team</span>
                   <span className="text-[0.72rem] text-slate-400 font-bold uppercase tracking-wider">
                     OCT 24, 2026 11:20 AM
@@ -386,7 +392,7 @@ export default function AccountMessagesPage() {
 
               {/* Message 2 (From User - Reply) */}
               <div className="bg-white rounded-3xl border border-slate-200/60 shadow-sm overflow-hidden">
-                <div className="bg-slate-50/70 border-b border-slate-100 px-6 py-4 flex justify-between items-center">
+                <div className="bg-slate-50/70 border-b border-slate-100 px-6 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
                   <div className="flex items-center gap-2">
                     <span className="font-bold text-slate-800 text-[0.92rem]">You</span>
                     <span className="bg-slate-200 text-slate-500 text-[0.68rem] font-bold px-2 py-0.5 rounded">Customer</span>

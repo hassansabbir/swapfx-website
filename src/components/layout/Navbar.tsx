@@ -109,6 +109,7 @@ export const Navbar = () => {
                 width={80}
                 height={32}
                 className="object-contain"
+                style={{ height: "auto" }}
                 priority
               />
             </Link>
@@ -138,6 +139,7 @@ export const Navbar = () => {
                 width={85}
                 height={32}
                 className="object-contain"
+                style={{ height: "auto" }}
                 priority
               />
             </Link>

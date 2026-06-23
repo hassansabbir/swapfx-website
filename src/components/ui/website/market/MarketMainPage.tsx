@@ -464,9 +464,9 @@ const MarketMainPage = () => {
                 </div>
 
                 {/* Exchange Rates & timings details info */}
-                <div className="flex justify-between items-baseline px-2 border-t border-slate-50 pt-5 text-[0.88rem]">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-3 sm:gap-0 px-2 border-t border-slate-50 pt-5 text-[0.82rem] sm:text-[0.88rem]">
                   <div className="space-y-0.5">
-                    <p className="text-slate-600 font-medium leading-none">
+                    <p className="text-slate-600 font-medium leading-snug whitespace-nowrap">
                       <span className="font-bold text-slate-800">Rate:</span>{" "}
                       {offer.rate}
                     </p>
@@ -475,7 +475,7 @@ const MarketMainPage = () => {
                     </p>
                   </div>
 
-                  <p className="text-slate-600 font-medium leading-none">
+                  <p className="text-slate-600 font-medium leading-snug whitespace-nowrap">
                     <span className="font-bold text-slate-800">Required:</span>{" "}
                     {offer.requiredWithin}
                   </p>

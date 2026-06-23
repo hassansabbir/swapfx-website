@@ -22,6 +22,7 @@ export default function AuthMethodPage() {
           width={180}
           height={60}
           className="object-contain"
+          style={{ height: "auto" }}
         />
       </div>
 

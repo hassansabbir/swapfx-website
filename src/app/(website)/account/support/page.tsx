@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { X } from "lucide-react";
@@ -51,6 +51,10 @@ export default function HelpAndSupportPage() {
   
   const [selectedTicket, setSelectedTicket] = useState<any>(null);
   const [replyText, setReplyText] = useState("");
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [viewState]);
 
   const mockTickets = [
     {
@@ -121,9 +125,8 @@ export default function HelpAndSupportPage() {
       <GlassContainer className="p-6 md:p-12 relative bg-white/40 border border-white/60 shadow-2xl rounded-4xl flex flex-col justify-center min-h-[550px]">
         
         {/* Close Button top right (Only visible on specific navigation view states) */}
-        {(viewState === "list" || 
-          viewState === "reply" || 
-          viewState === "refund" || 
+        {(viewState === "list" ||
+          viewState === "refund" ||
           viewState === "refund_success" || 
           viewState === "safety" || 
           viewState === "safety_success") && (
