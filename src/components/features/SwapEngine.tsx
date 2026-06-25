@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/Button";
 import { ChevronDown } from "lucide-react";
 import { swapService } from "@/lib/services";
@@ -20,6 +20,25 @@ export const SwapEngine = ({ onFindMatch }: SwapEngineProps) => {
   const [wantCurrency, setWantCurrency] = useState("PHP");
   const [showOfferDropdown, setShowOfferDropdown] = useState(false);
   const [showWantDropdown, setShowWantDropdown] = useState(false);
+
+  const offerDropdownRef = useRef<HTMLDivElement>(null);
+  const wantDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+      if (offerDropdownRef.current && !offerDropdownRef.current.contains(target)) {
+        setShowOfferDropdown(false);
+      }
+      if (wantDropdownRef.current && !wantDropdownRef.current.contains(target)) {
+        setShowWantDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     const init = async () => {
@@ -49,41 +68,46 @@ export const SwapEngine = ({ onFindMatch }: SwapEngineProps) => {
     <div className="w-full">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         {/* Offer Currency */}
-        <div className="space-y-1.5 relative">
+        <div className="space-y-1.5">
           <label className="text-[0.8rem] font-medium text-slate-700">
             I offer:
           </label>
-          <div
-            onClick={() => setShowOfferDropdown(!showOfferDropdown)}
-            className="flex items-center justify-between bg-white/95 border border-white/20 rounded-lg px-3 py-2 cursor-pointer hover:bg-white transition-all shadow-sm"
-          >
-            <span className="font-medium text-[0.9rem] text-slate-800">
-              {offerCurrency}
-            </span>
-            <ChevronDown
-              className={cn(
-                "w-4 h-4 text-slate-400 transition-transform",
-                showOfferDropdown && "rotate-180",
-              )}
-            />
-          </div>
-
-          {showOfferDropdown && (
-            <div className="absolute top-full left-0 right-0 mt-1 bg-white rounded-lg shadow-xl border border-slate-100 z-50 max-h-48 overflow-y-auto animate-in fade-in zoom-in-95 duration-200">
-              {currencies.map((c) => (
-                <div
-                  key={c.code}
-                  className="px-3 py-2 hover:bg-slate-50 cursor-pointer text-[0.9rem] font-medium text-slate-700"
-                  onClick={() => {
-                    setOfferCurrency(c.code);
-                    setShowOfferDropdown(false);
-                  }}
-                >
-                  {c.code} - {c.name}
-                </div>
-              ))}
+          <div className="relative" ref={offerDropdownRef}>
+            <div
+              onClick={() => {
+                setShowOfferDropdown(!showOfferDropdown);
+                setShowWantDropdown(false);
+              }}
+              className="flex items-center justify-between bg-white/95 border border-white/20 rounded-lg px-3 py-2 cursor-pointer hover:bg-white transition-all shadow-sm"
+            >
+              <span className="font-medium text-[0.9rem] text-slate-800">
+                {offerCurrency}
+              </span>
+              <ChevronDown
+                className={cn(
+                  "w-4 h-4 text-slate-400 transition-transform",
+                  showOfferDropdown && "rotate-180",
+                )}
+              />
             </div>
-          )}
+
+            {showOfferDropdown && (
+              <div className="absolute top-full left-0 right-0 mt-1 bg-white rounded-lg shadow-xl border border-slate-100 z-50 max-h-48 overflow-y-auto animate-in fade-in zoom-in-95 duration-200">
+                {currencies.map((c) => (
+                  <div
+                    key={c.code}
+                    className="px-3 py-2 hover:bg-slate-50 cursor-pointer text-[0.9rem] font-medium text-slate-700"
+                    onClick={() => {
+                      setOfferCurrency(c.code);
+                      setShowOfferDropdown(false);
+                    }}
+                  >
+                    {c.code} - {c.name}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Amount */}
@@ -107,41 +131,46 @@ export const SwapEngine = ({ onFindMatch }: SwapEngineProps) => {
       </div>
 
       {/* Want Currency */}
-      <div className="space-y-1.5 mb-6 relative">
+      <div className="space-y-1.5 mb-6">
         <label className="text-[0.8rem] font-medium text-slate-700">
           I want:
         </label>
-        <div
-          onClick={() => setShowWantDropdown(!showWantDropdown)}
-          className="flex items-center justify-between bg-white/95 border border-white/20 rounded-lg px-3 py-2 cursor-pointer hover:bg-white transition-all shadow-sm"
-        >
-          <span className="font-medium text-[0.9rem] text-slate-800">
-            {wantCurrency}
-          </span>
-          <ChevronDown
-            className={cn(
-              "w-4 h-4 text-slate-400 transition-transform",
-              showWantDropdown && "rotate-180",
-            )}
-          />
-        </div>
-
-        {showWantDropdown && (
-          <div className="absolute top-full left-0 right-0 mt-1 bg-white rounded-lg shadow-xl border border-slate-100 z-50 max-h-48 overflow-y-auto animate-in fade-in zoom-in-95 duration-200">
-            {currencies.map((c) => (
-              <div
-                key={c.code}
-                className="px-3 py-2 hover:bg-slate-50 cursor-pointer text-[0.9rem] font-medium text-slate-700"
-                onClick={() => {
-                  setWantCurrency(c.code);
-                  setShowWantDropdown(false);
-                }}
-              >
-                {c.code} - {c.name}
-              </div>
-            ))}
+        <div className="relative" ref={wantDropdownRef}>
+          <div
+            onClick={() => {
+              setShowWantDropdown(!showWantDropdown);
+              setShowOfferDropdown(false);
+            }}
+            className="flex items-center justify-between bg-white/95 border border-white/20 rounded-lg px-3 py-2 cursor-pointer hover:bg-white transition-all shadow-sm"
+          >
+            <span className="font-medium text-[0.9rem] text-slate-800">
+              {wantCurrency}
+            </span>
+            <ChevronDown
+              className={cn(
+                "w-4 h-4 text-slate-400 transition-transform",
+                showWantDropdown && "rotate-180",
+              )}
+            />
           </div>
-        )}
+
+          {showWantDropdown && (
+            <div className="absolute top-full left-0 right-0 mt-1 bg-white rounded-lg shadow-xl border border-slate-100 z-50 max-h-48 overflow-y-auto animate-in fade-in zoom-in-95 duration-200">
+              {currencies.map((c) => (
+                <div
+                  key={c.code}
+                  className="px-3 py-2 hover:bg-slate-50 cursor-pointer text-[0.9rem] font-medium text-slate-700"
+                  onClick={() => {
+                    setWantCurrency(c.code);
+                    setShowWantDropdown(false);
+                  }}
+                >
+                  {c.code} - {c.name}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Result Card */}

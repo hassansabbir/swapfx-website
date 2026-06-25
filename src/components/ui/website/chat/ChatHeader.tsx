@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Shield,
   CheckCircle2,
@@ -22,6 +22,20 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
   offerCreated = false,
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="bg-white/80 backdrop-blur-md px-6 py-4 border-b border-slate-100 flex items-center justify-between shrink-0 z-20 relative">
@@ -64,7 +78,7 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
       <div className="flex items-center gap-3">
 
         {/* Dropdown Menu actions */}
-        <div className="relative">
+        <div className="relative" ref={dropdownRef}>
           <button
             onClick={() => setShowDropdown(!showDropdown)}
             className="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-50 shadow-sm flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus:outline-none"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { Button } from "@/components/ui/Button";
 import { IconButton } from "@/components/ui/IconButton";
@@ -23,6 +23,29 @@ export const CreateMarketplaceSwapView = ({
   const [showWantDrop, setShowWantDrop] = useState(false);
   const [showDurationDrop, setShowDurationDrop] = useState(false);
 
+  const offerRef = useRef<HTMLDivElement>(null);
+  const wantRef = useRef<HTMLDivElement>(null);
+  const durationRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+      if (offerRef.current && !offerRef.current.contains(target)) {
+        setShowOfferDrop(false);
+      }
+      if (wantRef.current && !wantRef.current.contains(target)) {
+        setShowWantDrop(false);
+      }
+      if (durationRef.current && !durationRef.current.contains(target)) {
+        setShowDurationDrop(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const currencies = ["PKR", "USD", "GBP", "EUR", "CAD", "AUD"];
   const durations = ["1 Day", "3 Days", "1 Week", "2 Weeks", "1 Month"];
 
@@ -42,7 +65,7 @@ export const CreateMarketplaceSwapView = ({
         <div className="space-y-8 max-w-[750px] mx-auto mt-8">
           <div className="text-center space-y-1">
             <h2 className="text-[1.5rem] font-bold text-slate-800">
-              {swapperName ? "Create Peer Swap" : "Create Marketplace Swap"}
+              {swapperName ? "Create Peer Swap" : "Publish Market Offer"}
             </h2>
             <p className="text-[0.9rem] text-slate-400">
               {swapperName
@@ -82,40 +105,42 @@ export const CreateMarketplaceSwapView = ({
                 >
                   I offer :
                 </label>
-                <div className="flex gap-3 flex-1 relative w-full">
-                  <div
-                    onClick={() => {
-                      setShowOfferDrop(!showOfferDrop);
-                      setShowWantDrop(false);
-                      setShowDurationDrop(false);
-                    }}
-                    className="w-20 sm:w-32 shrink-0 bg-white rounded-xl px-2 sm:px-4 py-3.5 border border-slate-100 flex items-center justify-between cursor-pointer shadow-sm hover:bg-slate-50 transition-colors"
-                  >
-                    <span className="font-bold text-slate-700 text-[0.85rem] sm:text-[1rem]">
-                      {offerCurrency}
-                    </span>
-                    <ChevronDown
-                      size={18}
-                      className={`text-slate-300 transition-transform ${showOfferDrop ? "rotate-180" : ""}`}
-                    />
-                  </div>
-
-                  {showOfferDrop && (
-                    <div className="absolute top-full left-0 w-20 sm:w-32 mt-1 bg-white rounded-xl shadow-xl border border-slate-100 z-50 py-2 animate-in fade-in zoom-in-95 duration-200">
-                      {currencies.map((curr) => (
-                        <div
-                          key={curr}
-                          onClick={() => {
-                            setOfferCurrency(curr);
-                            setShowOfferDrop(false);
-                          }}
-                          className="px-4 py-2 hover:bg-slate-50 cursor-pointer font-bold text-slate-600 text-[0.9rem]"
-                        >
-                          {curr}
-                        </div>
-                      ))}
+                <div className="flex gap-3 flex-1 w-full">
+                  <div className="relative shrink-0 w-20 sm:w-32" ref={offerRef}>
+                    <div
+                      onClick={() => {
+                        setShowOfferDrop(!showOfferDrop);
+                        setShowWantDrop(false);
+                        setShowDurationDrop(false);
+                      }}
+                      className="w-full bg-white rounded-xl px-2 sm:px-4 py-3.5 border border-slate-100 flex items-center justify-between cursor-pointer shadow-sm hover:bg-slate-50 transition-colors"
+                    >
+                      <span className="font-bold text-slate-700 text-[0.85rem] sm:text-[1rem]">
+                        {offerCurrency}
+                      </span>
+                      <ChevronDown
+                        size={18}
+                        className={`text-slate-300 transition-transform ${showOfferDrop ? "rotate-180" : ""}`}
+                      />
                     </div>
-                  )}
+
+                    {showOfferDrop && (
+                      <div className="absolute top-full left-0 w-full mt-1 bg-white rounded-xl shadow-xl border border-slate-100 z-50 py-2 animate-in fade-in zoom-in-95 duration-200">
+                        {currencies.map((curr) => (
+                          <div
+                            key={curr}
+                            onClick={() => {
+                              setOfferCurrency(curr);
+                              setShowOfferDrop(false);
+                            }}
+                            className="px-4 py-2 hover:bg-slate-50 cursor-pointer font-bold text-slate-600 text-[0.9rem]"
+                          >
+                            {curr}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
 
                   <input
                     type="text"
@@ -135,40 +160,42 @@ export const CreateMarketplaceSwapView = ({
                 >
                   I want :
                 </label>
-                <div className="flex gap-3 flex-1 relative w-full">
-                  <div
-                    onClick={() => {
-                      setShowWantDrop(!showWantDrop);
-                      setShowOfferDrop(false);
-                      setShowDurationDrop(false);
-                    }}
-                    className="w-20 sm:w-32 shrink-0 bg-white rounded-xl px-2 sm:px-4 py-3.5 border border-slate-100 flex items-center justify-between cursor-pointer shadow-sm hover:bg-slate-50 transition-colors"
-                  >
-                    <span className="font-bold text-slate-700 text-[0.85rem] sm:text-[1rem]">
-                      {wantCurrency}
-                    </span>
-                    <ChevronDown
-                      size={18}
-                      className={`text-slate-300 transition-transform ${showWantDrop ? "rotate-180" : ""}`}
-                    />
-                  </div>
-
-                  {showWantDrop && (
-                    <div className="absolute top-full left-0 w-20 sm:w-32 mt-1 bg-white rounded-xl shadow-xl border border-slate-100 z-50 py-2 animate-in fade-in zoom-in-95 duration-200">
-                      {currencies.map((curr) => (
-                        <div
-                          key={curr}
-                          onClick={() => {
-                            setWantCurrency(curr);
-                            setShowWantDrop(false);
-                          }}
-                          className="px-4 py-2 hover:bg-slate-50 cursor-pointer font-bold text-slate-600 text-[0.9rem]"
-                        >
-                          {curr}
-                        </div>
-                      ))}
+                <div className="flex gap-3 flex-1 w-full">
+                  <div className="relative shrink-0 w-20 sm:w-32" ref={wantRef}>
+                    <div
+                      onClick={() => {
+                        setShowWantDrop(!showWantDrop);
+                        setShowOfferDrop(false);
+                        setShowDurationDrop(false);
+                      }}
+                      className="w-full bg-white rounded-xl px-2 sm:px-4 py-3.5 border border-slate-100 flex items-center justify-between cursor-pointer shadow-sm hover:bg-slate-50 transition-colors"
+                    >
+                      <span className="font-bold text-slate-700 text-[0.85rem] sm:text-[1rem]">
+                        {wantCurrency}
+                      </span>
+                      <ChevronDown
+                        size={18}
+                        className={`text-slate-300 transition-transform ${showWantDrop ? "rotate-180" : ""}`}
+                      />
                     </div>
-                  )}
+
+                    {showWantDrop && (
+                      <div className="absolute top-full left-0 w-full mt-1 bg-white rounded-xl shadow-xl border border-slate-100 z-50 py-2 animate-in fade-in zoom-in-95 duration-200">
+                        {currencies.map((curr) => (
+                          <div
+                            key={curr}
+                            onClick={() => {
+                              setWantCurrency(curr);
+                              setShowWantDrop(false);
+                            }}
+                            className="px-4 py-2 hover:bg-slate-50 cursor-pointer font-bold text-slate-600 text-[0.9rem]"
+                          >
+                            {curr}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
 
                   <input
                     type="text"
@@ -219,44 +246,46 @@ export const CreateMarketplaceSwapView = ({
           {/* Additional Settings */}
           <div className="space-y-8 px-2">
             <div
-              className={`flex flex-col gap-3 relative ${swapperName ? "sm:flex-row sm:items-center sm:gap-4" : ""}`}
+              className={`flex flex-col gap-3 ${swapperName ? "sm:flex-row sm:items-center sm:gap-4" : ""}`}
             >
               <label
                 className={`text-[1rem] font-bold text-slate-700 ${swapperName ? "w-28 text-left shrink-0" : ""}`}
               >
                 Timing:
               </label>
-              <div
-                onClick={() => {
-                  setShowDurationDrop(!showDurationDrop);
-                  setShowOfferDrop(false);
-                  setShowWantDrop(false);
-                }}
-                className="w-full max-w-[280px] bg-white/60 rounded-xl px-5 py-3.5 border border-white flex items-center justify-between cursor-pointer text-slate-700 font-bold text-[0.95rem] shadow-sm hover:bg-white/80 transition-all"
-              >
-                {duration}
-                <ChevronDown
-                  size={20}
-                  className={`text-slate-300 transition-transform ${showDurationDrop ? "rotate-180" : ""}`}
-                />
-              </div>
-
-              {showDurationDrop && (
-                <div className="absolute top-full left-0 w-full max-w-[280px] mt-1 bg-white rounded-xl shadow-xl border border-slate-100 z-50 py-2 animate-in fade-in zoom-in-95 duration-200">
-                  {durations.map((dur) => (
-                    <div
-                      key={dur}
-                      onClick={() => {
-                        setDuration(dur);
-                        setShowDurationDrop(false);
-                      }}
-                      className="px-5 py-2.5 hover:bg-slate-50 cursor-pointer font-bold text-slate-600 text-[0.9rem]"
-                    >
-                      {dur}
-                    </div>
-                  ))}
+              <div className="relative w-full max-w-[280px]" ref={durationRef}>
+                <div
+                  onClick={() => {
+                    setShowDurationDrop(!showDurationDrop);
+                    setShowOfferDrop(false);
+                    setShowWantDrop(false);
+                  }}
+                  className="w-full bg-white/60 rounded-xl px-5 py-3.5 border border-white flex items-center justify-between cursor-pointer text-slate-700 font-bold text-[0.95rem] shadow-sm hover:bg-white/80 transition-all"
+                >
+                  {duration}
+                  <ChevronDown
+                    size={20}
+                    className={`text-slate-300 transition-transform ${showDurationDrop ? "rotate-180" : ""}`}
+                  />
                 </div>
-              )}
+
+                {showDurationDrop && (
+                  <div className="absolute top-full left-0 w-full mt-1 bg-white rounded-xl shadow-xl border border-slate-100 z-50 py-2 animate-in fade-in zoom-in-95 duration-200">
+                    {durations.map((dur) => (
+                      <div
+                        key={dur}
+                        onClick={() => {
+                          setDuration(dur);
+                          setShowDurationDrop(false);
+                        }}
+                        className="px-5 py-2.5 hover:bg-slate-50 cursor-pointer font-bold text-slate-600 text-[0.9rem]"
+                      >
+                        {dur}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
             <p className="text-[0.8rem] text-slate-400 font-medium italic leading-tight">

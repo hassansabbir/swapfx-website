@@ -36,7 +36,7 @@ export const SwapSuccessView = ({
 
           <div className="space-y-4">
             <h1 className="text-[1.8rem] md:text-[2.2rem] font-bold text-slate-800 tracking-tight leading-tight">
-              Market Swap Created successfully.
+              Market Swap Created Successfully.
             </h1>
           </div>
 

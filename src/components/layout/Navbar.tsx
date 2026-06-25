@@ -234,7 +234,7 @@ export const Navbar = () => {
             <NavLink
               href="/swap"
               icon={<ArrowLeftRight />}
-              label="Swap"
+              label="Swap Hub"
               active={pathname === "/swap"}
               onClick={toggleMenu}
             />

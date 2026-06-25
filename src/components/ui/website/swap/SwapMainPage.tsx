@@ -18,7 +18,7 @@ const SwapMainPage = () => {
         <div className="space-y-8 max-w-[750px] mx-auto">
           <div className="text-center">
             <h1 className="text-[1.5rem] font-bold text-slate-800 tracking-tight">
-              Create Swap
+              Swap Hub
             </h1>
           </div>
 
@@ -45,7 +45,7 @@ const SwapMainPage = () => {
               onClick={() => router.push("/swap/agreement")}
               className="w-full"
             >
-              Publish Market Swap
+              Publish Market Offer
             </Button>
           </div>
 
